@@ -794,11 +794,15 @@ header .navlink:hover{color:#E8D48A !important}
 header .navlink::after{background:#C9A84C !important}
 /* Le bouton « Réserver » a un fond dégradé doré : son libellé doit rester
    brun foncé. Lui appliquer l'or du thème le rendait invisible. */
-header .btn-book{color:#2C1810 !important}
+header .btn-book{color:#111 !important;font-weight:600 !important}
 .burger span{background:#C9A84C !important}
 .mobile-panel{background:#000 !important;border-color:rgba(201,168,76,.35) !important}
 .mobile-panel a{color:#C9A84C !important}
 .mobile-panel a + a{border-top-color:rgba(201,168,76,.2) !important}
+/* Le bouton « Réserver » du menu a un fond doré : son libellé doit être
+   noir, sinon il disparaît (l'or sur l'or donnait un contraste de 1:1). */
+.mobile-panel a.btn-book{color:#111 !important;font-weight:600 !important;
+  border-top:0 !important;justify-content:center}
 
 footer{background:#000 !important;border-color:rgba(201,168,76,.35) !important}
 .footer-grid h4{color:#E8D48A !important}
