@@ -858,6 +858,19 @@ h3.sec-title{font-size:32px !important}
 
 /* --- 18 : emojis de la section contact en noir --- */
 .contact-card .emo{filter:grayscale(1) brightness(0);display:inline-block}
+
+/* --- Contact sur mobile : chaque ligne occupe toute la largeur ---
+   L'emoji devient un marqueur de largeur fixe et le texte prend tout
+   le reste, au lieu d'être repoussé puis coupé au milieu de l'adresse.
+   Les guillemets restent solidaires de ce qu'ils encadrent. */
+.nowrap-cite{white-space:nowrap}
+@media (max-width:768px){
+  .contact-card{padding:20px 14px !important}
+  .contact-card ul{margin:0;padding:0;list-style:none}
+  .contact-card li{display:flex;align-items:flex-start;gap:7px;width:100%}
+  .contact-card li > .emo{flex:0 0 auto;line-height:1.5}
+  .contact-card li > a{flex:1 1 auto;min-width:0;word-break:break-word}
+}
 </style>
 
 <!-- (rouleaux de coin retirés pour un rendu plus épuré) -->
@@ -1273,7 +1286,7 @@ h3.sec-title{font-size:32px !important}
           <li><span class="emo">📍</span> <a href="https://maps.google.com/?q=76+Rue+de+la+Coulée,+35510+Cesson-Sévigné" target="_blank" rel="noopener">76 Rue de la Coulée, 35510 Cesson-Sévigné</a> — près de Rennes</li>
           <li><span class="emo">📞</span> <a href="tel:+33620437841">06 20 43 78 41</a></li>
           <li><span class="emo">✉️</span> <a href="mailto:isabelle.far35@gmail.com">isabelle.far35@gmail.com</a></li>
-          <li><span class="emo">🚗</span> Parking rue de Bellevue, arrêt c6 « La coulée »</li>
+          <li><span class="emo">🚗</span> Parking rue de Bellevue, arrêt c6 <span class="nowrap-cite">« La coulée »</span></li>
           <li><span class="emo">🌐</span> <a href="https://isabelle-far.fr" target="_blank" rel="noopener">isabelle-far.fr</a></li>
         </ul>
       </div>
