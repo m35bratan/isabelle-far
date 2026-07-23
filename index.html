@@ -777,6 +777,83 @@ header .navlink::after{background:#E8D48A !important}
    DÉZOOM GLOBAL — rendu à 85 %, comme un zoom navigateur
    ============================================================ */
 html{zoom:.85}
+
+/* ============================================================
+   RÉVISION — barre noire/or, texte +2px, photos, divers
+   ============================================================ */
+
+/* --- 1 & 2 : barre de navigation et pied de page en NOIR, texte OR --- */
+header{background:#000 !important;border-bottom:2px solid rgba(201,168,76,.55) !important;
+  box-shadow:0 6px 22px rgba(0,0,0,.45) !important}
+header.scrolled{background:#000 !important}
+header .brand-txt b{color:#E8D48A !important}
+header .brand-txt span,header .navlink{color:#C9A84C !important}
+header .navlink:hover{color:#E8D48A !important}
+header .navlink::after{background:#C9A84C !important}
+header .btn-book{color:#E8D48A !important;border-color:rgba(201,168,76,.75) !important}
+.burger span{background:#C9A84C !important}
+.mobile-panel{background:#000 !important;border-color:rgba(201,168,76,.35) !important}
+.mobile-panel a{color:#C9A84C !important}
+.mobile-panel a + a{border-top-color:rgba(201,168,76,.2) !important}
+
+footer{background:#000 !important;border-color:rgba(201,168,76,.35) !important}
+.footer-grid h4{color:#E8D48A !important}
+.footer-grid p,.footer-grid a,.footer-bottom{color:#C9A84C !important}
+.footer-grid a:hover{color:#E8D48A !important}
+
+/* --- 3 : +2px sur tout le texte, SAUF les titres (figés en px) --- */
+html{font-size:18px}
+.hero-title{font-size:clamp(33.6px,6vw,64px) !important}
+.hero-h2{font-size:clamp(20.8px,3.2vw,30.4px) !important}
+.sec-title{font-size:clamp(32px,5vw,51.2px) !important}
+h3.sec-title{font-size:32px !important}
+.scard-name{font-size:21.6px !important}
+.forfait h3{font-size:24px !important}
+.giftcard-txt h3{font-size:25.6px !important}
+.about-txt h3{font-size:30.4px !important}
+.contact-card h3{font-size:21.6px !important}
+.ig-card h3{font-size:24px !important}
+.footer-grid h4{font-size:14.4px !important}
+.reco-box h3{font-size:20px !important}
+@media (max-width:768px){
+  .sec-title{font-size:32px !important}
+  .hero-h2{font-size:21.6px !important}
+}
+@media (max-width:400px){
+  .hero-title{font-size:43.2px !important}
+}
+
+/* --- 4 & 11 : retours à la ligne réservés à la version ordinateur --- */
+.br-pc{display:inline}
+@media (max-width:768px){.br-pc{display:none}}
+
+/* --- 5 : le slogan ne se coupe jamais --- */
+.nowrap-slogan{white-space:nowrap}
+
+/* --- 7 : KOBIDO en sous-titre --- */
+.kobido-sub{text-transform:uppercase;font-size:1.28em;font-weight:600;
+  letter-spacing:.07em;font-style:normal}
+
+/* --- 13 & 14 : photos des infos pratiques à la taille de « Qui suis-je »,
+       et cadre doré sur toutes les photos --- */
+.photo-grid{grid-template-columns:repeat(2,320px) !important;justify-content:center;
+  max-width:none !important;gap:26px !important}
+.photo-cell{aspect-ratio:560/376 !important}
+.photo-cell,.about-photo-wrap,.legend-img,.forfait-photo,.scard-thumb{
+  border:2px solid #C9A84C !important;
+  box-shadow:0 8px 22px rgba(60,40,10,.28) !important}
+@media (max-width:768px){
+  .photo-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:14px !important}
+}
+
+/* --- 16 : agrandissement des photos au doigt sur mobile --- */
+.photo-cell img{cursor:zoom-in;touch-action:manipulation}
+.lightbox{-webkit-tap-highlight-color:transparent}
+.lightbox img{max-width:92vw;max-height:82vh;width:auto;height:auto}
+.lightbox-close{font-size:2.8rem;padding:10px 16px;top:10px;right:10px}
+
+/* --- 18 : emojis de la section contact en noir --- */
+.contact-card .emo{filter:grayscale(1) brightness(0);display:inline-block}
 </style>
 
 <!-- (rouleaux de coin retirés pour un rendu plus épuré) -->
@@ -929,7 +1006,7 @@ html{zoom:.85}
 
     <div class="hero-lines"><i></i><i></i><i></i></div>
 
-    <h2 class="hero-h2">Art du soin japonais de votre visage au féminin — massages sculptants</h2>
+    <h2 class="hero-h2">Art du soin japonais de votre visage au féminin <br class="br-pc">— massages sculptants</h2>
     <p class="hero-meta">
       Praticienne certifiée dans le secteur du <strong>Bien-être</strong><br>
       Cabinet à domicile sur la commune de <strong>Cesson-Sévigné</strong> près de Rennes (35)
@@ -969,7 +1046,7 @@ html{zoom:.85}
             <span class="scard-badge">✦ Incontournable</span>
             <h3 class="scard-name">Authentique KOBIDO</h3>
             <p class="scard-stag">Massage liftant</p>
-            <p class="scard-dur">1h · 1h15 · 1h30</p>
+            <p class="scard-dur">60 min · 75 min · 90 min</p>
             <p class="scard-price">75 € · 90 € · 110 €</p>
           </div>
         </div>
@@ -992,7 +1069,7 @@ html{zoom:.85}
           <div class="scard-info">
             <h3 class="scard-name">KOGAO</h3>
             <p class="scard-stag">Petit visage japonais</p>
-            <p class="scard-dur">1 heure</p>
+            <p class="scard-dur">60 min</p>
             <p class="scard-price">75 €</p>
           </div>
         </div>
@@ -1015,7 +1092,7 @@ html{zoom:.85}
           <div class="scard-info">
             <h3 class="scard-name">Drainage lymphatique visage</h3>
             <p class="scard-stag">Détox & éclat</p>
-            <p class="scard-dur">45 mn</p>
+            <p class="scard-dur">45 min</p>
             <p class="scard-price">60 €</p>
           </div>
         </div>
@@ -1038,7 +1115,7 @@ html{zoom:.85}
           <div class="scard-info">
             <h3 class="scard-name">ATAMA</h3>
             <p class="scard-stag">Massage cuir chevelu japonais</p>
-            <p class="scard-dur">30 mn</p>
+            <p class="scard-dur">30 min</p>
             <p class="scard-price">45 €</p>
           </div>
         </div>
@@ -1063,19 +1140,18 @@ html{zoom:.85}
   <div class="wrap">
     <span class="eyebrow fade-up">料金</span>
     <h2 class="sec-title shine-title">Tarifs & forfaits</h2>
-    <p class="sec-sub fade-up">Corps sublimé, visage sculpté — l'harmonie japonaise à votre rythme.</p>
-    <p class="sec-sub fade-up" style="margin-top:-8px">Séances à l'unité</p>
+    <p class="sec-sub fade-up">Séances à l'unité</p>
     <div class="gold-bar"></div>
 
     <table class="price-table fade-up">
-      <thead><tr><th>Soin</th><th>Durée</th><th>Tarif(s)</th></tr></thead>
+      <thead><tr><th>Soin</th><th>Durée</th><th>Tarifs</th></tr></thead>
       <tbody>
-        <tr><td>Authentique KOBIDO</td><td>1 heure</td><td>75 €</td></tr>
-        <tr><td>Authentique KOBIDO</td><td>1h15</td><td>90 €</td></tr>
-        <tr><td>Authentique KOBIDO</td><td>1h30</td><td>110 €</td></tr>
-        <tr><td>KOGAO</td><td>1 heure</td><td>75 €</td></tr>
-        <tr><td>Drainage lymphatique visage</td><td>45 mn</td><td>60 €</td></tr>
-        <tr><td>ATAMA</td><td>30 mn</td><td>45 €</td></tr>
+        <tr><td>Authentique KOBIDO</td><td>60 min</td><td>75 €</td></tr>
+        <tr><td>Authentique KOBIDO</td><td>75 min</td><td>90 €</td></tr>
+        <tr><td>Authentique KOBIDO</td><td>90 min</td><td>110 €</td></tr>
+        <tr><td>KOGAO</td><td>60 min</td><td>75 €</td></tr>
+        <tr><td>Drainage lymphatique visage</td><td>45 min</td><td>60 €</td></tr>
+        <tr><td>ATAMA</td><td>30 min</td><td>45 €</td></tr>
       </tbody>
     </table>
     <div style="text-align:center;margin:-6px 0 40px">
@@ -1087,7 +1163,7 @@ html{zoom:.85}
       <div class="forfait fade-up">
         <img src="images/forfait-essentiel.jpg" alt="Forfait Essentiel" class="forfait-photo" loading="eager" onerror="this.style.display='none'">
         <h3>Essentiel</h3>
-        <p class="detail">3× KOBIDO 1h15</p>
+        <p class="detail">3× KOBIDO 75 min</p>
         <div class="price">250 €</div>
         <span class="eco">économie 20 €</span>
         <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-rsm">Réserver</a>
@@ -1095,7 +1171,7 @@ html{zoom:.85}
       <div class="forfait featured fade-up">
         <img src="images/forfait-excellence.jpg" alt="Forfait Excellence" class="forfait-photo" loading="eager" onerror="this.style.display='none'">
         <h3>Excellence</h3>
-        <p class="detail">5× KOBIDO 1h15</p>
+        <p class="detail">5× KOBIDO 75 min</p>
         <div class="price">400 €</div>
         <span class="eco">économie 50 €</span>
         <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-rsm">Réserver</a>
@@ -1103,7 +1179,7 @@ html{zoom:.85}
       <div class="forfait fade-up">
         <img src="images/kobido.jpg" alt="Forfait Duo Bien-être" class="forfait-photo" loading="eager" onerror="this.style.display='none'">
         <h3>Duo Bien-être</h3>
-        <p class="detail">KOBIDO 1h15 + ATAMA</p>
+        <p class="detail">KOBIDO 75 min + ATAMA</p>
         <div class="price">120 €</div>
         <span class="eco">économie 15 €</span>
         <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-rsm">Réserver</a>
@@ -1121,26 +1197,18 @@ html{zoom:.85}
     </div>
 
     <blockquote class="quote fade-up">
-      « Prenez soin de votre corps. C'est le seul endroit où vous allez vivre toute votre vie. »
+      <span class="nowrap-slogan">« Prenez soin de votre corps.</span> C'est le seul endroit où vous allez vivre toute votre vie. »
       <cite>— Jim Rohn</cite>
     </blockquote>
   </div>
 </section>
 
 <!-- ============ BANDE ANIMÉE (transition douce vers Recommandations) ============ -->
-<div class="ticker ticker-soft" aria-hidden="true">
-  <div class="ticker-inner">
-    <span>KOBIDO</span><span class="sep">✦</span><span>KOGAO</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>ATAMA</span><span class="sep">✦</span>
-    <span>KOBIDO</span><span class="sep">✦</span><span>KOGAO</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>ATAMA</span><span class="sep">✦</span>
-    <span>KOBIDO</span><span class="sep">✦</span><span>KOGAO</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>ATAMA</span><span class="sep">✦</span>
-  </div>
-</div>
-
 <!-- ============ RECOMMANDATIONS POUR LE RDV ============ -->
 <section id="reco">
   <div class="wrap">
     <span class="eyebrow fade-up">RDV</span>
-    <h2 class="sec-title shine-title">Recommandations pour le rendez-vous</h2>
+    <h2 class="sec-title shine-title">Recommandations pour <br class="br-pc">le rendez-vous</h2>
     <div class="gold-bar"></div>
     <div class="reco-box fade-up">
       <h3>Cabinet à domicile — 76 rue de la Coulée, 35510 Cesson-Sévigné</h3>
@@ -1168,7 +1236,7 @@ html{zoom:.85}
         <div class="about-photo-fb">🌸</div>
       </div>
       <div class="about-txt fade-up">
-        <h3>Isabelle, une praticienne passionnée</h3>
+        <h3>Isabelle,<br>Une praticienne passionnée</h3>
         <p>Après plus de 30 ans en comptabilité, au fil des années, j'ai ressenti le besoin de redonner du sens à ma vie privée et professionnelle et de créer une activité plus libre, plus humaine et plus alignée avec mes valeurs.</p>
         <p>Après plusieurs tentatives entrepreneuriales et de belles rencontres, le bien-être était le secteur qui me correspondait le plus.</p>
         <p>La vie est généralement éprouvante et j'ai trouvé un métier qui me permet d'apporter un mieux-être concret aux femmes tout en m'épanouissant pleinement.</p>
@@ -1190,7 +1258,6 @@ html{zoom:.85}
     <div class="photo-grid">
       <div class="photo-cell"><img src="images/maison.jpg" alt="Le cabinet à domicile" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">🏡</div><div class="cap">Le cabinet à domicile</div></div>
       <div class="photo-cell"><img src="images/cabinet.jpg" alt="Espace Bien-Être" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">🕯️</div><div class="cap">Espace Bien-Être</div></div>
-      <div class="photo-cell"><img src="images/anatomie.jpg" alt="Anatomie musculaire du visage" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">🧠</div><div class="cap">Anatomie musculaire du visage</div></div>
       <div class="photo-cell"><img src="images/huile.jpg" alt="Huile de soin visage" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">🌿</div><div class="cap">Huile de soin visage</div></div>
       <div class="photo-cell"><img src="images/diplome.jpg" alt="Remise du diplôme — École du Kobido" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">📜</div><div class="cap">Remise du diplôme — École du Kobido</div></div>
     </div>
@@ -1199,11 +1266,11 @@ html{zoom:.85}
       <div>
         <h3>Contact</h3>
         <ul>
-          <li>📍 <a href="https://maps.google.com/?q=76+Rue+de+la+Coulée,+35510+Cesson-Sévigné" target="_blank" rel="noopener">76 Rue de la Coulée, 35510 Cesson-Sévigné</a> — près de Rennes</li>
-          <li>📞 <a href="tel:+33620437841">06 20 43 78 41</a></li>
-          <li>✉️ <a href="mailto:isabelle.far35@gmail.com">isabelle.far35@gmail.com</a></li>
-          <li>🚗 Parking disponible · Sur rendez-vous uniquement</li>
-          <li>🌐 <a href="https://isabelle-far.fr" target="_blank" rel="noopener">isabelle-far.fr</a></li>
+          <li><span class="emo">📍</span> <a href="https://maps.google.com/?q=76+Rue+de+la+Coulée,+35510+Cesson-Sévigné" target="_blank" rel="noopener">76 Rue de la Coulée, 35510 Cesson-Sévigné</a> — près de Rennes</li>
+          <li><span class="emo">📞</span> <a href="tel:+33620437841">06 20 43 78 41</a></li>
+          <li><span class="emo">✉️</span> <a href="mailto:isabelle.far35@gmail.com">isabelle.far35@gmail.com</a></li>
+          <li><span class="emo">🚗</span> Parking rue de Bellevue, arrêt c6 « La coulée »</li>
+          <li><span class="emo">🌐</span> <a href="https://isabelle-far.fr" target="_blank" rel="noopener">isabelle-far.fr</a></li>
         </ul>
       </div>
       <div>
@@ -1222,7 +1289,7 @@ html{zoom:.85}
   <div class="wrap">
     <span class="eyebrow fade-up">豆知識</span>
     <h2 class="sec-title shine-title">Le saviez-vous ?</h2>
-    <p class="sec-sub fade-up">La légende du Kobido</p>
+    <p class="sec-sub fade-up">La légende du <span class="kobido-sub">KOBIDO</span></p>
     <div class="gold-bar"></div>
 
     <div class="legend-grid">
@@ -1254,6 +1321,11 @@ html{zoom:.85}
     <p class="sec-sub fade-up">★ 4,9 — 32 avis</p>
     <div class="gold-bar"></div>
 
+    <div class="review-cta fade-up">
+      <a href="https://www.google.com/search?q=Isabelle+FAR+Kobido+Cesson-Sévigné" target="_blank" rel="noopener" class="btn-outline">⭐ Voir les avis Google</a>
+      <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-outline">Voir les avis Glaads</a>
+    </div>
+
     <div class="reviews">
       <div class="review fade-up">
         <div class="stars">★★★★★</div>
@@ -1277,10 +1349,6 @@ html{zoom:.85}
       </div>
     </div>
 
-    <div class="review-cta fade-up">
-      <a href="https://www.google.com/search?q=Isabelle+FAR+Kobido+Cesson-Sévigné" target="_blank" rel="noopener" class="btn-outline">⭐ Voir les avis Google</a>
-      <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-outline">Voir les avis Glaads</a>
-    </div>
   </div>
 </section>
 
@@ -1407,13 +1475,19 @@ document.querySelectorAll('.promo-tag').forEach(t=>{
   lb.innerHTML='<img alt=""><button class="lightbox-close" aria-label="Fermer">×</button>';
   document.body.appendChild(lb);
   const lbImg=lb.querySelector('img');
-  function open(src,alt){lbImg.src=src;lbImg.alt=alt||'';lb.classList.add('open');document.body.style.overflow='hidden';}
+  let ouvertA=0;
+  function open(src,alt){lbImg.src=src;lbImg.alt=alt||'';lb.classList.add('open');
+    document.body.style.overflow='hidden';ouvertA=Date.now();}
   function close(){lb.classList.remove('open');document.body.style.overflow='';}
   document.querySelectorAll('.photo-cell img').forEach(im=>{
     im.style.cursor='zoom-in';
     im.addEventListener('click',()=>open(im.currentSrc||im.src,im.alt));
   });
-  lb.addEventListener('click',close);
+  /* Sur mobile, un « ghost click » se déclenche ~300 ms après l'appui, aux
+     mêmes coordonnées : il retombait sur la visionneuse à peine ouverte et la
+     refermait dans la foulée — d'où l'impression qu'agrandir ne marchait pas.
+     On ignore donc tout clic survenant dans les 400 ms suivant l'ouverture. */
+  lb.addEventListener('click',()=>{ if(Date.now()-ouvertA>400) close(); });
   addEventListener('keydown',e=>{if(e.key==='Escape')close();});
 })();
 
