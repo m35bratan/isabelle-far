@@ -863,6 +863,19 @@ h3.sec-title{font-size:32px !important}
 /* --- 18 : emojis de la section contact en noir --- */
 .contact-card .emo{filter:grayscale(1) brightness(0);display:inline-block}
 
+/* Encart Recommandations : même typologie que Horaires (titre or + texte
+   dans le cadre bronze), sans gros titre de section hors cadre. */
+.contact-card .reco-col p{margin-bottom:10px;font-size:1rem;line-height:1.6}
+.contact-card .reco-col p:last-child{margin-bottom:0}
+.contact-card .reco-col strong{font-weight:600}
+
+/* Encarts Instagram / Facebook : hauteur réduite */
+.ig-card{padding:24px 26px !important}
+.ig-card .ig-big{width:40px !important;height:40px !important;margin:0 auto 10px !important}
+.ig-card h3{margin-bottom:4px !important}
+.ig-card .handle{margin-bottom:8px !important}
+.ig-card p{margin-bottom:14px !important}
+
 /* ============================================================
    MENU ☰ SUR ORDINATEUR AUSSI
    « Réserver » quitte la barre de navigation : il ne figure plus
@@ -1258,26 +1271,42 @@ header .btn-book{display:none !important}
   </div>
 </section>
 
-<!-- ============ BANDE ANIMÉE (transition douce vers Recommandations) ============ -->
-<!-- ============ RECOMMANDATIONS POUR LE RDV ============ -->
-<section id="reco">
+<!-- ============ INFORMATIONS PRATIQUES ============ -->
+<section id="contact">
   <div class="wrap">
-    <span class="eyebrow fade-up">RDV</span>
-    <h2 class="sec-title shine-title">Recommandations pour <br class="br-pc">le rendez-vous</h2>
+    <span class="eyebrow fade-up">実用情報</span>
+    <h2 class="sec-title shine-title">Informations pratiques</h2>
     <div class="gold-bar"></div>
-    <div class="reco-box fade-up">
-      <h3>Cabinet à domicile — 76 rue de la Coulée, 35510 Cesson-Sévigné</h3>
-      <p>Lieu calme et à l'abri des regards. Vous pouvez sonner afin que je puisse vous accueillir.</p>
-      <p>Pour ne pas gêner les riverains, merci de vous garer aux emplacements gratuits le long de la « rue de Bellevue », près de l'arrêt de bus C6 — la Coulée.</p>
-      <p>Le lieu ne dispose pas de salle d'attente. Un démaquillage sur place est prévu avant la séance.</p>
-      <p>Pour un soin optimal, merci de retirer colliers et boucles d'oreilles avant la séance.</p>
+
+    <div class="photo-grid">
+      <div class="photo-cell"><img src="images/maison.jpg" alt="Le cabinet à domicile" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">🏡</div><div class="cap">Le cabinet à domicile</div></div>
+      <div class="photo-cell"><img src="images/cabinet.jpg" alt="Espace Bien-Être" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">🕯️</div><div class="cap">Espace Bien-Être</div></div>
+      <div class="photo-cell"><img src="images/huile.jpg" alt="Huile de soin visage" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">🌿</div><div class="cap">Huile de soin visage</div></div>
+      <div class="photo-cell"><img src="images/diplome.jpg" alt="Remise du diplôme — École du Kobido" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">📜</div><div class="cap">Remise du diplôme — École du Kobido</div></div>
+    </div>
+
+    <div class="contact-card fade-up">
+      <div>
+        <h3>Horaires</h3>
+        <div class="hours-row closed"><span>Lundi</span><span>Fermé</span></div>
+        <div class="hours-row"><span>Mardi – Vendredi</span><span>09h45 – 19h30</span></div>
+        <div class="hours-row"><span>Samedi</span><span>10h00 – 17h00</span></div>
+        <div class="hours-row closed"><span>Dimanche</span><span>Fermé</span></div>
+      </div>
+      <div class="reco-col">
+        <h3>Recommandations pour le rendez-vous</h3>
+        <p><strong>Cabinet à domicile</strong> — 76 rue de la Coulée, 35510 Cesson-Sévigné. Lieu calme et à l'abri des regards ; vous pouvez sonner afin que je puisse vous accueillir.</p>
+        <p>Pour ne pas gêner les riverains, merci de vous garer aux emplacements gratuits le long de la « rue de Bellevue », près de l'arrêt de bus C6 — la Coulée.</p>
+        <p>Le lieu ne dispose pas de salle d'attente. Un démaquillage sur place est prévu avant la séance.</p>
+        <p>Pour un soin optimal, merci de retirer colliers et boucles d'oreilles avant la séance.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ============ QUI SUIS-JE (clip-4 bg) ============ -->
 <section class="has-video-bg" id="about">
-  
+
   <div class="section-overlay"></div>
   <div class="wrap">
     <span class="eyebrow fade-up">私について</span>
@@ -1298,42 +1327,6 @@ header .btn-book{display:none !important}
         <p>Aujourd'hui, j'accompagne les femmes vers un mieux-être grâce à un savoir-faire manuel japonais et une présence attentive.</p>
         <p>Je suis épanouie et j'ai enfin trouvé ma voie.</p>
         <p class="proverb">« Nana korobi, ya oki » — « Tomber sept fois, se relever huit. » (Proverbe japonais)</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ INFORMATIONS PRATIQUES ============ -->
-<section id="contact">
-  <div class="wrap">
-    <span class="eyebrow fade-up">実用情報</span>
-    <h2 class="sec-title shine-title">Informations pratiques</h2>
-    <div class="gold-bar"></div>
-
-    <div class="photo-grid">
-      <div class="photo-cell"><img src="images/maison.jpg" alt="Le cabinet à domicile" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">🏡</div><div class="cap">Le cabinet à domicile</div></div>
-      <div class="photo-cell"><img src="images/cabinet.jpg" alt="Espace Bien-Être" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">🕯️</div><div class="cap">Espace Bien-Être</div></div>
-      <div class="photo-cell"><img src="images/huile.jpg" alt="Huile de soin visage" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">🌿</div><div class="cap">Huile de soin visage</div></div>
-      <div class="photo-cell"><img src="images/diplome.jpg" alt="Remise du diplôme — École du Kobido" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">📜</div><div class="cap">Remise du diplôme — École du Kobido</div></div>
-    </div>
-
-    <div class="contact-card fade-up">
-      <div>
-        <h3>Contact</h3>
-        <ul>
-          <li><span class="emo">📍</span> <a href="https://maps.google.com/?q=76+Rue+de+la+Coulée,+35510+Cesson-Sévigné" target="_blank" rel="noopener">76 Rue de la Coulée, 35510 Cesson-Sévigné</a> — près de Rennes</li>
-          <li><span class="emo">📞</span> <a href="tel:+33620437841">06 20 43 78 41</a></li>
-          <li><span class="emo">✉️</span> <a href="mailto:isabelle.far35@gmail.com">isabelle.far35@gmail.com</a></li>
-          <li><span class="emo">🚗</span> Parking rue de Bellevue, arrêt c6 <span class="nowrap-cite">« La coulée »</span></li>
-          <li><span class="emo">🌐</span> <a href="https://isabelle-far.fr" target="_blank" rel="noopener">isabelle-far.fr</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Horaires</h3>
-        <div class="hours-row closed"><span>Lundi</span><span>Fermé</span></div>
-        <div class="hours-row"><span>Mardi – Vendredi</span><span>09h45 – 19h30</span></div>
-        <div class="hours-row"><span>Samedi</span><span>10h00 – 17h00</span></div>
-        <div class="hours-row closed"><span>Dimanche</span><span>Fermé</span></div>
       </div>
     </div>
   </div>
