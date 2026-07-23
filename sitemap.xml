@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Plan du site. Le site tient en une seule page ; les rubriques sont des
+  ancres à l'intérieur de cette page, elles n'ont donc pas d'URL propre
+  et ne doivent pas être déclarées ici.
+  Pensez à mettre à jour <lastmod> après une modification importante.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://isabelle-far.fr/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

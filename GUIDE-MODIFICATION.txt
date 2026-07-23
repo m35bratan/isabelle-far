@@ -1,0 +1,20 @@
+════════════════════════════════════════════════════════════
+   SITE ISABELLE FAR. — CE FICHIER EST OBSOLÈTE
+════════════════════════════════════════════════════════════
+
+Ce guide décrivait une version antérieure du site. Il contenait
+des informations devenues fausses qui, si vous les suiviez,
+CASSERAIENT le site :
+
+  • il indiquait de ne mettre en ligne que « index.html + images/ »,
+    en oubliant le dossier « videos/ », désormais indispensable
+    (il contient le logo animé de la page d'accueil) ;
+  • il citait des fichiers image qui n'existent plus
+    (fond.jpg, ukiyoe.jpg) ;
+  • il mentionnait le domaine isabelle-far.com, remplacé
+    depuis par isabelle-far.fr.
+
+  ➜  Consultez « README.md », à la racine du projet.
+     Il remplace intégralement ce document et il est à jour.
+
+Vous pouvez supprimer ce fichier sans risque.

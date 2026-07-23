@@ -1,0 +1,7 @@
+# Site Isabelle FAR. — Facialiste · Kobido · Cesson-Sévigné (35)
+# Tout le site est public et indexable.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://isabelle-far.fr/sitemap.xml

@@ -1,0 +1,50 @@
+# ── Site statique : rien à compiler, rien à installer ──────────────
+# Ce fichier n'est utile que si vous versionnez le projet avec Git.
+# Il n'existe ni node_modules/, ni .env, ni dossier de build dans ce
+# projet ; les entrées correspondantes sont là par précaution, au cas
+# où un outil serait ajouté plus tard.
+
+# Dépendances (si un outillage npm est ajouté un jour)
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Variables d'environnement — ne JAMAIS versionner
+.env
+.env.*
+!.env.example
+
+# Sorties de build
+dist/
+build/
+.cache/
+.parcel-cache/
+.next/
+out/
+
+# Fichiers temporaires du projet
+*.tmp
+*.bak
+*.orig
+*~
+
+# Rushes vidéo et fichiers de travail lourds
+# (sources non utilisées par le site publié)
+video-source.mp4
+*.psd
+*.ai
+
+# Systèmes d'exploitation
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Éditeurs
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Journaux
+*.log
+npm-debug.log*
