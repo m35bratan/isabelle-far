@@ -687,7 +687,9 @@ header .navlink::after{background:#E8D48A !important}
     align-items:center;flex-wrap:nowrap;gap:6px}
   .nav a.navlink{display:none !important}
   header .ig-desktop{display:none !important}
-  header .btn-book{display:inline-flex !important;padding:6px 10px;font-size:.75rem;white-space:nowrap;flex-shrink:0}
+  /* sur mobile la barre ne garde que la marque et le menu ☰ :
+     « Réserver » reste accessible dans le menu déroulant */
+  header .btn-book{display:none !important}
   /* le menu ☰ remplace les noms de rubriques.
      Cible tactile portée à 44x44 px (minimum recommandé) : à 29x24 px
      et collé au bord, il était difficile à voir comme à toucher. */
@@ -790,7 +792,9 @@ header .brand-txt b{color:#E8D48A !important}
 header .brand-txt span,header .navlink{color:#C9A84C !important}
 header .navlink:hover{color:#E8D48A !important}
 header .navlink::after{background:#C9A84C !important}
-header .btn-book{color:#E8D48A !important;border-color:rgba(201,168,76,.75) !important}
+/* Le bouton « Réserver » a un fond dégradé doré : son libellé doit rester
+   brun foncé. Lui appliquer l'or du thème le rendait invisible. */
+header .btn-book{color:#2C1810 !important}
 .burger span{background:#C9A84C !important}
 .mobile-panel{background:#000 !important;border-color:rgba(201,168,76,.35) !important}
 .mobile-panel a{color:#C9A84C !important}
