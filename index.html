@@ -863,6 +863,40 @@ h3.sec-title{font-size:32px !important}
 /* --- 18 : emojis de la section contact en noir --- */
 .contact-card .emo{filter:grayscale(1) brightness(0);display:inline-block}
 
+/* ============================================================
+   MENU ☰ SUR ORDINATEUR AUSSI
+   « Réserver » quitte la barre de navigation : il ne figure plus
+   que dans le menu déroulant, identique sur PC et sur mobile.
+   ============================================================ */
+header .btn-book{display:none !important}
+.burger{display:flex !important;flex-shrink:0;margin-left:14px;
+  width:52px;height:52px;padding:0;align-items:center;justify-content:center;gap:0;
+  position:relative;border-radius:10px;background:none;border:0;cursor:pointer}
+.burger span{position:absolute;left:14px;width:24px;height:2.5px;border-radius:2px;
+  background:#C9A84C !important;transition:transform .3s,opacity .2s}
+.burger span:nth-child(1){top:18px}
+.burger span:nth-child(2){top:25px}
+.burger span:nth-child(3){top:32px}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* la petite carte déroulante, à l'identique sur les deux versions */
+.mobile-panel{top:108px !important;right:12px !important;left:auto !important;
+  width:auto !important;min-width:186px;max-width:230px;height:auto !important;
+  padding:7px !important;gap:0 !important;border-radius:14px !important;
+  border:1px solid rgba(232,212,138,.22);
+  box-shadow:0 16px 38px rgba(0,0,0,.55) !important;
+  transform:translateY(-8px) scale(.94);transform-origin:top right;
+  opacity:0;visibility:hidden;
+  transition:opacity .22s ease,transform .26s cubic-bezier(.2,.9,.3,1),visibility .26s !important}
+.mobile-panel.open{right:12px !important;opacity:1;visibility:visible;
+  transform:translateY(0) scale(1)}
+.mobile-panel a{font-size:.95rem !important;letter-spacing:.02em !important;
+  padding:11px 15px;border-radius:9px}
+.panel-close{display:none !important}
+/* l'en-tête est plus basse sur téléphone : le menu remonte d'autant */
+@media (max-width:768px){.mobile-panel{top:74px !important}}
+
 /* --- Contact sur mobile : chaque ligne occupe toute la largeur ---
    L'emoji devient un marqueur de largeur fixe et le texte prend tout
    le reste, au lieu d'être repoussé puis coupé au milieu de l'adresse.
