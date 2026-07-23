@@ -72,15 +72,64 @@ Envoyez le contenu du dossier dans le répertoire public de votre hébergement
 (souvent nommé `www/`, `public_html/` ou `htdocs/`), en **conservant la
 structure des dossiers**.
 
+### Option D — GitHub Pages *(recommandé si vous voulez modifier le site vous-même)*
+
+C'est la seule option où **modifier le site et le publier sont le même geste** :
+vous corrigez un texte depuis votre navigateur, et la mise en ligne se fait
+toute seule une minute plus tard. Voir §5 pour la marche à suivre.
+
+Adresse obtenue : `https://COMPTE.github.io/isabelle-far/`
+
 ---
 
 ## 5. Modifier le site
+
+Deux façons de faire. **La première est fortement conseillée.**
+
+### 🟢 Méthode A — Depuis GitHub, dans votre navigateur *(rien à installer)*
+
+C'est la méthode à privilégier : aucun logiciel, aucune manipulation de
+fichiers, **aucun risque de casser la version en ligne**, et chaque
+modification est publiée automatiquement.
+
+**Changer un texte, un tarif, un horaire :**
+
+1. Ouvrez le dépôt sur GitHub et cliquez sur `index.html`
+2. Cliquez sur l'icône **crayon** ✏️ en haut à droite
+3. `Ctrl+F` pour trouver le texte à changer, modifiez-le
+4. Descendez en bas, bouton vert **Commit changes**
+5. Attendez environ une minute : le site en ligne est à jour
+
+**Remplacer une photo :**
+
+1. Ouvrez le dossier `images/` sur GitHub
+2. Bouton **Add file → Upload files**
+3. Déposez votre nouvelle image, en lui donnant **exactement le même nom**
+   que celle à remplacer (voir le tableau plus bas)
+4. **Commit changes**
+
+**Revenir en arrière si vous vous êtes trompée :**
+
+Onglet **Commits** → choisissez une version précédente → bouton **Revert**.
+Rien n'est jamais perdu : chaque modification est enregistrée et réversible.
+C'est le principal avantage de cette méthode.
+
+> 💡 Astuce : dans le dépôt, appuyez sur la touche **`.`** (point) de votre
+> clavier. Un véritable éditeur de code s'ouvre dans le navigateur, plus
+> confortable pour les modifications un peu longues.
+
+### 🔵 Méthode B — Sur votre ordinateur
 
 Ouvrez `index.html` avec un éditeur de texte. Le Bloc-notes fonctionne, mais
 [VS Code](https://code.visualstudio.com) (gratuit) est bien plus confortable :
 il colore le code et permet de chercher facilement.
 
 > 💾 **Faites toujours une copie de sauvegarde de `index.html` avant de modifier.**
+
+> ⚠️ Avec cette méthode, vos modifications restent **sur votre ordinateur**.
+> Le site en ligne ne changera pas tant que vous n'aurez pas renvoyé les
+> fichiers à votre hébergeur. Si vous utilisez GitHub, préférez la méthode A :
+> les deux versions resteront identiques.
 
 ### Changer un texte
 
