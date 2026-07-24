@@ -677,7 +677,11 @@ header .navlink::after{background:#E8D48A !important}
   header{flex-wrap:nowrap;justify-content:space-between;align-items:center;
     row-gap:0;gap:8px;padding:4px 12px}
   header .brand{width:auto;flex-shrink:0;gap:8px}
-  header .brand-txt span{display:none !important}
+  /* mention complète « Isabelle FAR. — Facialiste » visible aussi sur mobile
+     (sous-titre en 2e ligne : n'augmente pas la hauteur de la barre, régie
+     par le bouton menu de 52px) */
+  header .brand-txt span{display:block !important;font-size:.58rem;
+    letter-spacing:.16em;opacity:.88;margin-top:1px}
   header .brand-txt b{font-size:.95rem;white-space:nowrap}
   header .brand-logo,header .brand-logo-fb{width:30px;height:30px}
   /* Les noms de rubriques et les icônes sociales quittent la barre :
@@ -1302,19 +1306,19 @@ header .btn-book{display:none !important}
     </div>
 
     <div class="contact-card fade-up">
-      <div class="reco-col">
-        <h3>Recommandations pour le rendez-vous</h3>
-        <p><strong>Cabinet à domicile</strong> — 76 rue de la Coulée, 35510 Cesson-Sévigné. Lieu calme et à l'abri des regards ; vous pouvez sonner afin que je puisse vous accueillir.</p>
-        <p>Pour ne pas gêner les riverains, merci de vous garer aux emplacements gratuits le long de la « rue de Bellevue », près de l'arrêt de bus C6 — la Coulée.</p>
-        <p>Le lieu ne dispose pas de salle d'attente. Un démaquillage sur place est prévu avant la séance.</p>
-        <p>Pour un soin optimal, merci de retirer colliers et boucles d'oreilles avant la séance.</p>
-      </div>
       <div>
         <h3>Horaires</h3>
         <div class="hours-row closed"><span>Lundi</span><span>Fermé</span></div>
         <div class="hours-row"><span>Mardi au vendredi</span><span>09h45 – 19h30</span></div>
         <div class="hours-row"><span>Samedi</span><span>10h00 – 17h00</span></div>
         <div class="hours-row closed"><span>Dimanche</span><span>Fermé</span></div>
+      </div>
+      <div class="reco-col">
+        <h3>Recommandations pour le rendez-vous</h3>
+        <p><strong>Cabinet à domicile</strong> — 76 rue de la Coulée, 35510 Cesson-Sévigné. Lieu calme et à l'abri des regards ; vous pouvez sonner afin que je puisse vous accueillir.</p>
+        <p>Pour ne pas gêner les riverains, merci de vous garer aux emplacements gratuits le long de la « rue de Bellevue », près de l'arrêt de bus C6 — la Coulée.</p>
+        <p>Le lieu ne dispose pas de salle d'attente. Un démaquillage sur place est prévu avant la séance.</p>
+        <p>Pour un soin optimal, merci de retirer colliers et boucles d'oreilles avant la séance.</p>
       </div>
     </div>
   </div>
@@ -1445,7 +1449,7 @@ header .btn-book{display:none !important}
 <footer>
   <div class="footer-grid">
     <div>
-      <h4>Identité</h4>
+      <h4>Mentions légales</h4>
       <p>EURL Isabelle FAR.</p>
       <p>Capital social : 2 000 €</p>
       <p>RCS Rennes</p>
