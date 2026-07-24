@@ -874,29 +874,10 @@ h3.sec-title{font-size:32px !important}
   box-shadow:0 8px 22px rgba(60,40,10,.22);padding:26px 26px}
 @media (max-width:768px){.contact-card{padding:0 !important}}
 
-/* ===== Encart Horaires : présentation plus claire et soignée ===== */
-.hours-card h3{display:flex !important;align-items:center;gap:9px;margin-bottom:18px !important}
-.hours-card .hours-ico{width:20px;height:20px;flex-shrink:0;
-  stroke:#8a6a1e;filter:none !important}
-.hours-card .hours-row{display:flex;justify-content:space-between;align-items:center;
-  padding:11px 2px !important;
-  border-bottom:1px solid rgba(74,48,6,.12) !important}
-.hours-card .hours-row:last-of-type{border-bottom:0 !important}
-.hours-card .hours-row span:first-child{font-weight:500 !important;color:#3a2a12 !important;letter-spacing:.01em}
-/* créneaux d'ouverture : petite pastille dorée lisible */
-.hours-card .hours-row span:last-child{
-  font-weight:600 !important;color:#4a3006 !important;
-  background:rgba(201,168,76,.18);border:1px solid rgba(201,168,76,.4);
-  padding:4px 13px;border-radius:20px;font-size:.9rem;letter-spacing:.02em;white-space:nowrap}
-/* jours fermés : discrets, sans pastille */
-.hours-card .hours-row.closed span:first-child{color:#6b5836 !important;font-weight:400 !important}
-.hours-card .hours-row.closed span:last-child{
-  background:transparent;border:0;color:#8a7350 !important;font-weight:400 !important;
-  font-style:italic;font-size:.92rem;padding:4px 4px}
-/* note de bas d'encart : équilibre la hauteur et informe */
-.hours-note{margin:16px 0 0 !important;padding-top:14px;
-  border-top:1px dashed rgba(74,48,6,.22);
-  text-align:center;font-style:italic;font-size:.9rem;color:#6b5836 !important}
+/* Horaires et Recommandations empilés : un seul encart par ligne,
+   Recommandations en premier, Horaires en dessous. */
+.contact-card{grid-template-columns:1fr !important;max-width:640px;
+  margin-left:auto !important;margin-right:auto !important}
 
 /* Encart Recommandations : même typologie que Horaires (titre or + texte
    dans le cadre bronze), sans gros titre de section hors cadre. */
@@ -1321,20 +1302,19 @@ header .btn-book{display:none !important}
     </div>
 
     <div class="contact-card fade-up">
-      <div class="hours-card">
-        <h3><svg class="hours-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg>Horaires</h3>
-        <div class="hours-row closed"><span>Lundi</span><span>Fermé</span></div>
-        <div class="hours-row"><span>Mardi au vendredi</span><span>09h45 – 19h30</span></div>
-        <div class="hours-row"><span>Samedi</span><span>10h00 – 17h00</span></div>
-        <div class="hours-row closed"><span>Dimanche</span><span>Fermé</span></div>
-        <p class="hours-note">Uniquement sur rendez-vous</p>
-      </div>
       <div class="reco-col">
         <h3>Recommandations pour le rendez-vous</h3>
         <p><strong>Cabinet à domicile</strong> — 76 rue de la Coulée, 35510 Cesson-Sévigné. Lieu calme et à l'abri des regards ; vous pouvez sonner afin que je puisse vous accueillir.</p>
         <p>Pour ne pas gêner les riverains, merci de vous garer aux emplacements gratuits le long de la « rue de Bellevue », près de l'arrêt de bus C6 — la Coulée.</p>
         <p>Le lieu ne dispose pas de salle d'attente. Un démaquillage sur place est prévu avant la séance.</p>
         <p>Pour un soin optimal, merci de retirer colliers et boucles d'oreilles avant la séance.</p>
+      </div>
+      <div>
+        <h3>Horaires</h3>
+        <div class="hours-row closed"><span>Lundi</span><span>Fermé</span></div>
+        <div class="hours-row"><span>Mardi au vendredi</span><span>09h45 – 19h30</span></div>
+        <div class="hours-row"><span>Samedi</span><span>10h00 – 17h00</span></div>
+        <div class="hours-row closed"><span>Dimanche</span><span>Fermé</span></div>
       </div>
     </div>
   </div>
