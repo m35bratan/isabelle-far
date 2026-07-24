@@ -863,6 +863,17 @@ h3.sec-title{font-size:32px !important}
 /* --- 18 : emojis de la section contact en noir --- */
 .contact-card .emo{filter:grayscale(1) brightness(0);display:inline-block}
 
+/* Horaires et Recommandations : deux encarts distincts, chacun dans son
+   propre cadre. Le conteneur ne sert plus qu'à la mise en page (2 colonnes
+   sur ordinateur, empilées sur mobile) et devient transparent. */
+.contact-card{background:transparent !important;border:0 !important;
+  box-shadow:none !important;padding:0 !important;gap:24px !important;
+  align-items:start !important}
+.contact-card > div{background:linear-gradient(155deg,rgba(150,113,62,.42),rgba(120,88,44,.4));
+  border:1px solid rgba(74,48,6,.45);border-radius:14px;
+  box-shadow:0 8px 22px rgba(60,40,10,.22);padding:26px 26px}
+@media (max-width:768px){.contact-card{padding:0 !important}}
+
 /* Encart Recommandations : même typologie que Horaires (titre or + texte
    dans le cadre bronze), sans gros titre de section hors cadre. */
 .contact-card .reco-col p{margin-bottom:10px;font-size:1rem;line-height:1.6}
@@ -1212,7 +1223,7 @@ header .btn-book{display:none !important}
     <div class="gold-bar"></div>
 
     <table class="price-table fade-up">
-      <thead><tr><th>Soin</th><th>Durée</th><th>Tarifs</th></tr></thead>
+      <thead><tr><th>Soins</th><th>Durée</th><th>Tarifs</th></tr></thead>
       <tbody>
         <tr><td>Authentique KOBIDO</td><td>60 min</td><td>75 €</td></tr>
         <tr><td>Authentique KOBIDO</td><td>75 min</td><td>90 €</td></tr>
@@ -1289,7 +1300,7 @@ header .btn-book{display:none !important}
       <div>
         <h3>Horaires</h3>
         <div class="hours-row closed"><span>Lundi</span><span>Fermé</span></div>
-        <div class="hours-row"><span>Mardi – Vendredi</span><span>09h45 – 19h30</span></div>
+        <div class="hours-row"><span>Mardi au vendredi</span><span>09h45 – 19h30</span></div>
         <div class="hours-row"><span>Samedi</span><span>10h00 – 17h00</span></div>
         <div class="hours-row closed"><span>Dimanche</span><span>Fermé</span></div>
       </div>
@@ -1453,7 +1464,7 @@ header .btn-book{display:none !important}
     <div>
       <h4>Horaires & contact</h4>
       <p>Lundi : Fermé</p>
-      <p>Mardi – Vendredi : 09h45 – 19h30</p>
+      <p>Mardi au vendredi : 09h45 – 19h30</p>
       <p>Samedi : 10h00 – 17h00</p>
       <p>Dimanche : Fermé</p>
       <p style="margin-top:12px">Une question, un problème ?<br>Écrivez-moi par mail.</p>
