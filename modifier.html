@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="fr">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Modifier mon site — Isabelle FAR.</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%235E4319'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' fill='%23E8D48A' text-anchor='middle'%3EiK%3C/text%3E%3C/svg%3E">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  background:#f4efe4;color:#2b2115;font-size:16px;line-height:1.5}
+a{color:#7a5a1c}
+
+/* ---------- barre du haut ---------- */
+.top{position:sticky;top:0;z-index:20;background:#000;color:#E8D48A;
+  display:flex;align-items:center;gap:14px;padding:12px 18px;
+  border-bottom:2px solid rgba(201,168,76,.5);flex-wrap:wrap}
+.top h1{font-size:1.05rem;font-weight:600;letter-spacing:.02em}
+.top .sp{flex:1}
+.btn{border:0;border-radius:9px;padding:10px 18px;font-size:.95rem;font-weight:600;
+  cursor:pointer;font-family:inherit;transition:.15s}
+.btn-or{background:linear-gradient(135deg,#F0D080,#C9A84C 55%,#8B6914);color:#111}
+.btn-or:hover{filter:brightness(1.08)}
+.btn-or:disabled{opacity:.45;cursor:not-allowed;filter:none}
+.btn-fant{background:transparent;color:#E8D48A;border:1px solid rgba(201,168,76,.55)}
+.btn-fant:hover{background:rgba(201,168,76,.15)}
+.btn-gris{background:#e2d8c4;color:#4a3a22}
+.btn-gris:hover{background:#d6c9ae}
+
+/* ---------- écran de connexion ---------- */
+.co{max-width:640px;margin:8vh auto;padding:0 20px}
+.co .carte{background:#fff;border-radius:16px;padding:34px 30px;
+  box-shadow:0 10px 40px rgba(80,60,20,.13);border:1px solid #e6dbc4}
+.co h2{font-size:1.5rem;margin-bottom:6px;color:#3a2c14}
+.co .sous{color:#6d5c3c;margin-bottom:24px}
+.etapes{background:#faf6ec;border:1px solid #e8dcc2;border-radius:12px;
+  padding:18px 20px;margin-bottom:22px}
+.etapes ol{margin-left:20px}
+.etapes li{margin-bottom:9px}
+.etapes code{background:#eee3cc;padding:2px 7px;border-radius:5px;font-size:.9em}
+input[type=text],input[type=password],textarea{width:100%;font-family:inherit;font-size:1rem;
+  padding:11px 13px;border:1.5px solid #d8cbb0;border-radius:9px;background:#fff;color:#2b2115}
+input:focus,textarea:focus{outline:0;border-color:#C9A84C;box-shadow:0 0 0 3px rgba(201,168,76,.2)}
+label{display:block;font-weight:600;font-size:.9rem;margin-bottom:6px;color:#4a3a22}
+
+/* ---------- mise en page de l'éditeur ---------- */
+.appli{display:none;max-width:1180px;margin:0 auto;padding:22px 18px 120px}
+.grille{display:grid;grid-template-columns:230px 1fr;gap:26px;align-items:start}
+.menu{position:sticky;top:80px;background:#fff;border:1px solid #e6dbc4;border-radius:14px;
+  padding:8px;box-shadow:0 4px 16px rgba(80,60,20,.07)}
+.menu button{display:block;width:100%;text-align:left;background:none;border:0;
+  padding:11px 13px;border-radius:9px;cursor:pointer;font-family:inherit;font-size:.94rem;
+  color:#4a3a22}
+.menu button:hover{background:#f4eddd}
+.menu button.actif{background:linear-gradient(135deg,#F0D080,#C9A84C 55%,#8B6914);
+  color:#111;font-weight:600}
+.panneau{display:none}
+.panneau.actif{display:block}
+.bloc{background:#fff;border:1px solid #e6dbc4;border-radius:14px;padding:24px 24px 8px;
+  margin-bottom:20px;box-shadow:0 4px 16px rgba(80,60,20,.07)}
+.bloc h3{font-size:1.1rem;color:#3a2c14;margin-bottom:4px}
+.bloc .aide{color:#6d5c3c;font-size:.88rem;margin-bottom:18px}
+.champ{margin-bottom:18px}
+.champ.modifie label::after{content:" • modifié";color:#a37413;font-weight:600}
+.champ.modifie input,.champ.modifie textarea{border-color:#C9A84C;background:#fffdf6}
+textarea{resize:vertical;min-height:82px;line-height:1.55}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* ---------- photos ---------- */
+.photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}
+.photo{border:1px solid #e6dbc4;border-radius:12px;overflow:hidden;background:#fff}
+.photo img{width:100%;height:130px;object-fit:cover;display:block;background:#eee3cc}
+.photo .nom{padding:9px 11px;font-size:.86rem;font-weight:600;color:#4a3a22}
+.photo .act{padding:0 11px 11px}
+.photo label.remplacer{display:block;text-align:center;background:#e2d8c4;color:#4a3a22;
+  border-radius:8px;padding:8px;cursor:pointer;font-size:.86rem;font-weight:600}
+.photo label.remplacer:hover{background:#d6c9ae}
+.photo.change{border-color:#C9A84C;box-shadow:0 0 0 2px rgba(201,168,76,.3)}
+.photo input[type=file]{display:none}
+
+/* ---------- barre de publication ---------- */
+.publier{position:fixed;left:0;right:0;bottom:0;z-index:30;background:#000;
+  border-top:2px solid rgba(201,168,76,.5);padding:13px 18px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.publier .info{color:#E8D48A;font-size:.92rem;flex:1;min-width:180px}
+.msg{padding:13px 16px;border-radius:10px;margin-bottom:18px;font-size:.95rem;display:none}
+.msg.ok{display:block;background:#e4f3e0;border:1px solid #a9d69c;color:#245818}
+.msg.ko{display:block;background:#fbe6e3;border:1px solid #e2a89f;color:#7d2418}
+.msg.info{display:block;background:#eef2fb;border:1px solid #adbfe0;color:#22406e}
+.chargement{text-align:center;padding:60px 20px;color:#6d5c3c}
+
+@media(max-width:820px){
+  .grille{grid-template-columns:1fr}
+  .menu{position:static;display:flex;overflow-x:auto;gap:4px;padding:6px}
+  .menu button{white-space:nowrap;flex:0 0 auto}
+  .duo{grid-template-columns:1fr}
+  .appli{padding-bottom:150px}
+}
+</style>
+
+<!-- ═══════════════ CONNEXION ═══════════════ -->
+<div class="co" id="ecranCo">
+  <div class="carte">
+    <h2>Modifier mon site</h2>
+    <p class="sous">Espace réservé — Isabelle FAR., facialiste</p>
+
+    <div class="msg" id="msgCo"></div>
+
+    <div class="etapes">
+      <strong>Première utilisation ?</strong> Il faut créer une clé d'accès (une seule fois) :
+      <ol>
+        <li>Ouvrez <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">cette page GitHub</a> (connectez-vous si besoin)</li>
+        <li><em>Token name</em> : écrivez <code>Site Isabelle</code></li>
+        <li><em>Expiration</em> : choisissez <code>No expiration</code></li>
+        <li><em>Repository access</em> : cochez <code>Only select repositories</code> puis choisissez <code>isabelle-far</code></li>
+        <li><em>Permissions → Repository permissions → Contents</em> : choisissez <code>Read and write</code></li>
+        <li>Cliquez sur <em>Generate token</em>, puis copiez la clé affichée</li>
+        <li>Collez-la ci-dessous — elle reste sur votre appareil, elle n'est jamais partagée</li>
+      </ol>
+    </div>
+
+    <div class="champ">
+      <label for="tok">Votre clé d'accès</label>
+      <input type="password" id="tok" placeholder="github_pat_..." autocomplete="off">
+    </div>
+    <button class="btn btn-or" id="btnCo" style="width:100%">Se connecter</button>
+  </div>
+</div>
+
+<!-- ═══════════════ ÉDITEUR ═══════════════ -->
+<div class="top" id="barreHaut" style="display:none">
+  <h1>Modifier mon site</h1>
+  <span class="sp"></span>
+  <a class="btn btn-fant" href="https://m35bratan.github.io/isabelle-far/" target="_blank" rel="noopener">Voir le site</a>
+  <button class="btn btn-fant" id="btnDeco">Déconnexion</button>
+</div>
+
+<div class="appli" id="appli">
+  <div class="msg" id="msg"></div>
+  <div class="grille">
+    <nav class="menu" id="menu"></nav>
+    <div id="panneaux"></div>
+  </div>
+</div>
+
+<div class="publier" id="barrePub" style="display:none">
+  <span class="info" id="infoPub">Aucune modification</span>
+  <button class="btn btn-gris" id="btnAnnuler">Tout annuler</button>
+  <button class="btn btn-or" id="btnPublier" disabled>Publier les modifications</button>
+</div>
+
+<script>
+const DEPOT   = 'm35bratan/isabelle-far';
+const FICHIER = 'index.html';
+const API     = 'https://api.github.com/repos/' + DEPOT + '/contents/';
+
+/* ---------- description des champs ---------- */
+const GROUPES = [
+  { id:'accueil', titre:'Accueil', blocs:[
+    { h:'Page d’accueil', aide:'La phrase affichée sous votre nom, en haut du site. Sur ordinateur elle s’affiche sur deux lignes, sur téléphone à la suite.',
+      champs:[ {k:'accueil-ligne1', l:'Phrase d’accroche — 1re ligne', t:'zone'},
+               {k:'accueil-ligne2', l:'Phrase d’accroche — 2e ligne', t:'zone'} ] } ] },
+
+  { id:'soins', titre:'Mes soins', blocs:[1,2,3,4].map(n=>(
+    { h:'Soin n°'+n, aide:'',
+      champs:[ {k:'soin'+n+'-nom', l:'Nom du soin'},
+               {k:'soin'+n+'-accroche', l:'Petite phrase de présentation'},
+               {k:'soin'+n+'-duree', l:'Durée', demi:true},
+               {k:'soin'+n+'-prix', l:'Prix affiché', demi:true},
+               {k:'soin'+n+'-desc', l:'Description complète', t:'zone'} ] })) },
+
+  { id:'tarifs', titre:'Tarifs', blocs:[
+    { h:'Tableau des tarifs', aide:'Les six lignes du tableau « Séances à l’unité ».',
+      champs:[1,2,3,4,5,6].flatMap(n=>[
+        {k:'tarif'+n+'-soin', l:'Ligne '+n+' — soin'},
+        {k:'tarif'+n+'-duree', l:'Durée', demi:true},
+        {k:'tarif'+n+'-prix', l:'Tarif', demi:true} ]) } ] },
+
+  { id:'forfaits', titre:'Forfaits', blocs:[1,2,3].map(n=>(
+    { h:'Forfait n°'+n, aide:'',
+      champs:[ {k:'forfait'+n+'-nom', l:'Nom du forfait'},
+               {k:'forfait'+n+'-detail', l:'Ce qu’il comprend'},
+               {k:'forfait'+n+'-prix', l:'Prix', demi:true},
+               {k:'forfait'+n+'-eco', l:'Mention d’économie', demi:true} ] })) },
+
+  { id:'horaires', titre:'Horaires', blocs:[
+    { h:'Vos horaires d’ouverture', aide:'À gauche le jour, à droite l’horaire (ou « Fermé »).',
+      champs:[1,2,3,4].flatMap(n=>[
+        {k:'horaire'+n+'-jour', l:'Ligne '+n+' — jour', demi:true},
+        {k:'horaire'+n+'-valeur', l:'Horaire', demi:true} ]) } ] },
+
+  { id:'rdv', titre:'Recommandations', blocs:[
+    { h:'Recommandations pour le rendez-vous', aide:'Les consignes données à vos clientes avant leur venue.',
+      champs:[ {k:'reco-titre', l:'Titre de l’encadré'},
+               {k:'reco-p1', l:'Paragraphe 1', t:'zone'},
+               {k:'reco-p2', l:'Paragraphe 2', t:'zone'},
+               {k:'reco-p3', l:'Paragraphe 3', t:'zone'},
+               {k:'reco-p4', l:'Paragraphe 4', t:'zone'} ] } ] },
+
+  { id:'apropos', titre:'Qui suis-je', blocs:[
+    { h:'Votre présentation', aide:'Dans le titre, retour à la ligne = nouvelle ligne affichée.',
+      champs:[ {k:'apropos-titre', l:'Titre', t:'zone'} ].concat(
+              [1,2,3,4,5,6].map(n=>({k:'apropos-p'+n, l:'Paragraphe '+n, t:'zone'}))) } ] },
+
+  { id:'legende', titre:'Le saviez-vous', blocs:[
+    { h:'La légende du Kobido', aide:'',
+      champs:[1,2,3,4,5,6,7].map(n=>({k:'legende-p'+n, l:'Paragraphe '+n, t:'zone'})) } ] },
+
+  { id:'avis', titre:'Avis clientes', blocs:[
+    { h:'Témoignages affichés', aide:'Quatre avis présentés sur le site.',
+      champs:[1,2,3,4].flatMap(n=>[
+        {k:'avis'+n+'-texte', l:'Avis '+n, t:'zone'},
+        {k:'avis'+n+'-nom', l:'Signé par'} ]) },
+    { h:'Citation', aide:'',
+      champs:[ {k:'citation-auteur', l:'Auteur de la citation'} ] } ] },
+
+  { id:'reseaux', titre:'Réseaux', blocs:[
+    { h:'Instagram et Facebook', aide:'',
+      champs:[ {k:'reseau1-pseudo', l:'Pseudo Instagram'},
+               {k:'reseau2-pseudo', l:'Nom Facebook'} ] } ] },
+
+  { id:'legal', titre:'Mentions légales', blocs:[
+    { h:'Informations légales', aide:'Ces mentions sont obligatoires. Remplacez « en attente » par vos numéros.',
+      champs:[ {k:'legal-capital', l:'Capital social'},
+               {k:'legal-siret', l:'SIRET'},
+               {k:'legal-ape', l:'Code APE'},
+               {k:'legal-tva', l:'N° TVA'} ] } ] },
+
+  { id:'photos', titre:'Photos', photos:[
+    {f:'images/portrait.jpg',  l:'Votre portrait (Qui suis-je)'},
+    {f:'images/maison.jpg',    l:'Le cabinet à domicile'},
+    {f:'images/cabinet.jpg',   l:'Espace Bien-Être'},
+    {f:'images/huile.jpg',     l:'Huile de soin'},
+    {f:'images/diplome.jpg',   l:'Remise du diplôme'},
+    {f:'images/kobido.jpg',    l:'Photo — KOBIDO'},
+    {f:'images/kogao.jpg',     l:'Photo — KOGAO'},
+    {f:'images/drainage.jpg',  l:'Photo — Drainage'},
+    {f:'images/atama.jpg',     l:'Photo — ATAMA'},
+    {f:'images/forfait-essentiel.jpg',  l:'Forfait Essentiel'},
+    {f:'images/forfait-excellence.jpg', l:'Forfait Excellence'},
+    {f:'images/histoire.jpg',  l:'Estampe (Le saviez-vous)'} ] }
+];
+
+/* ---------- outils ---------- */
+const $ = s => document.querySelector(s);
+let TOKEN='', BRUT='', SHA='', ORIG={}, PHOTOS={};
+
+function b64versTexte(b64){
+  const bin = atob(b64.replace(/\s/g,''));
+  const oct = Uint8Array.from(bin, c=>c.charCodeAt(0));
+  return new TextDecoder('utf-8').decode(oct);
+}
+function texteVersB64(txt){
+  const oct = new TextEncoder().encode(txt);
+  let bin=''; oct.forEach(o=>bin+=String.fromCharCode(o));
+  return btoa(bin);
+}
+/* HTML -> texte lisible pour le formulaire */
+function versFormulaire(html){
+  return html
+    .replace(/<br\b[^>]*>/gi, '\n')
+    .replace(/<strong>(.*?)<\/strong>/gis, '**$1**')
+    .replace(/<sup>(.*?)<\/sup>/gis, '^$1^')
+    .replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>')
+    .replace(/&nbsp;/g,' ')
+    .trim();
+}
+/* texte du formulaire -> HTML */
+function versHtml(txt){
+  return txt.trim()
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\*\*(.*?)\*\*/gs, '<strong>$1</strong>')
+    .replace(/\^(.*?)\^/gs, '<sup>$1</sup>')
+    .replace(/\n/g, '<br>');
+}
+/* remplacement chirurgical dans le HTML brut, par clé */
+function remplacer(html, cle, valeur){
+  const re = new RegExp('(<(\\w+)[^>]*\\sdata-e="'+cle+'"[^>]*>)([\\s\\S]*?)(<\\/\\2>)');
+  if(!re.test(html)) return {html, ok:false};
+  return {html: html.replace(re, (m,a,t,c,z)=> a+valeur+z), ok:true};
+}
+function lireValeurs(html){
+  const doc = new DOMParser().parseFromString(html,'text/html');
+  const v={};
+  doc.querySelectorAll('[data-e]').forEach(e=>{ v[e.getAttribute('data-e')] = versFormulaire(e.innerHTML); });
+  return v;
+}
+function message(el, texte, type){
+  el.className = 'msg ' + type; el.innerHTML = texte;
+  if(type==='ok') setTimeout(()=>{el.className='msg';}, 9000);
+}
+
+/* ---------- appels GitHub ---------- */
+async function gh(chemin, options){
+  const r = await fetch(API + chemin, Object.assign({
+    headers:{ 'Authorization':'Bearer '+TOKEN, 'Accept':'application/vnd.github+json' }
+  }, options||{}));
+  if(!r.ok){
+    let d=''; try{ d=(await r.json()).message||''; }catch(e){}
+    throw new Error('GitHub ' + r.status + (d?' — '+d:''));
+  }
+  return r.json();
+}
+
+/* ---------- connexion ---------- */
+$('#btnCo').onclick = async () => {
+  const t = $('#tok').value.trim();
+  if(!t){ message($('#msgCo'),'Merci de coller votre clé d’accès.','ko'); return; }
+  TOKEN = t;
+  $('#btnCo').disabled = true; $('#btnCo').textContent = 'Connexion…';
+  try{
+    await charger();
+    localStorage.setItem('cle_site_isabelle', t);
+    $('#ecranCo').style.display='none';
+    $('#barreHaut').style.display='flex';
+    $('#appli').style.display='block';
+    $('#barrePub').style.display='flex';
+  }catch(e){
+    message($('#msgCo'),'Connexion impossible : '+e.message+'<br><small>Vérifiez que la clé est bien copiée en entier et qu’elle donne l’accès « Contents : Read and write ».</small>','ko');
+    TOKEN='';
+  }
+  $('#btnCo').disabled=false; $('#btnCo').textContent='Se connecter';
+};
+$('#btnDeco').onclick = () => { localStorage.removeItem('cle_site_isabelle'); location.reload(); };
+
+/* ---------- chargement du site ---------- */
+async function charger(){
+  const d = await gh(FICHIER + '?ref=main&t=' + Date.now());
+  BRUT = b64versTexte(d.content); SHA = d.sha;
+  ORIG = lireValeurs(BRUT); PHOTOS = {};
+  construire();
+}
+
+/* ---------- construction de l'interface ---------- */
+function construire(){
+  const menu = $('#menu'), pans = $('#panneaux');
+  menu.innerHTML=''; pans.innerHTML='';
+  GROUPES.forEach((g,gi)=>{
+    const b = document.createElement('button');
+    b.textContent = g.titre; b.dataset.cible = g.id;
+    if(gi===0) b.className='actif';
+    b.onclick = ()=>{
+      menu.querySelectorAll('button').forEach(x=>x.classList.remove('actif'));
+      b.classList.add('actif');
+      pans.querySelectorAll('.panneau').forEach(p=>p.classList.remove('actif'));
+      $('#pan-'+g.id).classList.add('actif');
+      window.scrollTo({top:0,behavior:'smooth'});
+    };
+    menu.appendChild(b);
+
+    const p = document.createElement('div');
+    p.className = 'panneau' + (gi===0?' actif':''); p.id = 'pan-'+g.id;
+
+    if(g.photos){
+      const bloc = document.createElement('div'); bloc.className='bloc';
+      bloc.innerHTML = '<h3>Photos du site</h3><p class="aide">Cliquez sur « Remplacer » et choisissez une photo sur votre appareil. Elle est automatiquement redimensionnée pour le web.</p>';
+      const grille = document.createElement('div'); grille.className='photos';
+      g.photos.forEach(ph=>{
+        const c = document.createElement('div'); c.className='photo'; c.id='ph-'+ph.f.replace(/[^\w]/g,'_');
+        c.innerHTML =
+          '<img src="'+ph.f+'?t='+Date.now()+'" alt="">'+
+          '<div class="nom">'+ph.l+'</div>'+
+          '<div class="act"><label class="remplacer">Remplacer<input type="file" accept="image/*"></label></div>';
+        c.querySelector('input').onchange = ev => photoChoisie(ev, ph, c);
+        grille.appendChild(c);
+      });
+      bloc.appendChild(grille); p.appendChild(bloc);
+    } else {
+      g.blocs.forEach(bl=>{
+        const bloc = document.createElement('div'); bloc.className='bloc';
+        bloc.innerHTML = '<h3>'+bl.h+'</h3>' + (bl.aide?'<p class="aide">'+bl.aide+'</p>':'');
+        let file=null;
+        bl.champs.forEach(ch=>{
+          if(!(ch.k in ORIG)) return;
+          const d = document.createElement('div'); d.className='champ'; d.id='ch-'+ch.k;
+          const zone = ch.t==='zone';
+          d.innerHTML = '<label for="i-'+ch.k+'">'+ch.l+'</label>' +
+            (zone ? '<textarea id="i-'+ch.k+'"></textarea>'
+                  : '<input type="text" id="i-'+ch.k+'">');
+          const inp = d.querySelector('#i-'+CSS.escape(ch.k));
+          inp.value = ORIG[ch.k];
+          if(zone) inp.rows = Math.min(9, Math.max(2, Math.ceil(ORIG[ch.k].length/70)+1));
+          inp.oninput = ()=>{ d.classList.toggle('modifie', inp.value !== ORIG[ch.k]); majCompteur(); };
+          if(ch.demi){
+            if(!file){ file=document.createElement('div'); file.className='duo'; bloc.appendChild(file); }
+            file.appendChild(d);
+            if(file.children.length>=2) file=null;
+          } else { file=null; bloc.appendChild(d); }
+        });
+        p.appendChild(bloc);
+      });
+    }
+    pans.appendChild(p);
+  });
+  majCompteur();
+}
+
+/* ---------- photos : redimensionnement dans le navigateur ---------- */
+function photoChoisie(ev, ph, carte){
+  const f = ev.target.files[0]; if(!f) return;
+  const lect = new FileReader();
+  lect.onload = e => {
+    const img = new Image();
+    img.onload = () => {
+      const MAX = 1400;
+      let w = img.width, h = img.height;
+      if(w>MAX || h>MAX){ const r = Math.min(MAX/w, MAX/h); w=Math.round(w*r); h=Math.round(h*r); }
+      const cv = document.createElement('canvas'); cv.width=w; cv.height=h;
+      cv.getContext('2d').drawImage(img,0,0,w,h);
+      const jpeg = cv.toDataURL('image/jpeg', 0.85);
+      PHOTOS[ph.f] = jpeg.split(',')[1];
+      carte.querySelector('img').src = jpeg;
+      carte.classList.add('change');
+      majCompteur();
+    };
+    img.src = e.target.result;
+  };
+  lect.readAsDataURL(f);
+}
+
+/* ---------- compteur de modifications ---------- */
+function changements(){
+  const t={};
+  Object.keys(ORIG).forEach(k=>{
+    const i = document.getElementById('i-'+k);
+    if(i && i.value !== ORIG[k]) t[k]=i.value;
+  });
+  return t;
+}
+function majCompteur(){
+  const t = Object.keys(changements()).length, ph = Object.keys(PHOTOS).length;
+  const n = t+ph;
+  const bits=[];
+  if(t) bits.push(t + (t>1?' textes modifiés':' texte modifié'));
+  if(ph) bits.push(ph + (ph>1?' photos remplacées':' photo remplacée'));
+  $('#infoPub').textContent = n ? bits.join(' · ') : 'Aucune modification';
+  $('#btnPublier').disabled = n===0;
+}
+$('#btnAnnuler').onclick = ()=>{ if(confirm('Annuler toutes les modifications non publiées ?')) charger(); };
+
+/* ---------- publication ---------- */
+$('#btnPublier').onclick = async () => {
+  const t = changements(), photos = Object.keys(PHOTOS);
+  const btn = $('#btnPublier');
+  btn.disabled=true; btn.textContent='Publication…';
+  try{
+    /* 1. les photos, une par une */
+    for(const f of photos){
+      let sha=null;
+      try{ sha = (await gh(f+'?ref=main')).sha; }catch(e){}
+      await gh(f, { method:'PUT', headers:{
+          'Authorization':'Bearer '+TOKEN,'Accept':'application/vnd.github+json','Content-Type':'application/json'},
+        body: JSON.stringify(Object.assign(
+          { message:'Mise a jour photo '+f, content:PHOTOS[f], branch:'main' },
+          sha?{sha}:{} )) });
+    }
+    /* 2. les textes, en une seule fois */
+    const cles = Object.keys(t);
+    if(cles.length){
+      let html = BRUT, rates=[];
+      cles.forEach(k=>{
+        const r = remplacer(html, k, versHtml(t[k]));
+        if(r.ok) html = r.html; else rates.push(k);
+      });
+      if(rates.length) throw new Error('Champs introuvables : '+rates.join(', '));
+      await gh(FICHIER, { method:'PUT', headers:{
+          'Authorization':'Bearer '+TOKEN,'Accept':'application/vnd.github+json','Content-Type':'application/json'},
+        body: JSON.stringify({ message:'Mise a jour du contenu depuis l\'espace de modification',
+          content: texteVersB64(html), sha: SHA, branch:'main' }) });
+    }
+    await charger();
+    message($('#msg'),'<strong>C’est publié !</strong> Vos modifications seront visibles sur le site dans une minute environ. <a href="https://m35bratan.github.io/isabelle-far/" target="_blank" rel="noopener">Voir le site</a>','ok');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }catch(e){
+    message($('#msg'),'<strong>La publication a échoué.</strong><br>'+e.message+'<br><small>Vos modifications sont toujours à l’écran : vous pouvez réessayer.</small>','ko');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  btn.textContent='Publier les modifications'; majCompteur();
+};
+
+/* ---------- reconnexion automatique ---------- */
+(async ()=>{
+  const t = localStorage.getItem('cle_site_isabelle');
+  if(!t) return;
+  TOKEN = t;
+  try{
+    await charger();
+    $('#ecranCo').style.display='none';
+    $('#barreHaut').style.display='flex';
+    $('#appli').style.display='block';
+    $('#barrePub').style.display='flex';
+  }catch(e){ TOKEN=''; localStorage.removeItem('cle_site_isabelle'); }
+})();
+
+window.addEventListener('beforeunload', e => {
+  if(Object.keys(changements()).length || Object.keys(PHOTOS).length){ e.preventDefault(); e.returnValue=''; }
+});
+</script>
+</html>

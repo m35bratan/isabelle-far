@@ -23,8 +23,10 @@ fichiers chez un hébergeur**. Rien d'autre.
 
 ```
 index.html          ← le site entier (textes, styles, animations)
-images/             ← 15 photos et illustrations
+modifier.html       ← votre espace de modification (voir §5)
+images/             ← photos et illustrations
 videos/             ← les 2 fichiers du logo animé
+fonts/              ← les polices d'écriture du site
 README.md           ← ce document
 ```
 
@@ -84,9 +86,58 @@ Adresse obtenue : `https://COMPTE.github.io/isabelle-far/`
 
 ## 5. Modifier le site
 
-Deux façons de faire. **La première est fortement conseillée.**
+Trois façons de faire. **La première est de loin la plus simple.**
 
-### 🟢 Méthode A — Depuis GitHub, dans votre navigateur *(rien à installer)*
+### ⭐ Méthode A — L'espace de modification *(aucune connaissance technique)*
+
+**👉 <https://m35bratan.github.io/isabelle-far/modifier.html>**
+
+Une page privée, avec des formulaires : vous tapez votre texte dans des cases,
+vous cliquez sur **Publier**, et le site se met à jour tout seul. Aucun code
+n'est visible. Fonctionne aussi bien sur ordinateur que sur téléphone.
+
+**Ce que vous pouvez changer :**
+
+| Rubrique | Contenu modifiable |
+|---|---|
+| Accueil | la phrase d'accroche |
+| Mes soins | nom, durée, prix et description des 4 soins |
+| Tarifs | les 6 lignes du tableau |
+| Forfaits | nom, contenu, prix des 3 forfaits |
+| Horaires | les 4 lignes d'horaires |
+| Recommandations | les consignes avant le rendez-vous |
+| Qui suis-je | votre présentation |
+| Le saviez-vous | la légende du Kobido |
+| Avis clientes | les 4 témoignages |
+| Réseaux | pseudo Instagram et Facebook |
+| Mentions légales | SIRET, code APE, TVA, capital |
+| Photos | les 12 photos du site |
+
+**Première connexion — à faire une seule fois.** La page vous demande une
+« clé d'accès » qui l'autorise à modifier votre site. Pour la créer :
+
+1. Ouvrez <https://github.com/settings/personal-access-tokens/new>
+2. *Token name* : `Site Isabelle`
+3. *Expiration* : `No expiration`
+4. *Repository access* : `Only select repositories` → choisissez `isabelle-far`
+5. *Permissions → Repository permissions → Contents* : `Read and write`
+6. Cliquez sur **Generate token**, copiez la clé affichée
+7. Collez-la dans l'espace de modification
+
+La clé reste **enregistrée sur votre appareil uniquement** : vous ne la
+retaperez plus. Ne la communiquez à personne. En cas de doute, supprimez-la
+depuis GitHub et recréez-en une.
+
+> 💡 Les photos que vous envoyez sont **automatiquement redimensionnées** :
+> vous pouvez utiliser directement une photo prise avec votre téléphone.
+
+> ⏱️ Après avoir cliqué sur *Publier*, comptez **une minute** avant de voir
+> le changement en ligne. Rechargez la page du site si besoin.
+
+### 🟢 Méthode B — Depuis GitHub, dans votre navigateur *(rien à installer)*
+
+Pour les changements que l'espace de modification ne couvre pas (ajouter un
+soin entier, changer un lien, modifier la mise en page) :
 
 C'est la méthode à privilégier : aucun logiciel, aucune manipulation de
 fichiers, **aucun risque de casser la version en ligne**, et chaque
@@ -118,7 +169,7 @@ C'est le principal avantage de cette méthode.
 > clavier. Un véritable éditeur de code s'ouvre dans le navigateur, plus
 > confortable pour les modifications un peu longues.
 
-### 🔵 Méthode B — Sur votre ordinateur
+### 🔵 Méthode C — Sur votre ordinateur
 
 Ouvrez `index.html` avec un éditeur de texte. Le Bloc-notes fonctionne, mais
 [VS Code](https://code.visualstudio.com) (gratuit) est bien plus confortable :
