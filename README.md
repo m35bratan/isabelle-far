@@ -25,7 +25,6 @@ fichiers chez un hébergeur**. Rien d'autre.
 index.html          ← le site entier (textes, styles, animations)
 modifier.html       ← votre espace de modification (voir §5)
 images/             ← photos et illustrations
-videos/             ← les 2 fichiers du logo animé
 fonts/              ← les polices d'écriture du site
 README.md           ← ce document
 ```
@@ -37,12 +36,11 @@ Le site **ne fonctionne pas** si l'un de ces fichiers manque :
 | Dossier | Fichiers |
 |---|---|
 | racine | `index.html` |
-| `images/` | `fond-seamless.jpg`, `logo.png`, `portrait.jpg`, `maison.jpg`, `cabinet.jpg`, `huile.jpg`, `anatomie.jpg`, `diplome.jpg`, `histoire.jpg`, `kobido.jpg`, `kogao.jpg`, `drainage.jpg`, `atama.jpg`, `forfait-essentiel.jpg`, `forfait-excellence.jpg` |
-| `videos/` | `logo-anim.webp`, `logo-anim-mobile.webp` |
+| `images/` | `fond-seamless.webp`, `logo.png`, `logo-hero.png`, `portrait.jpg`, `maison.jpg`, `cabinet.jpg`, `huile.jpg`, `diplome.jpg`, `histoire.jpg`, `kobido.jpg`, `kogao.jpg`, `drainage.jpg`, `atama.jpg` |
 
-> ⚠️ **Le dossier `videos/` est obligatoire.** Il contient le logo animé de la
-> page d'accueil. Si vous ne mettez en ligne que `index.html` et `images/`,
-> le logo du haut de page ne s'affichera pas.
+> ℹ️ **Le dossier `videos/` n'est plus utilisé.** Le logo de la page d'accueil
+> était auparavant une image animée ; c'est désormais une image fixe,
+> `images/logo-hero.webp`. Vous pouvez supprimer le dossier `videos/`.
 
 ---
 
@@ -102,8 +100,8 @@ n'est visible. Fonctionne aussi bien sur ordinateur que sur téléphone.
 |---|---|
 | Accueil | la phrase d'accroche |
 | Mes soins | nom, durée, prix et description des 4 soins |
-| Tarifs | les 6 lignes du tableau |
-| Forfaits | nom, contenu, prix des 3 forfaits |
+| Tarifs | les 5 lignes du tableau |
+| Forfaits | nom, contenu, prix des 2 forfaits |
 | Horaires | les 4 lignes d'horaires |
 | Recommandations | les consignes avant le rendez-vous |
 | Qui suis-je | votre présentation |
@@ -195,12 +193,15 @@ nom** que l'ancienne. Le site la prendra automatiquement.
 |---|---|
 | `portrait.jpg` | photo de la rubrique « Qui suis-je » |
 | `diplome.jpg` | remise de diplôme |
-| `maison.jpg`, `cabinet.jpg`, `huile.jpg`, `anatomie.jpg` | rubrique « Informations pratiques » |
-| `kobido.jpg`, `kogao.jpg`, `drainage.jpg`, `atama.jpg` | une par prestation |
-| `forfait-essentiel.jpg`, `forfait-excellence.jpg` | les forfaits |
+| `maison.jpg`, `cabinet.jpg`, `huile.jpg` | rubrique « Informations pratiques » |
+| `kobido.jpg` | prestation « Authentique KOBIDO Lift » |
+| `kogao.jpg` | prestation « KOGAO » **et** forfait « Essentiel » |
+| `drainage.jpg` | prestation « KOGAO/Drainage visage » |
+| `atama.jpg` | prestation « KOBIDO Sculpting » **et** forfait « Excellence » |
 | `histoire.jpg` | rubrique « Le saviez-vous ? » |
 | `logo.png` | logo de la barre de navigation |
-| `fond-seamless.jpg` | image de fond (bambous) |
+| `logo-hero.png` | grand logo de la page d'accueil (PNG détouré, fond transparent) |
+| `fond-seamless.webp` | image de fond (bambous) |
 
 ### Ajouter ou supprimer une prestation
 
@@ -227,12 +228,12 @@ Tout est en bas de page. Cherchez `SIRET`, `Code APE`, `TVA`,
 
 ## 6. À compléter avant la mise en ligne publique
 
-Ces trois mentions sont **obligatoires en France** et sont actuellement
-renseignées « en attente » dans le pied de page :
+Ces trois mentions **obligatoires en France** sont désormais renseignées dans
+le pied de page :
 
-- [ ] Numéro **SIRET**
-- [ ] **Code APE**
-- [ ] **Numéro de TVA intracommunautaire**
+- [x] Numéro **SIRET** — 107 510 430 00013
+- [x] **Code APE** — 9604Z
+- [x] **Numéro de TVA intracommunautaire** — TVA non applicable
 
 Autres points à prévoir :
 
@@ -270,7 +271,6 @@ titres cohérente (un seul `<h1>`, neuf `<h2>`).
 
 Manquent encore, à faire avant ou juste après la mise en ligne :
 
-- Attribut `lang="fr"` sur la page (indique la langue aux moteurs de recherche)
 - Une **favicon** (icône affichée dans l'onglet du navigateur)
 - Des **données structurées** `LocalBusiness` — très utile pour un commerce
   local : elles permettent à Google d'afficher l'adresse, les horaires et les

@@ -170,13 +170,13 @@ const GROUPES = [
                {k:'soin'+n+'-desc', l:'Description complète', t:'zone'} ] })) },
 
   { id:'tarifs', titre:'Tarifs', blocs:[
-    { h:'Tableau des tarifs', aide:'Les six lignes du tableau « Séances à l’unité ».',
-      champs:[1,2,3,4,5,6].flatMap(n=>[
+    { h:'Tableau des tarifs', aide:'Les cinq lignes du tableau « Séances à l’unité ».',
+      champs:[1,2,3,4,5].flatMap(n=>[
         {k:'tarif'+n+'-soin', l:'Ligne '+n+' — soin'},
         {k:'tarif'+n+'-duree', l:'Durée', demi:true},
         {k:'tarif'+n+'-prix', l:'Tarif', demi:true} ]) } ] },
 
-  { id:'forfaits', titre:'Forfaits', blocs:[1,2,3].map(n=>(
+  { id:'forfaits', titre:'Forfaits', blocs:[1,2].map(n=>(
     { h:'Forfait n°'+n, aide:'',
       champs:[ {k:'forfait'+n+'-nom', l:'Nom du forfait'},
                {k:'forfait'+n+'-detail', l:'Ce qu’il comprend'},
@@ -195,12 +195,14 @@ const GROUPES = [
                {k:'reco-p1', l:'Paragraphe 1', t:'zone'},
                {k:'reco-p2', l:'Paragraphe 2', t:'zone'},
                {k:'reco-p3', l:'Paragraphe 3', t:'zone'},
-               {k:'reco-p4', l:'Paragraphe 4', t:'zone'} ] } ] },
+               {k:'reco-p4', l:'Paragraphe 4', t:'zone'},
+               {k:'reco-p5', l:'Paragraphe 5', t:'zone'},
+               {k:'reco-p6', l:'Paragraphe 6', t:'zone'} ] } ] },
 
   { id:'apropos', titre:'Qui suis-je', blocs:[
-    { h:'Votre présentation', aide:'Dans le titre, retour à la ligne = nouvelle ligne affichée.',
+    { h:'Votre présentation', aide:'Dans le titre, retour à la ligne = nouvelle ligne affichée. Le dernier paragraphe est le proverbe japonais.',
       champs:[ {k:'apropos-titre', l:'Titre', t:'zone'} ].concat(
-              [1,2,3,4,5,6].map(n=>({k:'apropos-p'+n, l:'Paragraphe '+n, t:'zone'}))) } ] },
+              [1,2,3,4,5].map(n=>({k:'apropos-p'+n, l:'Paragraphe '+n, t:'zone'}))) } ] },
 
   { id:'legende', titre:'Le saviez-vous', blocs:[
     { h:'La légende du Kobido', aide:'',
@@ -227,18 +229,17 @@ const GROUPES = [
                {k:'legal-tva', l:'N° TVA'} ] } ] },
 
   { id:'photos', titre:'Photos', photos:[
-    {f:'images/portrait.jpg',  l:'Votre portrait (Qui suis-je)'},
-    {f:'images/maison.jpg',    l:'Le cabinet à domicile'},
-    {f:'images/cabinet.jpg',   l:'Espace Bien-Être'},
-    {f:'images/huile.jpg',     l:'Huile de soin'},
-    {f:'images/diplome.jpg',   l:'Remise du diplôme'},
-    {f:'images/kobido.jpg',    l:'Photo — KOBIDO'},
-    {f:'images/kogao.jpg',     l:'Photo — KOGAO'},
-    {f:'images/drainage.jpg',  l:'Photo — Drainage'},
-    {f:'images/atama.jpg',     l:'Photo — ATAMA'},
-    {f:'images/forfait-essentiel.jpg',  l:'Forfait Essentiel'},
-    {f:'images/forfait-excellence.jpg', l:'Forfait Excellence'},
-    {f:'images/histoire.jpg',  l:'Estampe (Le saviez-vous)'} ] }
+    {f:'images/portrait.webp',  l:'Votre portrait (Qui suis-je)'},
+    {f:'images/maison.webp',    l:'Le cabinet à domicile'},
+    {f:'images/cabinet.webp',   l:'Espace Bien-Être'},
+    {f:'images/huile.webp',     l:'Huile de soin'},
+    {f:'images/diplome.webp',   l:'Remise du diplôme'},
+    {f:'images/logo-hero.webp', l:'Logo de la page d’accueil'},
+    {f:'images/kobido.webp',    l:'Photo — Authentique KOBIDO Lift'},
+    {f:'images/kogao.webp',     l:'Photo — KOGAO (sert aussi au forfait Essentiel)'},
+    {f:'images/drainage.webp',  l:'Photo — KOGAO/Drainage visage'},
+    {f:'images/atama.webp',     l:'Photo — KOBIDO Sculpting (sert aussi au forfait Excellence)'},
+    {f:'images/histoire.webp',  l:'Estampe (Le saviez-vous)'} ] }
 ];
 
 /* ---------- outils ---------- */

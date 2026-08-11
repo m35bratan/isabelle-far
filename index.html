@@ -7,12 +7,19 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>Isabelle FAR. — Facialiste · Cesson-Sévigné (35)</title>
-<meta name="description" content="Isabelle FAR., facialiste certifiée Kobido à Cesson-Sévigné près de Rennes. Massage liftant japonais, KOGAO, drainage lymphatique visage, ATAMA. 100 % naturel.">
+<meta name="description" content="Isabelle FAR., facialiste certifiée Kobido à Cesson-Sévigné près de Rennes. Massage liftant japonais, KOGAO, drainage lymphatique du visage.">
 <link rel="canonical" href="https://isabelle-far.fr">
 <meta property="og:title" content="Isabelle FAR. — Facialiste">
 <meta property="og:description" content="Art du soin sculptural du visage, 100 % naturel — Cesson-Sévigné (35).">
 <meta property="og:url" content="https://isabelle-far.fr">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://isabelle-far.fr/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Isabelle FAR., facialiste — soins japonais du visage à Cesson-Sévigné">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Isabelle FAR.">
+<meta name="twitter:card" content="summary_large_image">
 
 <!-- Favicon (SVG intégré, aucun fichier externe) -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%235E4319'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' fill='%23E8D48A' text-anchor='middle'%3EiK%3C/text%3E%3C/svg%3E">
@@ -25,6 +32,7 @@
 @font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/cormorant-garamond-latin-500-normal.woff2) format('woff2')}
 @font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300;font-display:swap;src:url(fonts/cormorant-garamond-latin-300-italic.woff2) format('woff2')}
 @font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:400;font-display:swap;src:url(fonts/cormorant-garamond-latin-400-italic.woff2) format('woff2')}
+.legal-host{margin-top:10px;line-height:1.5;opacity:.85}
 </style>
 
 <!-- Données structurées : permettent à Google d'afficher adresse,
@@ -36,7 +44,7 @@
   "name": "Isabelle FAR.",
   "description": "Facialiste certifiée Kobido à Cesson-Sévigné. Massage liftant japonais, KOGAO, drainage lymphatique du visage, ATAMA.",
   "url": "https://isabelle-far.fr",
-  "image": "https://isabelle-far.fr/images/logo.png",
+  "image": "https://isabelle-far.fr/images/logo.webp",
   "telephone": "+33620437841",
   "email": "isabelle.far35@gmail.com",
   "priceRange": "45 € - 400 €",
@@ -636,7 +644,7 @@ footer{background:linear-gradient(180deg,#e3cfa2,#d4bd86) !important;border-colo
 /* animation SLIDE-UP du titre principal */
 @keyframes slideUpTitle{from{opacity:0;transform:translateY(64px)}to{opacity:1;transform:translateY(0)}}
 .hero-title{animation:slideUpTitle 1s cubic-bezier(.2,.8,.2,1) both !important}
-/* logo animé (hero) — WebP animé à fond transparent, la rotation est dans le fichier */
+/* logo du hero — image fixe (PNG détouré, fond transparent), sans animation */
 .hero-logo-pic{display:block}
 .hero-logo-vid{width:224px;height:auto;margin:0 auto 8px;display:block;background:transparent}
 /* section Recommandations */
@@ -942,6 +950,122 @@ header .btn-book{display:none !important}
   .contact-card li > .emo{flex:0 0 auto;line-height:1.5}
   .contact-card li > a{flex:1 1 auto;min-width:0;word-break:break-word}
 }
+
+/* ============================================================
+   RETOUCHES — août 2026
+   ============================================================ */
+
+/* Accueil : logo réduit (il occupait 224 px), sur ordinateur comme sur
+   téléphone — la règle de base sert aux deux. */
+.hero-logo-vid{width:168px}
+
+/* Accueil : le retour à la ligne de l'accroche s'applique aussi sur
+   téléphone, pour que « — massages sculptants — » forme sa propre ligne
+   au lieu de se couper après le premier tiret. */
+@media (max-width:768px){
+  .br-pc{display:inline}
+}
+
+/* Accueil : second trait sous « — massages sculptants », en miroir de
+   celui placé au-dessus. Il entre dans la même cascade d'animation,
+   juste après la phrase d'accroche. */
+.hero-lines-2{animation-delay:1.05s}
+
+/* Prestations : les descriptions « En savoir plus » sont plus longues,
+   le volet dépliant doit pouvoir les contenir entièrement. */
+.scard-body.open{max-height:1200px}
+
+/* Prestations : la carte KOBIDO porte un badge « Incontournable » qui
+   décale son titre vers le bas. Sur ordinateur, la carte KOGAO (à sa
+   droite) reçoit un badge invisible de même hauteur pour que les deux
+   titres soient alignés. Sur téléphone les cartes sont empilées :
+   le badge fantôme n'a plus lieu d'être. */
+.scard-badge-ghost{visibility:hidden}
+@media (max-width:768px){.scard-badge-ghost{display:none}}
+
+/* Forfaits : deux encarts seulement, centrés sur ordinateur,
+   en conservant la largeur qu'ils avaient à trois. */
+@media (min-width:769px){
+  .forfaits{grid-template-columns:repeat(2,minmax(0,258.67px));justify-content:center}
+}
+
+/* Tarifs : les montants de la dernière colonne étaient en brun doré,
+   ils passent au noir des deux autres colonnes. */
+.price-table td:last-child{color:#111 !important}
+
+/* Horaires : la colonne de droite était en brun doré, et les lignes
+   « Fermé » en plus atténuées (opacité .6). Tout passe en noir plein. */
+.hours-row span:last-child{color:#111 !important}
+.hours-row.closed span:last-child{color:#111 !important;opacity:1}
+
+/* « Cesson-Sévigné » ne doit jamais se couper au trait d'union. */
+.nowrap-lieu{white-space:nowrap}
+
+/* Prestations : « Un rituel inspiré de la tradition japonaise » grossi
+   d'un pixel, sur ordinateur uniquement. */
+@media (min-width:769px){
+  #services .sec-sub{font-size:calc(1.15rem + 1px)}
+}
+
+/* Tarifs : tout le tableau grossi d'un pixel. « Séances à l'unité » en
+   gagne un sur téléphone (voir plus bas) et deux sur ordinateur — cette
+   règle-ci ne s'applique qu'à l'ordinateur, le bloc « max-width:768px »
+   qui suit reprenant la main sur téléphone. */
+#tarifs .sec-sub{font-size:calc(1.15rem + 2px)}
+.price-table th{font-size:calc(.82rem + 1px)}
+.price-table td{font-size:calc(1rem + 1px)}
+.price-table td:last-child{font-size:calc(1.1rem + 1px)}
+@media (max-width:768px){
+  #tarifs .sec-sub{font-size:calc(1.05rem + 1px)}
+  .price-table th,.price-table td{font-size:calc(.9rem + 1px)}
+  .price-table td:last-child{font-size:calc(1.1rem + 1px)}
+}
+@media (max-width:400px){
+  .price-table th,.price-table td{font-size:calc(.82rem + 1px)}
+  .price-table td:last-child{font-size:calc(1.1rem + 1px)}
+}
+
+/* Citation : un filet sous « — Jim Rohn », de la même facture que les
+   filets qui soulignent les titres de section (même couleur foncée,
+   pour rester lisible sur le fond clair du site). */
+.quote cite::after{content:"";display:block;width:180px;height:2px;margin:18px auto 0;
+  background:linear-gradient(90deg,transparent,#4a3006,transparent)}
+
+/* Horaires : toutes les lignes du cadre grossies d'un pixel. */
+.contact-card .hours-row span{font-size:calc(1rem + 1px)}
+
+/* Qui suis-je, Le saviez-vous et Recommandations : texte justifié
+   (aligné à gauche ET à droite).
+   La césure automatique évite les grands blancs entre les mots dans les
+   colonnes étroites (la page est déclarée en français : lang="fr"). */
+.about-txt p,.legend-txt p,
+.contact-card .reco-col p{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+
+/* Citation de Jim Rohn : jamais coupée, une seule ligne sur ordinateur.
+   Le cadre passe à toute la largeur et la taille du texte suit celle de
+   l'écran, sinon la phrase (807 px à 27 px de corps, pour 820 px
+   disponibles) déborderait dès que la fenêtre se réduit.
+   Sur téléphone la ligne unique est impossible : le texte revient à la
+   ligne comme avant, seule la 1re phrase reste solidaire — et le corps
+   y est réduit à 23 px, l'ordinateur gardant ses 27 px. */
+.quote{font-size:23px}
+@media (min-width:769px){
+  .quote{max-width:none;white-space:nowrap;font-size:min(27px,2.85vw)}
+}
+
+/* Carte cadeau : elle partageait déjà le fond, la bordure et l'ombre des
+   autres cartes, mais un halo doré radial était superposé par-dessus et
+   l'éclaircissait en haut à gauche. Il est retiré pour un rendu identique. */
+.giftcard-glow{display:none}
+
+/* Le saviez-vous : « La légende du » prend la taille et la graisse
+   du mot KOBIDO qui le suit sur la même ligne. */
+#legend .sec-sub{font-size:calc(1.15rem * 1.28);font-style:normal;
+  font-weight:600;letter-spacing:.07em}
+#legend .kobido-sub{font-size:1em}
+@media (max-width:768px){
+  #legend .sec-sub{font-size:calc(1.05rem * 1.28)}
+}
 </style>
 
 <!-- (rouleaux de coin retirés pour un rendu plus épuré) -->
@@ -1037,7 +1161,7 @@ header .btn-book{display:none !important}
 <!-- ============ HEADER ============ -->
 <header id="hdr">
   <a href="#hero" class="brand">
-    <img src="images/logo.png" alt="Logo Isabelle FAR." class="brand-logo" loading="eager" decoding="async">
+    <img src="images/logo.webp" alt="Logo Isabelle FAR." class="brand-logo" loading="eager" decoding="async">
     <span class="brand-logo-fb">Ko</span>
     <span class="brand-txt"><b>Isabelle FAR.</b><span>Facialiste</span></span>
   </a>
@@ -1080,9 +1204,9 @@ header .btn-book{display:none !important}
 
   <div class="hero-inner">
     <picture class="hero-logo-pic">
-      <!-- mobile : version plus rapide (5 s) et 2× plus légère, pour un défilé sans saccade -->
-      <source media="(max-width:768px)" srcset="videos/logo-anim-mobile.webp" type="image/webp">
-      <img class="hero-logo-vid" src="videos/logo-anim.webp" width="280" height="374" alt="Logo Isabelle FAR.">
+      <!-- logo fixe (plus d'animation) — monogramme ovale sur fond transparent -->
+      <img class="hero-logo-vid" src="images/logo-hero.webp" width="400" height="451" alt="Logo Isabelle FAR."
+           onerror="this.closest('.hero-logo-pic').style.display='none';document.querySelector('.hero-logo-fb').style.display='flex'">
     </picture>
     <div class="hero-logo-fb">小</div>
 
@@ -1094,10 +1218,13 @@ header .btn-book{display:none !important}
 
     <div class="hero-lines"><i></i><i></i><i></i></div>
 
-    <h2 class="hero-h2"><span data-e="accueil-ligne1">Art du soin japonais de votre visage au féminin</span> <br class="br-pc"><span data-e="accueil-ligne2">— massages sculptants</span></h2>
+    <h2 class="hero-h2"><span data-e="accueil-ligne1">Soins japonais du visage au féminin</span> <br class="br-pc"><span data-e="accueil-ligne2">— massages sculptants —</span></h2>
+
+    <div class="hero-lines hero-lines-2"><i></i><i></i><i></i></div>
+
     <p class="hero-meta">
       Praticienne certifiée dans le secteur du <strong>Bien-être</strong><br>
-      Cabinet à domicile sur la commune de <strong>Cesson-Sévigné</strong> près de Rennes (35)
+      Cabinet à domicile sur la commune de <strong class="nowrap-lieu">Cesson-Sévigné</strong> près de Rennes (35)
     </p>
   </div>
 
@@ -1107,9 +1234,9 @@ header .btn-book{display:none !important}
 <!-- ============ TICKER ============ -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-inner" id="ticker">
-    <span>KOBIDO</span><span class="sep">✦</span><span>KOGAO</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>ATAMA</span><span class="sep">✦</span>
-    <span>KOBIDO</span><span class="sep">✦</span><span>KOGAO</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>ATAMA</span><span class="sep">✦</span>
-    <span>KOBIDO</span><span class="sep">✦</span><span>KOGAO</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>ATAMA</span><span class="sep">✦</span>
+    <span>Authentique KOBIDO</span><span class="sep">✦</span><span>KOGAO</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>KORUGI</span><span class="sep">✦</span><span>ATAMA</span><span class="sep">✦</span>
+    <span>Authentique KOBIDO</span><span class="sep">✦</span><span>KOGAO</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>KORUGI</span><span class="sep">✦</span><span>ATAMA</span><span class="sep">✦</span>
+    <span>Authentique KOBIDO</span><span class="sep">✦</span><span>KOGAO</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>KORUGI</span><span class="sep">✦</span><span>ATAMA</span><span class="sep">✦</span>
   </div>
 </div>
 
@@ -1127,19 +1254,19 @@ header .btn-book{display:none !important}
       <!-- 1 KOBIDO -->
       <div class="scard fade-up">
         <div class="scard-head">
-          <img src="images/kobido.jpg" alt="Massage Kobido en cours" class="scard-thumb kobido-photo" loading="eager"
+          <img src="images/kobido.webp" alt="Soin Authentique KOBIDO Lift" class="scard-thumb kobido-photo" loading="eager"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="scard-thumb-fb">🌸</div>
           <div class="scard-info">
             <span class="scard-badge">✦ Incontournable</span>
-            <h3 class="scard-name" data-e="soin1-nom">Authentique KOBIDO</h3>
+            <h3 class="scard-name" data-e="soin1-nom">Authentique KOBIDO Lift</h3>
             <p class="scard-stag" data-e="soin1-accroche">Massage liftant</p>
-            <p class="scard-dur" data-e="soin1-duree">60 min · 75 min · 90 min</p>
-            <p class="scard-price" data-e="soin1-prix">75 € · 90 € · 110 €</p>
+            <p class="scard-dur" data-e="soin1-duree">60 min</p>
+            <p class="scard-price" data-e="soin1-prix">80 €</p>
           </div>
         </div>
         <div class="scard-body" id="body-1">
-          <p class="scard-desc" data-e="soin1-desc">Le massage facial japonais le plus sophistiqué au monde. Une gestuelle rapide et précise qui stimule la microcirculation, détend les muscles et sculpte naturellement les traits pour un effet liftant visible et durable.</p>
+          <p class="scard-desc" data-e="soin1-desc">Soin ancestral japonais dédié aux femmes.<br>Il s'agit d'un lifting naturel issu de la méthode du Maître Shogo Mochizuki.<br>Massage tonique du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>C'est un soin qui permet de redonner de l'éclat au visage, de tonifier votre peau et de rééquilibrer vos énergies.<br>Utilisation d'une huile sèche aux 3 vertus pour le soin.</p>
           <div class="promo-tag" data-promo="BIENVENUE10" style="display:none">🎁 Code promo : BIENVENUE10 — 10% sur votre 1ère séance</div>
         </div>
         <div class="scard-foot">
@@ -1151,18 +1278,19 @@ header .btn-book{display:none !important}
       <!-- 2 KOGAO -->
       <div class="scard fade-up">
         <div class="scard-head">
-          <img src="images/kogao.jpg" alt="Soin KOGAO" class="scard-thumb kobido-photo" loading="eager"
+          <img src="images/kogao.webp" alt="Soin KOGAO" class="scard-thumb kobido-photo" loading="eager"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="scard-thumb-fb">🌸</div>
           <div class="scard-info">
+            <span class="scard-badge scard-badge-ghost" aria-hidden="true">✦</span>
             <h3 class="scard-name" data-e="soin2-nom">KOGAO</h3>
-            <p class="scard-stag" data-e="soin2-accroche">Petit visage japonais</p>
-            <p class="scard-dur" data-e="soin2-duree">60 min</p>
-            <p class="scard-price" data-e="soin2-prix">75 €</p>
+            <p class="scard-stag" data-e="soin2-accroche">Amincissement du visage par acupression</p>
+            <p class="scard-dur" data-e="soin2-duree">30 min</p>
+            <p class="scard-price" data-e="soin2-prix">50 €</p>
           </div>
         </div>
         <div class="scard-body" id="body-2">
-          <p class="scard-desc" data-e="soin2-desc">Technique de remodelage du visage visant à affiner l'ovale, redéfinir les contours et réduire les tensions. Un soin qui redonne éclat et harmonie à l'ensemble du visage.</p>
+          <p class="scard-desc" data-e="soin2-desc">Soin dédié aux femmes.<br>Sublimez votre visage avec le KOGAO par une technique d'acupression.<br>Il se distingue d'un toucher maîtrisé et méthodique visant à l'harmonisation structurelle et esthétique de votre visage.<br>Véritable art japonais issu de l'enseignement du Maître Izuo Hidetsugu.<br>Le KOGAO associe des techniques de pressions et de stimulations des muscles du visage et du cuir chevelu en profondeur pour amincir et réaligner le visage dans la durabilité afin de révéler votre beauté naturelle.<br>Les bienfaits :<br>Améliore la circulation sanguine<br>Peau plus lumineuse<br>Rééquilibre les tensions musculaires du visage<br>Le KOGAO n'est pas un massage par frictions.<br>Offrez à votre visage un soin d'exception, des traits reposés et un véritable moment de sérénité.<br>Il s'agit d'un soin de découverte. Par conséquent une remise de 20 % est appliquée jusqu'au 31&nbsp;12&nbsp;2026.<br>Code promo : KOG311226</p>
           <div class="promo-tag" data-promo="BIENVENUE10" style="display:none">🎁 Code promo : BIENVENUE10 — 10% sur votre 1ère séance</div>
         </div>
         <div class="scard-foot">
@@ -1174,18 +1302,18 @@ header .btn-book{display:none !important}
       <!-- 3 Drainage -->
       <div class="scard fade-up">
         <div class="scard-head">
-          <img src="images/drainage.jpg" alt="Drainage lymphatique visage" class="scard-thumb kobido-photo" loading="eager"
+          <img src="images/drainage.webp" alt="Drainage lymphatique visage" class="scard-thumb kobido-photo" loading="eager"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="scard-thumb-fb">🌸</div>
           <div class="scard-info">
-            <h3 class="scard-name" data-e="soin3-nom">Drainage lymphatique visage</h3>
+            <h3 class="scard-name" data-e="soin3-nom">KOGAO/Drainage visage</h3>
             <p class="scard-stag" data-e="soin3-accroche">Détox &amp; éclat</p>
-            <p class="scard-dur" data-e="soin3-duree">45 min</p>
-            <p class="scard-price" data-e="soin3-prix">60 €</p>
+            <p class="scard-dur" data-e="soin3-duree">60 min</p>
+            <p class="scard-price" data-e="soin3-prix">90 €</p>
           </div>
         </div>
         <div class="scard-body" id="body-3">
-          <p class="scard-desc" data-e="soin3-desc">Manœuvres douces qui relancent la circulation lymphatique, désengorgent les tissus et atténuent les poches. Le teint retrouve fraîcheur, lumière et sensation de légèreté.</p>
+          <p class="scard-desc" data-e="soin3-desc">Soin dédié aux femmes.<br>Soin profond du visage. Pressions sur les muscles du visage et du cuir chevelu suivi d'un drainage lymphatique dynamique et relaxant pour conserver la durabilité des effets sur le visage.<br>Pompages et gestes répétés sur les ganglions lymphatiques pour aider à éliminer les toxines et désengorger les tissus du visage.<br>Ses bienfaits :<br>Réduit les sensations de gonflements<br>Affine et redessine les contours du visage<br>Utilisation de l'huile d'amande douce pour le drainage</p>
           <div class="promo-tag" data-promo="BIENVENUE10" style="display:none">🎁 Code promo : BIENVENUE10 — 10% sur votre 1ère séance</div>
         </div>
         <div class="scard-foot">
@@ -1197,18 +1325,18 @@ header .btn-book{display:none !important}
       <!-- 4 ATAMA -->
       <div class="scard fade-up">
         <div class="scard-head">
-          <img src="images/atama.jpg" alt="Soin ATAMA" class="scard-thumb kobido-photo" loading="eager"
+          <img src="images/atama.webp" alt="Soin KOBIDO Sculpting" class="scard-thumb kobido-photo" loading="eager"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="scard-thumb-fb">🌸</div>
           <div class="scard-info">
-            <h3 class="scard-name" data-e="soin4-nom">ATAMA</h3>
-            <p class="scard-stag" data-e="soin4-accroche">Massage cuir chevelu japonais</p>
-            <p class="scard-dur" data-e="soin4-duree">30 min</p>
-            <p class="scard-price" data-e="soin4-prix">45 €</p>
+            <h3 class="scard-name" data-e="soin4-nom">KOBIDO Sculpting</h3>
+            <p class="scard-stag" data-e="soin4-accroche">Massage liftant en profondeur</p>
+            <p class="scard-dur" data-e="soin4-duree">75 min</p>
+            <p class="scard-price" data-e="soin4-prix">90 €</p>
           </div>
         </div>
         <div class="scard-body" id="body-4">
-          <p class="scard-desc" data-e="soin4-desc">Massage du cuir chevelu qui libère les tensions, apaise le mental et stimule la vitalité. Un moment de relâchement profond, complément idéal d'un soin du visage.</p>
+          <p class="scard-desc" data-e="soin4-desc">Soin dédié aux femmes.<br>C'est l'étonnant mariage de l'Authentique KOBIDO et du massage par l'intérieur de la bouche qui complète et booste les effets du lift.<br>Massage tonique du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur la peau.<br>C'est un soin complet qui permet de redonner de l'éclat au visage, de tonifier votre peau et de rééquilibrer vos énergies.</p>
           <div class="promo-tag" data-promo="BIENVENUE10" style="display:none">🎁 Code promo : BIENVENUE10 — 10% sur votre 1ère séance</div>
         </div>
         <div class="scard-foot">
@@ -1234,12 +1362,11 @@ header .btn-book{display:none !important}
     <table class="price-table fade-up">
       <thead><tr><th>Soins</th><th>Durée</th><th>Tarifs</th></tr></thead>
       <tbody>
-        <tr><td data-e="tarif1-soin">Authentique KOBIDO</td><td data-e="tarif1-duree">60 min</td><td data-e="tarif1-prix">75 €</td></tr>
-        <tr><td data-e="tarif2-soin">Authentique KOBIDO</td><td data-e="tarif2-duree">75 min</td><td data-e="tarif2-prix">90 €</td></tr>
-        <tr><td data-e="tarif3-soin">Authentique KOBIDO</td><td data-e="tarif3-duree">90 min</td><td data-e="tarif3-prix">110 €</td></tr>
-        <tr><td data-e="tarif4-soin">KOGAO</td><td data-e="tarif4-duree">60 min</td><td data-e="tarif4-prix">75 €</td></tr>
-        <tr><td data-e="tarif5-soin">Drainage lymphatique visage</td><td data-e="tarif5-duree">45 min</td><td data-e="tarif5-prix">60 €</td></tr>
-        <tr><td data-e="tarif6-soin">ATAMA</td><td data-e="tarif6-duree">30 min</td><td data-e="tarif6-prix">45 €</td></tr>
+        <tr><td data-e="tarif1-soin">Authentique KOBIDO Lift</td><td data-e="tarif1-duree">60 min</td><td data-e="tarif1-prix">80 €</td></tr>
+        <tr><td data-e="tarif2-soin">KOBIDO Sculpting</td><td data-e="tarif2-duree">75 min</td><td data-e="tarif2-prix">90 €</td></tr>
+        <tr><td data-e="tarif3-soin">KOGAO/ KOBIDO Lift</td><td data-e="tarif3-duree">90 min</td><td data-e="tarif3-prix">120 €</td></tr>
+        <tr><td data-e="tarif4-soin">KOGAO Amincissement et Réalignement du visage</td><td data-e="tarif4-duree">30 min</td><td data-e="tarif4-prix">50 €</td></tr>
+        <tr><td data-e="tarif5-soin">KOGAO/Drainage visage</td><td data-e="tarif5-duree">60 min</td><td data-e="tarif5-prix">90 €</td></tr>
       </tbody>
     </table>
     <div style="text-align:center;margin:-6px 0 40px">
@@ -1249,27 +1376,19 @@ header .btn-book{display:none !important}
     <h3 class="sec-title shine-title" style="font-size:2rem">Forfaits</h3>
     <div class="forfaits">
       <div class="forfait fade-up">
-        <img src="images/forfait-essentiel.jpg" alt="Forfait Essentiel" class="forfait-photo" loading="eager" onerror="this.style.display='none'">
+        <img src="images/kogao.webp" alt="Forfait Essentiel" class="forfait-photo" loading="eager" onerror="this.style.display='none'">
         <h3 data-e="forfait1-nom">Essentiel</h3>
-        <p class="detail" data-e="forfait1-detail">3× KOBIDO 75 min</p>
-        <div class="price" data-e="forfait1-prix">250 €</div>
+        <p class="detail" data-e="forfait1-detail">3X KOGAO 30 min</p>
+        <div class="price" data-e="forfait1-prix">130 €</div>
         <span class="eco" data-e="forfait1-eco">économie 20 €</span>
         <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-rsm">Réserver</a>
       </div>
       <div class="forfait featured fade-up">
-        <img src="images/forfait-excellence.jpg" alt="Forfait Excellence" class="forfait-photo" loading="eager" onerror="this.style.display='none'">
+        <img src="images/atama.webp" alt="Forfait Excellence" class="forfait-photo" loading="eager" onerror="this.style.display='none'">
         <h3 data-e="forfait2-nom">Excellence</h3>
-        <p class="detail" data-e="forfait2-detail">5× KOBIDO 75 min</p>
-        <div class="price" data-e="forfait2-prix">400 €</div>
-        <span class="eco" data-e="forfait2-eco">économie 50 €</span>
-        <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-rsm">Réserver</a>
-      </div>
-      <div class="forfait fade-up">
-        <img src="images/kobido.jpg" alt="Forfait Duo Bien-être" class="forfait-photo" loading="eager" onerror="this.style.display='none'">
-        <h3 data-e="forfait3-nom">Duo Bien-être</h3>
-        <p class="detail" data-e="forfait3-detail">KOBIDO 75 min + ATAMA</p>
-        <div class="price" data-e="forfait3-prix">120 €</div>
-        <span class="eco" data-e="forfait3-eco">économie 15 €</span>
+        <p class="detail" data-e="forfait2-detail">3 X KOBIDO Sculpting 75 min</p>
+        <div class="price" data-e="forfait2-prix">250 €</div>
+        <span class="eco" data-e="forfait2-eco">économie 20 €</span>
         <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-rsm">Réserver</a>
       </div>
     </div>
@@ -1286,7 +1405,7 @@ header .btn-book{display:none !important}
 
     <blockquote class="quote fade-up">
       <span class="nowrap-slogan">« Prenez soin de votre corps.</span> C'est le seul endroit où vous allez vivre toute votre vie. »
-      <cite data-e="citation-auteur">— Jim Rohn</cite>
+      <cite data-e="citation-auteur">— Jim Rohn —</cite>
     </blockquote>
   </div>
 </section>
@@ -1299,10 +1418,10 @@ header .btn-book{display:none !important}
     <div class="gold-bar"></div>
 
     <div class="photo-grid">
-      <div class="photo-cell"><img src="images/maison.jpg" alt="Le cabinet à domicile" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">🏡</div><div class="cap">Le cabinet à domicile</div></div>
-      <div class="photo-cell"><img src="images/cabinet.jpg" alt="Espace Bien-Être" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">🕯️</div><div class="cap">Espace Bien-Être</div></div>
-      <div class="photo-cell"><img src="images/huile.jpg" alt="Huile de soin visage" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">🌿</div><div class="cap">Huile de soin visage</div></div>
-      <div class="photo-cell"><img src="images/diplome.jpg" alt="Remise du diplôme — École du Kobido" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">📜</div><div class="cap">Remise du diplôme — École du Kobido</div></div>
+      <div class="photo-cell"><img src="images/maison.webp" alt="Le cabinet à domicile" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">🏡</div><div class="cap">Le cabinet à domicile</div></div>
+      <div class="photo-cell"><img src="images/cabinet.webp" alt="Espace Bien-Être" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">🕯️</div><div class="cap">Espace Bien-Être</div></div>
+      <div class="photo-cell"><img src="images/huile.webp" alt="Huile de soin visage" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">🌿</div><div class="cap">Huile de soin visage</div></div>
+      <div class="photo-cell"><img src="images/diplome.webp" alt="Remise du diplôme — École du Kobido" loading="eager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-cell-fb">📜</div><div class="cap">Remise du diplôme — École du Kobido</div></div>
     </div>
 
     <div class="contact-card fade-up">
@@ -1315,10 +1434,12 @@ header .btn-book{display:none !important}
       </div>
       <div class="reco-col">
         <h3 data-e="reco-titre">Recommandations pour le rendez-vous</h3>
-        <p data-e="reco-p1"><strong>Cabinet à domicile</strong> — 76 rue de la Coulée, 35510 Cesson-Sévigné. Lieu calme et à l'abri des regards ; vous pouvez sonner afin que je puisse vous accueillir.</p>
-        <p data-e="reco-p2">Pour ne pas gêner les riverains, merci de vous garer aux emplacements gratuits le long de la « rue de Bellevue », près de l'arrêt de bus C6 — la Coulée.</p>
-        <p data-e="reco-p3">Le lieu ne dispose pas de salle d'attente. Un démaquillage sur place est prévu avant la séance.</p>
-        <p data-e="reco-p4">Pour un soin optimal, merci de retirer colliers et boucles d'oreilles avant la séance.</p>
+        <p data-e="reco-p1"><strong>Cabinet à domicile</strong> — 76 rue de la Coulée, 35510 Cesson‑Sévigné. Lieu calme et à l'abri des regards. Vous pouvez sonner afin que je puisse vous accueillir.</p>
+        <p data-e="reco-p2">Pour ne pas gêner les riverains, veuillez SVP vous garer aux emplacements gratuits le long de la « rue de Bellevue », près de l'arrêt de bus C6 — la Coulée.</p>
+        <p data-e="reco-p3">Le lieu ne dispose pas de salle d'attente.</p>
+        <p data-e="reco-p4">Un démaquillage sur place est prévu avant la séance.</p>
+        <p data-e="reco-p5">Pour un soin optimal, merci de retirer colliers et boucles d'oreilles avant la séance.</p>
+        <p data-e="reco-p6">Au plaisir de vous recevoir pour un moment rien que pour vous.<br>Bien à vous.<br>Isabelle.</p>
       </div>
     </div>
   </div>
@@ -1335,18 +1456,17 @@ header .btn-book{display:none !important}
 
     <div class="about-grid">
       <div class="about-photo-wrap">
-        <img src="images/portrait.jpg" alt="Isabelle FAR., facialiste" class="about-photo" loading="eager"
+        <img src="images/portrait.webp" alt="Isabelle FAR., facialiste" class="about-photo" loading="eager"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="about-photo-fb">🌸</div>
       </div>
       <div class="about-txt fade-up">
-        <h3 data-e="apropos-titre">Isabelle,<br>Une praticienne passionnée</h3>
+        <h3 data-e="apropos-titre">Isabelle,<br>Une praticienne motivée</h3>
         <p data-e="apropos-p1">Après plus de 30 ans en comptabilité, au fil des années, j'ai ressenti le besoin de redonner du sens à ma vie privée et professionnelle et de créer une activité plus libre, plus humaine et plus alignée avec mes valeurs.</p>
         <p data-e="apropos-p2">Après plusieurs tentatives entrepreneuriales et de belles rencontres, le bien-être était le secteur qui me correspondait le plus.</p>
         <p data-e="apropos-p3">La vie est généralement éprouvante et j'ai trouvé un métier qui me permet d'apporter un mieux-être concret aux femmes tout en m'épanouissant pleinement.</p>
-        <p data-e="apropos-p4">Aujourd'hui, j'accompagne les femmes vers un mieux-être grâce à un savoir-faire manuel japonais et une présence attentive.</p>
-        <p data-e="apropos-p5">Je suis épanouie et j'ai enfin trouvé ma voie.</p>
-        <p class="proverb" data-e="apropos-p6">« Nana korobi, ya oki » — « Tomber sept fois, se relever huit. » (Proverbe japonais)</p>
+        <p data-e="apropos-p4">Aujourd'hui, j'ai enfin trouvé ma voie.</p>
+        <p class="proverb" data-e="apropos-p5">« Nana korobi, ya oki » — « Tomber sept fois, se relever huit. » (Proverbe japonais)</p>
       </div>
     </div>
   </div>
@@ -1362,7 +1482,7 @@ header .btn-book{display:none !important}
 
     <div class="legend-grid">
       <div class="empress-wrap fade-up">
-        <img src="images/histoire.jpg" alt="Estampe japonaise ancienne — Histoire du Kobido" class="legend-img" loading="eager">
+        <img src="images/histoire.webp" alt="Estampe japonaise ancienne — Histoire du Kobido" class="legend-img" loading="eager">
       </div>
 
       <div class="legend-txt fade-up">
@@ -1391,7 +1511,7 @@ header .btn-book{display:none !important}
 
     <div class="review-cta fade-up">
       <a href="https://www.google.com/search?q=Isabelle+FAR+Kobido+Cesson-Sévigné" target="_blank" rel="noopener" class="btn-outline">⭐ Voir les avis Google</a>
-      <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-outline">Voir les avis Glaads</a>
+      <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste/les-avis#avis" target="_blank" rel="noopener" class="btn-outline">Voir les avis Glaads</a>
     </div>
 
     <div class="reviews">
@@ -1453,12 +1573,14 @@ header .btn-book{display:none !important}
       <p>EURL Isabelle FAR.</p>
       <p data-e="legal-capital">Capital social : 2 000 €</p>
       <p>RCS Rennes</p>
-      <p data-e="legal-siret">SIRET : en attente</p>
-      <p data-e="legal-ape">Code APE : en attente</p>
-      <p data-e="legal-tva">N° TVA Intracom. : en attente</p>
-      <p style="margin-top:12px">Conception &amp; réalisation du site :<br>Agence M² — Malo &amp; Miguel</p>
-      <a href="tel:+33666566406">📱 Malo : 06 66 56 64 06</a>
-      <a href="tel:+33689429203">📱 Miguel : 06 89 42 92 03</a>
+      <p data-e="legal-siret">SIRET : 107 510 430 00013</p>
+      <p data-e="legal-ape">Code APE : 9604Z</p>
+      <p data-e="legal-tva">N° TVA Intracom. : TVA&nbsp;non&nbsp;applicable</p>
+      <p data-e="legal-directeur">Directrice de la publication : Isabelle FAR.</p>
+      <p class="legal-host">Hébergeur : GitHub, Inc.<br>88 Colin P. Kelly Jr Street,<br>San Francisco, CA 94107, USA</p>
+      <p style="margin-top:12px">Conception du site :<br>Agence M²</p>
+      <a href="mailto:agence.m2.dev@gmail.com">📧 agence.m2.dev@gmail.com</a>
+      <a href="tel:+33773155910">📱 07 73 15 59 10</a>
     </div>
     <div>
       <h4>Navigation</h4>
@@ -1482,7 +1604,7 @@ header .btn-book{display:none !important}
       <a href="https://isabelle-far.fr" target="_blank" rel="noopener">🌐 isabelle-far.fr</a>
     </div>
   </div>
-  <div class="footer-bottom">© 2025 Isabelle FAR. · isabelle-far.fr — Tous droits réservés</div>
+  <div class="footer-bottom">© 2026 Isabelle FAR. · isabelle-far.fr — Tous droits réservés</div>
 </footer>
 
 <script>
