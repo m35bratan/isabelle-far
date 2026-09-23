@@ -14,8 +14,12 @@
 <meta property="og:url" content="https://isabelle-far.fr">
 <meta property="og:type" content="website">
 
-<!-- Favicon (SVG intégré, aucun fichier externe) -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%235E4319'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' fill='%23E8D48A' text-anchor='middle'%3EiK%3C/text%3E%3C/svg%3E">
+<!-- Favicon : médaillon « iKO » -->
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
 <!-- Polices hébergées avec le site : aucun appel aux serveurs Google,
      donc aucune adresse IP de visiteur transmise à un tiers (RGPD). -->
@@ -333,6 +337,7 @@ section[id]{scroll-margin-top:82px}
 .price-table td:last-child{color:var(--gold-lt);font-weight:500;font-size:1.1rem}
 .price-table tr:last-child td{border-bottom:0}
 .price-table tr:hover td{background:rgba(201,168,76,.05)}
+.price-table td:not(:first-child),.price-table th:not(:first-child){white-space:nowrap}
 
 .forfaits{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:20px}
 .forfait{position:relative;background:linear-gradient(165deg,rgba(44,28,16,.9),rgba(20,12,6,.92));
@@ -994,7 +999,7 @@ header .btn-book{display:none !important}
 
 /* Prestations : les descriptions « En savoir plus » sont plus longues,
    le volet dépliant doit pouvoir les contenir entièrement. */
-.scard-body.open{max-height:1200px}
+.scard-body.open{max-height:2200px}
 
 /* Prestations : la carte KOBIDO porte un badge « Incontournable » qui
    décale son titre vers le bas. Sur ordinateur, la carte KOGAO (à sa
@@ -1087,6 +1092,14 @@ header .btn-book{display:none !important}
 @media (max-width:768px){
   #legend .sec-sub{font-size:calc(1.05rem * 1.28)}
 }
+
+/* Logo d'accueil : flottement vertical de 2 px + respiration de 2 %.
+   Deux rythmes décalés (6 s et 8 s) pour un mouvement lent et naturel. */
+.hero-logo-pic{animation:logoFloat 6s ease-in-out infinite;will-change:transform}
+.hero-logo-vid{animation:logoBreath 8s ease-in-out infinite;transform-origin:50% 50%;will-change:transform}
+@keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes logoBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+@media (prefers-reduced-motion:reduce){.hero-logo-pic,.hero-logo-vid{animation:none}}
 </style>
 
 <!-- (rouleaux de coin retirés pour un rendu plus épuré) -->
@@ -1225,7 +1238,7 @@ header .btn-book{display:none !important}
 
   <div class="hero-inner">
     <picture class="hero-logo-pic">
-      <!-- logo fixe (plus d'animation) — monogramme ovale sur fond transparent -->
+      <!-- logo animé : flottement 2 px + respiration 2 % — monogramme ovale sur fond transparent -->
       <img class="hero-logo-vid" src="images/logo-hero.png" width="600" height="600" alt="Logo Isabelle FAR."
            onerror="this.closest('.hero-logo-pic').style.display='none';document.querySelector('.hero-logo-fb').style.display='flex'">
     </picture>
@@ -1255,9 +1268,9 @@ header .btn-book{display:none !important}
 <!-- ============ TICKER ============ -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-inner" id="ticker">
-    <span>Authentique KOBIDO</span><span class="sep">✦</span><span>KOGAO</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>KORUGI</span><span class="sep">✦</span>
-    <span>Authentique KOBIDO</span><span class="sep">✦</span><span>KOGAO</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>KORUGI</span><span class="sep">✦</span>
-    <span>Authentique KOBIDO</span><span class="sep">✦</span><span>KOGAO</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>KORUGI</span><span class="sep">✦</span>
+    <span>Authentique KOBIDO</span><span class="sep">✦</span><span>KOGAO</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>KORUGI</span><span class="sep">✦</span><span>KANSA WAND</span><span class="sep">✦</span>
+    <span>Authentique KOBIDO</span><span class="sep">✦</span><span>KOGAO</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>KORUGI</span><span class="sep">✦</span><span>KANSA WAND</span><span class="sep">✦</span>
+    <span>Authentique KOBIDO</span><span class="sep">✦</span><span>KOGAO</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>KORUGI</span><span class="sep">✦</span><span>KANSA WAND</span><span class="sep">✦</span>
   </div>
 </div>
 
@@ -1305,13 +1318,13 @@ header .btn-book{display:none !important}
           <div class="scard-info">
             <span class="scard-badge scard-badge-ghost" aria-hidden="true">✦</span>
             <h3 class="scard-name" data-e="soin2-nom">KOGAO</h3>
-            <p class="scard-stag" data-e="soin2-accroche">Amincissement du visage par acupression</p>
-            <p class="scard-dur" data-e="soin2-duree">30 min</p>
+            <p class="scard-stag" data-e="soin2-accroche">Réalignement du visage par acupression</p>
+            <p class="scard-dur" data-e="soin2-duree">45 min</p>
             <p class="scard-price" data-e="soin2-prix">50 €</p>
           </div>
         </div>
         <div class="scard-body" id="body-2">
-          <p class="scard-desc" data-e="soin2-desc">Soin dédié aux femmes.<br>Sublimez votre visage avec le KOGAO par une technique d'acupression.<br>Il se distingue d'un toucher maîtrisé et méthodique visant à l'harmonisation structurelle et esthétique de votre visage.<br>Véritable art japonais issu de l'enseignement du Maître Izuo Hidetsugu.<br>Le KOGAO associe des techniques de pressions et de stimulations des muscles du visage et du crâne en profondeur pour amincir et réaligner le visage dans la durabilité afin de révéler votre beauté naturelle.<br>Le KOGAO n'est pas un massage par frictions.<br>Les bienfaits :<br>Améliore la circulation sanguine<br>Peau plus lumineuse<br>Rééquilibre les tensions musculaires du visage<br>Offrez à votre visage un soin d'exception, des traits reposés et un véritable moment de sérénité.<br>Il s'agit d'un soin de découverte. Par conséquent une remise de 20 % est appliquée jusqu'au 31&nbsp;12&nbsp;2026.</p>
+          <p class="scard-desc" data-e="soin2-desc">Soin mixte. Hommes et femmes.<br>Sublimez votre visage avec le KOGAO par une technique d'acupression.<br>Il se distingue d'un toucher maîtrisé et méthodique visant à l'harmonisation structurelle et esthétique de votre visage.<br>Véritable art japonais issu de l'enseignement du Maître Izuo Hidetsugu.<br>Le KOGAO associe des techniques de pressions et de stimulations des muscles du visage et du crâne en profondeur pour amincir et réaligner le visage dans la durabilité afin de révéler votre beauté naturelle.<br>Le KOGAO n'est pas un massage par frictions.<br>Les bienfaits :<br>Améliore la circulation sanguine<br>Revitalise les peaux ternes et fatiguées<br>Rééquilibre les tensions musculaires du visage<br>Offrez à votre visage un soin d'exception, des traits reposés et un véritable moment de sérénité.<br>Il s'agit d'un soin de découverte. Par conséquent une remise de 20 % est appliquée jusqu'au 31&nbsp;12&nbsp;2026.</p>
           <div class="promo-tag" data-promo="KOG311226" style="display:none">🎁 Code promo : KOG311226 — 20 % sur votre soin KOGAO, jusqu'au 31&nbsp;12&nbsp;2026</div>
         </div>
         <div class="scard-foot">
@@ -1365,6 +1378,50 @@ header .btn-book{display:none !important}
           <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-rsm">Réserver</a>
         </div>
       </div>
+
+      <!-- 5 KOBIDO Découverte -->
+      <div class="scard fade-up">
+        <div class="scard-head">
+          <img src="images/kobido-decouverte.jpg" alt="Soin KOBIDO Découverte" class="scard-thumb kobido-photo" loading="eager" style="object-position:center 30%"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="scard-thumb-fb">🌸</div>
+          <div class="scard-info">
+            <h3 class="scard-name" data-e="soin5-nom">KOBIDO Découverte</h3>
+            <p class="scard-stag" data-e="soin5-accroche">Massage liftant — 1ère séance</p>
+            <p class="scard-dur" data-e="soin5-duree">60 min</p>
+            <p class="scard-price" data-e="soin5-prix">60 €</p>
+          </div>
+        </div>
+        <div class="scard-body" id="body-5">
+          <p class="scard-desc" data-e="soin5-desc">Soin ancestral japonais dédié aux nouvelles clientes. Valable une seule fois.<br>Il s'agit d'un lifting naturel issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>C'est un soin qui permet de redonner de l'éclat au visage, de tonifier votre peau et de rééquilibrer vos énergies.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.</p>
+        </div>
+        <div class="scard-foot">
+          <button class="scard-toggle" onclick="toggleCard('body-5',this)">En savoir plus <span class="arr">▾</span></button>
+          <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-rsm">Réserver</a>
+        </div>
+      </div>
+
+      <!-- 6 KOBIDO à Domicile ou Professionnel -->
+      <div class="scard fade-up">
+        <div class="scard-head">
+          <img src="images/kobido-domicile.jpg" alt="Soin KOBIDO à domicile ou sur lieu professionnel" class="scard-thumb kobido-photo" loading="eager" style="object-position:center 45%"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="scard-thumb-fb">🌸</div>
+          <div class="scard-info">
+            <h3 class="scard-name" data-e="soin6-nom">KOBIDO à Domicile ou Professionnel</h3>
+            <p class="scard-stag" data-e="soin6-accroche">Exclusivité secteur Cesson-Sévigné</p>
+            <p class="scard-dur" data-e="soin6-duree">90 min</p>
+            <p class="scard-price" data-e="soin6-prix">120 €</p>
+          </div>
+        </div>
+        <div class="scard-body" id="body-6">
+          <p class="scard-desc" data-e="soin6-desc">Soin ancestral japonais dédié aux femmes.<br>Déplacement à votre domicile ou sur un lieu professionnel (lieu de travail, hôtel, hôpital, résidence secondaire, maison de repos, résidence seniors…).<br>Exclusivité sur le secteur de Cesson-Sévigné.<br>Il s'agit d'un lifting naturel issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>C'est un soin qui permet de redonner de l'éclat au visage, de tonifier votre peau et de rééquilibrer vos énergies et de profonde détente.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.<br>Travail complémentaire sur le décolleté et les ganglions lymphatiques du visage.<br>Durée du soin : 1h30 hors temps de déplacement.<br><br>Consignes avant le soin :<br>Retirer colliers, boucles d'oreilles et nez.<br>Espace de massage à prévoir pour le soin : 330 cm de longueur minimum et 140 cm de largeur minimum.<br>Stationnement facile d'accès.<br>Ascenseur obligatoire pour se rendre sur les lieux du RDV au-delà du 1<sup>er</sup> étage d'un bâtiment.<br>Soin possible en dehors des horaires fixés.<br>Je vous invite à m'adresser un mail SVP.</p>
+        </div>
+        <div class="scard-foot">
+          <button class="scard-toggle" onclick="toggleCard('body-6',this)">En savoir plus <span class="arr">▾</span></button>
+          <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-rsm">Réserver</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1381,12 +1438,14 @@ header .btn-book{display:none !important}
     <div class="gold-bar"></div>
 
     <table class="price-table fade-up">
-      <thead><tr><th>Soins</th><th>Durée</th><th>Tarifs</th></tr></thead>
+      <thead><tr><th>Soins</th><th>Genre</th><th>Durée</th><th>Tarifs</th></tr></thead>
       <tbody>
-        <tr><td data-e="tarif1-soin">Authentique KOBIDO</td><td data-e="tarif1-duree">60 min</td><td data-e="tarif1-prix">80 €</td></tr>
-        <tr><td data-e="tarif2-soin">KOBIDO Intrabuccal</td><td data-e="tarif2-duree">75 min</td><td data-e="tarif2-prix">90 €</td></tr>
-        <tr><td data-e="tarif3-soin">KOGAO Acupression et Réalignement du visage</td><td data-e="tarif3-duree">30 min</td><td data-e="tarif3-prix">50 €</td></tr>
-        <tr><td data-e="tarif4-soin">KOGAO/Drainage visage</td><td data-e="tarif4-duree">60 min</td><td data-e="tarif4-prix">90 €</td></tr>
+        <tr><td data-e="tarif1-soin">Authentique KOBIDO Découverte</td><td data-e="tarif1-genre">Femmes</td><td data-e="tarif1-duree">60 min</td><td data-e="tarif1-prix">60 €</td></tr>
+        <tr><td data-e="tarif2-soin">Authentique KOBIDO</td><td data-e="tarif2-genre">Femmes</td><td data-e="tarif2-duree">60 min</td><td data-e="tarif2-prix">80 €</td></tr>
+        <tr><td data-e="tarif3-soin">KOBIDO Intrabuccal</td><td data-e="tarif3-genre">Femmes</td><td data-e="tarif3-duree">75 min</td><td data-e="tarif3-prix">90 €</td></tr>
+        <tr><td data-e="tarif4-soin">KOGAO Acupression et Réalignement du visage</td><td data-e="tarif4-genre">Mixte</td><td data-e="tarif4-duree">45 min</td><td data-e="tarif4-prix">50 €</td></tr>
+        <tr><td data-e="tarif5-soin">KOGAO/Drainage visage</td><td data-e="tarif5-genre">Femmes</td><td data-e="tarif5-duree">60 min</td><td data-e="tarif5-prix">90 €</td></tr>
+        <tr><td data-e="tarif6-soin">Authentique KOBIDO à Domicile ou lieu Professionnel</td><td data-e="tarif6-genre">Femmes</td><td data-e="tarif6-duree">90 min</td><td data-e="tarif6-prix">120 €</td></tr>
       </tbody>
     </table>
     <div style="text-align:center;margin:-6px 0 40px">
@@ -1404,11 +1463,11 @@ header .btn-book{display:none !important}
         <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-rsm">Réserver</a>
       </div>
       <div class="forfait featured fade-up">
-        <img src="images/atama.jpg" alt="Forfait Excellence" class="forfait-photo" loading="eager" onerror="this.style.display='none'">
+        <img src="images/kogao.jpg" alt="Forfait Excellence" class="forfait-photo" loading="eager" onerror="this.style.display='none'">
         <h3 data-e="forfait2-nom">Excellence</h3>
-        <p class="detail" data-e="forfait2-detail">8 X KOBIDO Intrabuccal<br>75 min</p>
-        <div class="price" data-e="forfait2-prix">670 €</div>
-        <span class="eco" data-e="forfait2-eco">économie 50 €</span>
+        <p class="detail" data-e="forfait2-detail">8 X KOGAO Réalignement du visage<br>45 min</p>
+        <div class="price" data-e="forfait2-prix">360 €</div>
+        <span class="eco" data-e="forfait2-eco">économie 40 €</span>
         <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-rsm">Réserver</a>
       </div>
     </div>
@@ -1529,7 +1588,7 @@ header .btn-book{display:none !important}
   <div class="wrap">
     <span class="eyebrow fade-up">お客様の声</span>
     <h2 class="sec-title shine-title">Elles en parlent</h2>
-    <p class="sec-sub fade-up">★ 4,9 — 32 avis</p>
+    <p class="sec-sub fade-up">★ 4,9 — 40 avis</p>
     <div class="gold-bar"></div>
 
     <div class="review-cta fade-up">
@@ -1860,5 +1919,33 @@ document.querySelectorAll('.promo-tag').forEach(t=>{
   addEventListener('scroll',onScroll,{passive:true});
   addEventListener('resize',onScroll,{passive:true});
   move();
+})();
+</script>
+
+<!-- Statistiques anonymes (sans cookie) : visites + clics « Réserver ».
+     Ajouter ?nostat=1 à l'adresse une fois pour ne plus compter ce navigateur. -->
+<script>
+(function(){
+  var URL='https://hnvxzaxvbasmoktagtif.supabase.co/rest/v1/events',
+      KEY='sb_publishable_hR9tU6w-M68AxQyo8fPaqg_Sre-fIjw';
+  try{
+    if(/[?&]nostat=1/.test(location.search)) localStorage.setItem('if_nostat','1');
+    if(/[?&]nostat=0/.test(location.search)) localStorage.removeItem('if_nostat');
+    if(localStorage.getItem('if_nostat')==='1') return;
+  }catch(e){}
+  if(location.protocol==='file:'||/^(localhost|127\.)/.test(location.hostname)||navigator.webdriver) return;
+  var device=matchMedia('(max-width:768px)').matches?'mobile':'desktop';
+  function send(type,label){
+    try{fetch(URL,{method:'POST',keepalive:true,headers:{'apikey':KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
+      body:JSON.stringify({type:type,label:label||null,device:device})}).catch(function(){});}catch(e){}
+  }
+  var seen=false;try{seen=sessionStorage.getItem('if_v')==='1';sessionStorage.setItem('if_v','1');}catch(e){}
+  if(!seen) send('visit');
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href*="glaads.com"]');
+    if(!a) return;
+    var card=a.closest('.scard,.forfait'), n=card&&card.querySelector('.scard-name,h3');
+    send('booking',((n?n.textContent:a.textContent)||'').trim().slice(0,80));
+  },true);
 })();
 </script>

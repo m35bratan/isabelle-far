@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Modifier mon site — Isabelle FAR.</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%235E4319'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' fill='%23E8D48A' text-anchor='middle'%3EiK%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
@@ -161,7 +161,7 @@ const GROUPES = [
       champs:[ {k:'accueil-ligne1', l:'Phrase d’accroche — 1re ligne', t:'zone'},
                {k:'accueil-ligne2', l:'Phrase d’accroche — 2e ligne', t:'zone'} ] } ] },
 
-  { id:'soins', titre:'Mes soins', blocs:[1,2,3,4].map(n=>(
+  { id:'soins', titre:'Mes soins', blocs:[1,2,3,4,5,6].map(n=>(
     { h:'Soin n°'+n, aide:'',
       champs:[ {k:'soin'+n+'-nom', l:'Nom du soin'},
                {k:'soin'+n+'-accroche', l:'Petite phrase de présentation'},
@@ -170,9 +170,10 @@ const GROUPES = [
                {k:'soin'+n+'-desc', l:'Description complète', t:'zone'} ] })) },
 
   { id:'tarifs', titre:'Tarifs', blocs:[
-    { h:'Tableau des tarifs', aide:'Les quatre lignes du tableau « Séances à l’unité ».',
-      champs:[1,2,3,4].flatMap(n=>[
+    { h:'Tableau des tarifs', aide:'Les six lignes du tableau « Séances à l’unité ».',
+      champs:[1,2,3,4,5,6].flatMap(n=>[
         {k:'tarif'+n+'-soin', l:'Ligne '+n+' — soin'},
+        {k:'tarif'+n+'-genre', l:'Genre', demi:true},
         {k:'tarif'+n+'-duree', l:'Durée', demi:true},
         {k:'tarif'+n+'-prix', l:'Tarif', demi:true} ]) } ] },
 
@@ -236,9 +237,11 @@ const GROUPES = [
     {f:'images/diplome.jpg',   l:'Remise du diplôme'},
     {f:'images/logo-hero.png', l:'Logo de la page d’accueil'},
     {f:'images/kobido.jpg',    l:'Photo — Authentique KOBIDO Lift'},
-    {f:'images/kogao.jpg',     l:'Photo — KOGAO (sert aussi au forfait Essentiel)'},
+    {f:'images/kogao.jpg',     l:'Photo — KOGAO (sert aussi au forfait Excellence)'},
     {f:'images/drainage.jpg',  l:'Photo — KOGAO/Drainage visage'},
-    {f:'images/atama.jpg',     l:'Photo — KOBIDO Intrabuccal (sert aussi au forfait Excellence)'},
+    {f:'images/atama.jpg',     l:'Photo — KOBIDO Intrabuccal'},
+    {f:'images/kobido-decouverte.jpg', l:'Photo — KOBIDO Découverte'},
+    {f:'images/kobido-domicile.jpg', l:'Photo — KOBIDO à Domicile'},
     {f:'images/histoire.jpg',  l:'Estampe (Le saviez-vous)'} ] }
 ];
 
