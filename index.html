@@ -346,6 +346,9 @@ section[id]{scroll-margin-top:82px}
 .forfait.featured{border-color:var(--gold);box-shadow:0 0 30px rgba(201,168,76,.18)}
 .forfait h3{font-size:1.5rem;color:var(--gold-lt)}
 .forfait .detail{color:var(--parch);opacity:.85;margin:8px 0 14px;font-size:.95rem}
+/* Forfaits : sous-titre entre le nom et le contenu (« Lift naturel »,
+   « Éclat »). Sans couleur propre : il hérite du brun de la carte. */
+.forfait-sub{font-style:italic;font-size:.95rem;opacity:.85;margin-top:2px}
 .forfait .price{font-size:2.4rem;color:var(--gold-lt);font-weight:500}
 .forfait .eco{display:block;margin-top:6px;font-size:.82rem;color:var(--green-lt);letter-spacing:.06em}
 .forfait .btn-rsm{margin-top:16px;display:inline-block}
@@ -372,7 +375,7 @@ section[id]{scroll-margin-top:82px}
 .giftcard-note{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;opacity:.9}
 
 .quote{max-width:640px;margin:56px auto 0;text-align:center;font-style:italic;font-size:1.5rem;color:var(--cream);line-height:1.7;position:relative}
-.quote::before{content:"“";font-size:4rem;color:var(--gold);opacity:.4;display:block;line-height:.5;margin-bottom:10px}
+.quote::before{content:"“";font-size:4rem;color:#111;opacity:1;display:block;line-height:.5;margin-bottom:10px}
 .quote cite{display:block;margin-top:16px;font-style:normal;font-size:1rem;letter-spacing:.15em;color:var(--gold-lt);text-transform:uppercase}
 
 /* ============ QUI SUIS-JE ============ */
@@ -1455,19 +1458,21 @@ header .btn-book{display:none !important}
     <h3 class="sec-title shine-title" style="font-size:2rem">Forfaits</h3>
     <div class="forfaits">
       <div class="forfait fade-up">
-        <img src="images/forfait-essentiel.jpg" alt="Forfait Essentiel" class="forfait-photo" loading="eager" onerror="this.style.display='none'">
+        <img src="images/kogao.jpg" alt="Forfait Essentiel" class="forfait-photo" loading="eager" onerror="this.style.display='none'">
         <h3 data-e="forfait1-nom">Essentiel</h3>
-        <p class="detail" data-e="forfait1-detail">8 X Authentique KOBIDO<br>60 min</p>
-        <div class="price" data-e="forfait1-prix">590 €</div>
-        <span class="eco" data-e="forfait1-eco">économie 50 €</span>
+        <p class="forfait-sub" data-e="forfait1-sub">Éclat</p>
+        <p class="detail" data-e="forfait1-detail">8 X KOGAO Réalignement du visage<br>45 min</p>
+        <div class="price" data-e="forfait1-prix">360 €</div>
+        <span class="eco" data-e="forfait1-eco">économie 40 €</span>
         <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-rsm">Réserver</a>
       </div>
       <div class="forfait featured fade-up">
-        <img src="images/kogao.jpg" alt="Forfait Excellence" class="forfait-photo" loading="eager" onerror="this.style.display='none'">
+        <img src="images/forfait-essentiel.jpg" alt="Forfait Excellence" class="forfait-photo" loading="eager" onerror="this.style.display='none'">
         <h3 data-e="forfait2-nom">Excellence</h3>
-        <p class="detail" data-e="forfait2-detail">8 X KOGAO Réalignement du visage<br>45 min</p>
-        <div class="price" data-e="forfait2-prix">360 €</div>
-        <span class="eco" data-e="forfait2-eco">économie 40 €</span>
+        <p class="forfait-sub" data-e="forfait2-sub">Lift naturel</p>
+        <p class="detail" data-e="forfait2-detail">8 X Authentique KOBIDO<br>60 min</p>
+        <div class="price" data-e="forfait2-prix">590 €</div>
+        <span class="eco" data-e="forfait2-eco">économie 50 €</span>
         <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-rsm">Réserver</a>
       </div>
     </div>

@@ -180,6 +180,7 @@ const GROUPES = [
   { id:'forfaits', titre:'Forfaits', blocs:[1,2].map(n=>(
     { h:'Forfait n°'+n, aide:'',
       champs:[ {k:'forfait'+n+'-nom', l:'Nom du forfait'},
+               {k:'forfait'+n+'-sub', l:'Sous-titre'},
                {k:'forfait'+n+'-detail', l:'Ce qu’il comprend', t:'zone'},
                {k:'forfait'+n+'-prix', l:'Prix', demi:true},
                {k:'forfait'+n+'-eco', l:'Mention d’économie', demi:true} ] })) },
