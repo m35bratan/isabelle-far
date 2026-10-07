@@ -352,6 +352,13 @@ section[id]{scroll-margin-top:82px}
 .forfait .price{font-size:2.4rem;color:var(--gold-lt);font-weight:500}
 .forfait .eco{display:block;margin-top:6px;font-size:.82rem;color:var(--green-lt);letter-spacing:.06em}
 .forfait .btn-rsm{margin-top:16px;display:inline-block}
+/* Forfaits : les cartes d'une même rangée ont déjà la même hauteur (grille).
+   On les met en colonne et on laisse la zone de description absorber l'écart :
+   quel que soit le nombre de lignes du contenu, le prix, la mention d'économie
+   et le bouton restent alignés d'une carte à l'autre. */
+.forfait{display:flex;flex-direction:column}
+.forfait .detail{flex:1 1 auto}
+.forfait .btn-rsm{align-self:center}
 
 /* carte cadeau */
 .giftcard{position:relative;overflow:hidden;margin-top:28px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;
