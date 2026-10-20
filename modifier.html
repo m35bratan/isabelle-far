@@ -167,23 +167,27 @@ const GROUPES = [
                {k:'soin'+n+'-accroche', l:'Petite phrase de présentation'},
                {k:'soin'+n+'-duree', l:'Durée', demi:true},
                {k:'soin'+n+'-prix', l:'Prix affiché', demi:true},
-               {k:'soin'+n+'-desc', l:'Description complète', t:'zone'} ] })) },
+               {k:'soin'+n+'-desc', l:'Description complète', t:'zone'} ] })).concat([
+    { h:'Soin n°7 — PROS (Animation Bien-être au travail)', aide:'Pas de durée ni de prix : cette offre est sur devis.',
+      champs:[ {k:'soin7-nom', l:'Nom du soin'},
+               {k:'soin7-accroche', l:'Petite phrase de présentation'},
+               {k:'soin7-desc', l:'Description complète', t:'zone'} ] } ]) },
 
   { id:'tarifs', titre:'Tarifs', blocs:[
-    { h:'Tableau des tarifs', aide:'Les six lignes du tableau « Séances à l’unité ».',
+    { h:'Tableau des tarifs', aide:'Les six lignes du tableau « Soins à l’unité ».',
       champs:[1,2,3,4,5,6].flatMap(n=>[
         {k:'tarif'+n+'-soin', l:'Ligne '+n+' — soin'},
         {k:'tarif'+n+'-genre', l:'Genre', demi:true},
         {k:'tarif'+n+'-duree', l:'Durée', demi:true},
         {k:'tarif'+n+'-prix', l:'Tarif', demi:true} ]) } ] },
 
-  { id:'forfaits', titre:'Forfaits', blocs:[1,2].map(n=>(
+  { id:'forfaits', titre:'Forfaits', blocs:[{ h:'Phrase sous le titre « Forfaits »', aide:'', champs:[ {k:'forfaits-accroche', l:'Phrase d’accroche'} ] }].concat([1,2].map(n=>(
     { h:'Forfait n°'+n, aide:'',
       champs:[ {k:'forfait'+n+'-nom', l:'Nom du forfait'},
                {k:'forfait'+n+'-sub', l:'Sous-titre'},
                {k:'forfait'+n+'-detail', l:'Ce qu’il comprend', t:'zone'},
                {k:'forfait'+n+'-prix', l:'Prix', demi:true},
-               {k:'forfait'+n+'-eco', l:'Mention d’économie', demi:true} ] })) },
+               {k:'forfait'+n+'-eco', l:'Mention d’économie', demi:true} ] }))) },
 
   { id:'horaires', titre:'Horaires', blocs:[
     { h:'Vos horaires d’ouverture', aide:'À gauche le jour, à droite l’horaire (ou « Fermé »).',
@@ -196,10 +200,9 @@ const GROUPES = [
       champs:[ {k:'reco-titre', l:'Titre de l’encadré'},
                {k:'reco-p1', l:'Paragraphe 1', t:'zone'},
                {k:'reco-p2', l:'Paragraphe 2', t:'zone'},
-               {k:'reco-p3', l:'Paragraphe 3', t:'zone'},
-               {k:'reco-p4', l:'Paragraphe 4', t:'zone'},
-               {k:'reco-p5', l:'Paragraphe 5', t:'zone'},
-               {k:'reco-p6', l:'Paragraphe 6', t:'zone'} ] } ] },
+               {k:'reco-p4', l:'Paragraphe 3', t:'zone'},
+               {k:'reco-p5', l:'Paragraphe 4', t:'zone'},
+               {k:'reco-p6', l:'Paragraphe 5', t:'zone'} ] } ] },
 
   { id:'apropos', titre:'Qui suis-je', blocs:[
     { h:'Votre présentation', aide:'Dans le titre, retour à la ligne = nouvelle ligne affichée. Le dernier paragraphe est le proverbe japonais.',
@@ -243,6 +246,7 @@ const GROUPES = [
     {f:'images/atama.jpg',     l:'Photo — KOBIDO Intrabuccal'},
     {f:'images/kobido-decouverte.jpg', l:'Photo — KOBIDO Découverte'},
     {f:'images/kobido-domicile.jpg', l:'Photo — KOBIDO à Domicile'},
+    {f:'images/pros-bureau.jpg', l:'Photo — PROS (Bien-être au travail)'},
     {f:'images/histoire.jpg',  l:'Estampe (Le saviez-vous)'} ] }
 ];
 
@@ -266,6 +270,7 @@ function versFormulaire(html){
     .replace(/<br\b[^>]*>/gi, '\n')
     .replace(/<strong>(.*?)<\/strong>/gis, '**$1**')
     .replace(/<sup>(.*?)<\/sup>/gis, '^$1^')
+    .replace(/<span class="gr">(.*?)<\/span>/gis, '++$1++')
     .replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>')
     .replace(/&nbsp;/g,' ')
     .trim();
@@ -276,6 +281,7 @@ function versHtml(txt){
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
     .replace(/\*\*(.*?)\*\*/gs, '<strong>$1</strong>')
     .replace(/\^(.*?)\^/gs, '<sup>$1</sup>')
+    .replace(/\+\+(.*?)\+\+/gs, '<span class="gr">$1</span>')
     .replace(/\n/g, '<br>');
 }
 /* remplacement chirurgical dans le HTML brut, par clé */

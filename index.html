@@ -1103,13 +1103,26 @@ header .btn-book{display:none !important}
   #legend .sec-sub{font-size:calc(1.05rem * 1.28)}
 }
 
-/* Logo d'accueil : flottement vertical de 2 px + respiration de 2 %.
+/* Logo d'accueil : flottement vertical de 6 px + respiration de 6 %.
    Deux rythmes décalés (6 s et 8 s) pour un mouvement lent et naturel. */
 .hero-logo-pic{animation:logoFloat 6s ease-in-out infinite;will-change:transform}
 .hero-logo-vid{animation:logoBreath 8s ease-in-out infinite;transform-origin:50% 50%;will-change:transform}
-@keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
-@keyframes logoBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+@keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes logoBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
 @media (prefers-reduced-motion:reduce){.hero-logo-pic,.hero-logo-vid{animation:none}}
+
+/* Forfaits : phrase d'accroche entre le titre et les deux cartes. */
+.forfaits-intro{margin-top:6px;margin-bottom:0;text-wrap:balance}
+/* « 1ère » (carte KOBIDO Découverte) : 1 px de plus que le texte voisin. */
+.scard-stag .gr{font-size:calc(1em + 1px)}
+/* Carte PROS : seule sur sa rangée, elle s'étend sur les deux colonnes de la
+   grille (= 2 cartes + l'espace entre elles). Sur téléphone la grille n'a
+   qu'une colonne : la carte y garde la largeur normale. */
+.scard-pros{grid-column:1 / -1}
+/* Accroche d'accueil : avec « , drainants » la 2e ligne ne tient plus sur un
+   téléphone. Plutôt que de laisser « liftants — » seul sur une 3e ligne, on
+   équilibre les deux lignes (« …sculptants, / drainants et liftants… »). */
+@media (max-width:768px){.hero-h2 [data-e="accueil-ligne2"]{display:block;text-wrap:balance}}
 </style>
 
 <!-- (rouleaux de coin retirés pour un rendu plus épuré) -->
@@ -1262,7 +1275,7 @@ header .btn-book{display:none !important}
 
     <div class="hero-lines"><i></i><i></i><i></i></div>
 
-    <h2 class="hero-h2"><span data-e="accueil-ligne1">Soins japonais du visage au féminin</span> <br class="br-pc"><span data-e="accueil-ligne2">— massages sculptants et liftants —</span></h2>
+    <h2 class="hero-h2"><span data-e="accueil-ligne1">Soins japonais du visage</span> <br class="br-pc"><span data-e="accueil-ligne2">— massages sculptants, drainants et liftants —</span></h2>
 
     <div class="hero-lines hero-lines-2"><i></i><i></i><i></i></div>
 
@@ -1310,7 +1323,7 @@ header .btn-book{display:none !important}
           </div>
         </div>
         <div class="scard-body" id="body-1">
-          <p class="scard-desc" data-e="soin1-desc">Soin ancestral japonais dédié aux femmes.<br>Il s'agit d'un lifting naturel issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>C'est un soin qui permet de redonner de l'éclat au visage, de tonifier votre peau et de rééquilibrer vos énergies.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.</p>
+          <p class="scard-desc" data-e="soin1-desc">Soin ancestral japonais dédié aux femmes.<br>Il s'agit d'un lifting naturel issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>Ce massage favorise la microcirculation.<br>C'est un soin qui permet de redonner de l'éclat au visage, de tonifier votre peau et de rééquilibrer vos énergies.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.</p>
           <div class="promo-tag" data-promo="BIENVENUE10" style="display:none">🎁 Code promo : BIENVENUE10 — 10% sur votre 1ère séance</div>
         </div>
         <div class="scard-foot">
@@ -1328,13 +1341,13 @@ header .btn-book{display:none !important}
           <div class="scard-info">
             <span class="scard-badge scard-badge-ghost" aria-hidden="true">✦</span>
             <h3 class="scard-name" data-e="soin2-nom">KOGAO</h3>
-            <p class="scard-stag" data-e="soin2-accroche">Réalignement du visage par acupression</p>
+            <p class="scard-stag" data-e="soin2-accroche">Amincissement et réalignement du visage par acupression</p>
             <p class="scard-dur" data-e="soin2-duree">45 min</p>
             <p class="scard-price" data-e="soin2-prix">50 €</p>
           </div>
         </div>
         <div class="scard-body" id="body-2">
-          <p class="scard-desc" data-e="soin2-desc">Soin mixte. Hommes et femmes.<br>Sublimez votre visage avec le KOGAO par une technique d'acupression.<br>Il se distingue d'un toucher maîtrisé et méthodique visant à l'harmonisation structurelle et esthétique de votre visage.<br>Véritable art japonais issu de l'enseignement du Maître Izuo Hidetsugu.<br>Le KOGAO associe des techniques de pressions et de stimulations des muscles du visage et du crâne en profondeur pour amincir et réaligner le visage dans la durabilité afin de révéler votre beauté naturelle.<br>Le KOGAO n'est pas un massage par frictions.<br>Les bienfaits :<br>Améliore la circulation sanguine<br>Revitalise les peaux ternes et fatiguées<br>Rééquilibre les tensions musculaires du visage<br>Offrez à votre visage un soin d'exception, des traits reposés et un véritable moment de sérénité.<br>Il s'agit d'un soin de découverte. Par conséquent une remise de 20 % est appliquée jusqu'au 31&nbsp;12&nbsp;2026.</p>
+          <p class="scard-desc" data-e="soin2-desc">Soin mixte. Hommes et femmes.<br>Sublimez votre visage avec le KOGAO par une technique d'acupression similaire à du Shiatsu.<br>Il se distingue d'un toucher maîtrisé et méthodique visant à l'harmonisation structurelle et esthétique de votre visage.<br>Véritable art japonais issu de l'enseignement du Maître Izuo Hidetsugu.<br>Le KOGAO associe des techniques de pressions et de stimulations des muscles du visage et du crâne en profondeur pour amincir et réaligner le visage dans la durabilité afin de révéler votre beauté naturelle.<br>Le KOGAO n'est pas un massage par frictions.<br>Ce massage favorise la microcirculation.<br>Les bienfaits :<br>Améliore la circulation sanguine<br>Revitalise les peaux ternes et fatiguées<br>Rééquilibre les tensions musculaires du visage<br>Offrez à votre visage un soin d'exception, des traits reposés et un véritable moment de sérénité.<br>Il s'agit d'un soin de découverte. Par conséquent une remise de 20 % est appliquée jusqu'au 31&nbsp;12&nbsp;2026.</p>
           <div class="promo-tag" data-promo="KOG311226" style="display:none">🎁 Code promo : KOG311226 — 20 % sur votre soin KOGAO, jusqu'au 31&nbsp;12&nbsp;2026</div>
         </div>
         <div class="scard-foot">
@@ -1397,13 +1410,13 @@ header .btn-book{display:none !important}
           <div class="scard-thumb-fb">🌸</div>
           <div class="scard-info">
             <h3 class="scard-name" data-e="soin5-nom">KOBIDO Découverte</h3>
-            <p class="scard-stag" data-e="soin5-accroche">Massage liftant — 1ère séance</p>
+            <p class="scard-stag" data-e="soin5-accroche">Massage liftant — <span class="gr">1ère</span> séance</p>
             <p class="scard-dur" data-e="soin5-duree">60 min</p>
             <p class="scard-price" data-e="soin5-prix">60 €</p>
           </div>
         </div>
         <div class="scard-body" id="body-5">
-          <p class="scard-desc" data-e="soin5-desc">Soin ancestral japonais dédié aux nouvelles clientes. Valable une seule fois.<br>Il s'agit d'un lifting naturel issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>C'est un soin qui permet de redonner de l'éclat au visage, de tonifier votre peau et de rééquilibrer vos énergies.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.</p>
+          <p class="scard-desc" data-e="soin5-desc">Soin ancestral japonais dédié aux nouvelles clientes. Valable une seule fois.<br>Il s'agit d'un lifting naturel issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>Ce massage favorise la microcirculation.<br>C'est un soin qui permet de redonner de l'éclat au visage, de tonifier votre peau et de rééquilibrer vos énergies.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.</p>
         </div>
         <div class="scard-foot">
           <button class="scard-toggle" onclick="toggleCard('body-5',this)">En savoir plus <span class="arr">▾</span></button>
@@ -1411,25 +1424,45 @@ header .btn-book{display:none !important}
         </div>
       </div>
 
-      <!-- 6 KOBIDO à Domicile ou Professionnel -->
+      <!-- 6 KOBIDO à Domicile ou lieu Professionnel -->
       <div class="scard fade-up">
         <div class="scard-head">
           <img src="images/kobido-domicile.jpg" alt="Soin KOBIDO à domicile ou sur lieu professionnel" class="scard-thumb kobido-photo" loading="eager" style="object-position:center 45%"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="scard-thumb-fb">🌸</div>
           <div class="scard-info">
-            <h3 class="scard-name" data-e="soin6-nom">KOBIDO à Domicile ou Professionnel</h3>
-            <p class="scard-stag" data-e="soin6-accroche">Exclusivité secteur Cesson-Sévigné</p>
+            <h3 class="scard-name" data-e="soin6-nom">KOBIDO à Domicile ou lieu Professionnel</h3>
+            <p class="scard-stag" data-e="soin6-accroche">Secteur Cesson-Sévigné + rayon 8 km</p>
             <p class="scard-dur" data-e="soin6-duree">90 min</p>
             <p class="scard-price" data-e="soin6-prix">110 €</p>
           </div>
         </div>
         <div class="scard-body" id="body-6">
-          <p class="scard-desc" data-e="soin6-desc">Soin ancestral japonais dédié aux femmes.<br>Déplacement à votre domicile ou sur un lieu professionnel (lieu de travail, hôtel, hôpital, résidence secondaire, maison de repos, résidence seniors…).<br>Exclusivité sur le secteur de Cesson-Sévigné.<br>Il s'agit d'un lifting naturel issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>C'est un soin qui permet de redonner de l'éclat au visage, de tonifier votre peau et de rééquilibrer vos énergies et de profonde détente.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.<br>Travail complémentaire sur le décolleté et les ganglions lymphatiques du visage.<br>Durée du soin : 1h30 hors temps de déplacement.<br><br>Consignes avant le soin :<br>Retirer colliers, boucles d'oreilles et nez.<br>Espace de massage à prévoir pour le soin : 330 cm de longueur minimum et 140 cm de largeur minimum.<br>Stationnement facile d'accès.<br>Ascenseur obligatoire pour se rendre sur les lieux du RDV au-delà du 1<sup>er</sup> étage d'un bâtiment.<br>Soin possible en dehors des horaires fixés.<br>Je vous invite à m'adresser un mail SVP.</p>
+          <p class="scard-desc" data-e="soin6-desc">Soin ancestral japonais dédié aux femmes.<br>Déplacement à votre domicile ou sur un lieu professionnel (lieu de travail, hôtel, hôpital, résidence secondaire, maison de repos, résidence seniors…).<br>Il s'agit d'un lifting naturel issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>C'est un soin qui permet de redonner de l'éclat au visage, de tonifier votre peau et de rééquilibrer vos énergies et de profonde détente.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.<br>Travail complémentaire sur le décolleté et les ganglions lymphatiques du visage.<br>Durée du soin : 1h30 hors temps de déplacement.<br><br>Consignes avant le soin :<br>Retirer colliers, boucles d'oreilles et nez.<br>Espace de massage recommandé pour le soin : 330 cm de longueur minimum et 140 cm de largeur minimum.<br>Stationnement facile d'accès.<br>Ascenseur recommandé pour se rendre sur les lieux du RDV au-delà du 1<sup>er</sup> étage d'un bâtiment.<br>Soin possible en dehors des horaires fixés.<br>Je vous invite à m'adresser un mail SVP.</p>
         </div>
         <div class="scard-foot">
           <button class="scard-toggle" onclick="toggleCard('body-6',this)">En savoir plus <span class="arr">▾</span></button>
           <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-rsm">Réserver</a>
+        </div>
+      </div>
+
+      <!-- 7 PROS — Animation Bien-être au travail -->
+      <div class="scard scard-pros fade-up">
+        <div class="scard-head">
+          <img src="images/pros-bureau.jpg" alt="Animation bien-être au travail : massage du visage d'un salarié installé à son bureau" class="scard-thumb kobido-photo" loading="eager"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="scard-thumb-fb">🌸</div>
+          <div class="scard-info">
+            <h3 class="scard-name" data-e="soin7-nom">PROS</h3>
+            <p class="scard-stag" data-e="soin7-accroche">Animation Bien-être au travail</p>
+          </div>
+        </div>
+        <div class="scard-body" id="body-7">
+          <p class="scard-desc" data-e="soin7-desc">5 animations proposées en tenue habillée sur lieu professionnel :<br>• Massage dos AMMA assis<br>• Massage visage KOGAO acupression<br>• Massage visage KOBIDO liftant<br>• Massage palmaire et plantaire<br>Équipe Bien-être constituée de 2 praticiennes.<br>Prestations qui nécessitent un endroit calme, fermé, et une seule personne à la fois.<br>Devis sur demande par mail à isabelle.far35@gmail.com en précisant :<br>Le nom de la société :<br>L'adresse :<br>L'intitulé de l'évènement :<br>Nbre de personnes concernées :<br>Dates souhaitées :<br>Créneaux horaires :</p>
+        </div>
+        <div class="scard-foot">
+          <button class="scard-toggle" onclick="toggleCard('body-7',this)">En savoir plus <span class="arr">▾</span></button>
+          <a href="mailto:isabelle.far35@gmail.com?subject=Devis%20-%20Animation%20bien-%C3%AAtre%20au%20travail" class="btn-rsm">Demander un devis</a>
         </div>
       </div>
     </div>
@@ -1444,7 +1477,7 @@ header .btn-book{display:none !important}
   <div class="wrap">
     <span class="eyebrow fade-up">料金</span>
     <h2 class="sec-title shine-title">Tarifs & forfaits</h2>
-    <p class="sec-sub fade-up">Séances à l'unité</p>
+    <p class="sec-sub fade-up">Soins à l'unité</p>
     <div class="gold-bar"></div>
 
     <table class="price-table fade-up">
@@ -1452,8 +1485,8 @@ header .btn-book{display:none !important}
       <tbody>
         <tr><td data-e="tarif1-soin">Authentique KOBIDO Découverte</td><td data-e="tarif1-genre">Femmes</td><td data-e="tarif1-duree">60 min</td><td data-e="tarif1-prix">60 €</td></tr>
         <tr><td data-e="tarif2-soin">Authentique KOBIDO</td><td data-e="tarif2-genre">Femmes</td><td data-e="tarif2-duree">60 min</td><td data-e="tarif2-prix">80 €</td></tr>
-        <tr><td data-e="tarif3-soin">KOBIDO Intrabuccal</td><td data-e="tarif3-genre">Femmes</td><td data-e="tarif3-duree">75 min</td><td data-e="tarif3-prix">90 €</td></tr>
-        <tr><td data-e="tarif4-soin">KOGAO Acupression et Réalignement du visage</td><td data-e="tarif4-genre">Mixte</td><td data-e="tarif4-duree">45 min</td><td data-e="tarif4-prix">50 €</td></tr>
+        <tr><td data-e="tarif3-soin">Authentique KOBIDO Intrabuccal</td><td data-e="tarif3-genre">Femmes</td><td data-e="tarif3-duree">75 min</td><td data-e="tarif3-prix">90 €</td></tr>
+        <tr><td data-e="tarif4-soin">KOGAO Acupression et Amincissement du visage</td><td data-e="tarif4-genre">Mixte</td><td data-e="tarif4-duree">45 min</td><td data-e="tarif4-prix">50 €</td></tr>
         <tr><td data-e="tarif5-soin">KOGAO &amp; Drainage visage</td><td data-e="tarif5-genre">Femmes</td><td data-e="tarif5-duree">60 min</td><td data-e="tarif5-prix">70 €</td></tr>
         <tr><td data-e="tarif6-soin">Authentique KOBIDO à Domicile ou lieu Professionnel</td><td data-e="tarif6-genre">Femmes</td><td data-e="tarif6-duree">90 min</td><td data-e="tarif6-prix">110 €</td></tr>
       </tbody>
@@ -1463,6 +1496,7 @@ header .btn-book{display:none !important}
     </div>
 
     <h3 class="sec-title shine-title" style="font-size:2rem">Forfaits</h3>
+    <p class="sec-sub fade-up forfaits-intro" data-e="forfaits-accroche">Laisser vous emporter et faites confiance à l'art japonais.</p>
     <div class="forfaits">
       <div class="forfait fade-up">
         <img src="images/kogao.jpg" alt="Forfait Essentiel" class="forfait-photo" loading="eager" onerror="this.style.display='none'">
@@ -1478,8 +1512,8 @@ header .btn-book{display:none !important}
         <h3 data-e="forfait2-nom">Excellence</h3>
         <p class="forfait-sub" data-e="forfait2-sub">Lift naturel</p>
         <p class="detail" data-e="forfait2-detail">8 X Authentique KOBIDO<br>60 min</p>
-        <div class="price" data-e="forfait2-prix">520 €</div>
-        <span class="eco" data-e="forfait2-eco">économie 120 €</span>
+        <div class="price" data-e="forfait2-prix">540 €</div>
+        <span class="eco" data-e="forfait2-eco">économie 100 €</span>
         <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-rsm">Réserver</a>
       </div>
     </div>
@@ -1528,9 +1562,8 @@ header .btn-book{display:none !important}
       </div>
       <div class="reco-col">
         <h3 data-e="reco-titre">📍 Recommandations pour le rendez-vous</h3>
-        <p data-e="reco-p1"><strong>Cabinet à domicile</strong> — 76 rue de la Coulée, 35510 Cesson‑Sévigné.<br>Lieu calme et à l'abri des regards. Vous pouvez sonner afin que je puisse vous accueillir.</p>
-        <p data-e="reco-p2">Pour ne pas gêner les riverains, veuillez SVP vous garer aux emplacements gratuits le long de la « rue de Bellevue », près de l'arrêt de bus C6 — la Coulée.</p>
-        <p data-e="reco-p3">Le lieu ne dispose pas de salle d'attente.</p>
+        <p data-e="reco-p1"><strong>Cabinet à domicile</strong> — 76 rue de la Coulée, 35510 Cesson‑Sévigné.<br>Cadre agréable, au calme et à l'abri des regards.<br>Vous pouvez sonner ou frapper à la porte afin que je puisse vous accueillir.<br>Maison individuelle en bout d'impasse dans un quartier résidentiel. Escalier de 4 marches pour accéder à la porte d'entrée.<br>Le lieu ne dispose pas de salle d'attente et n'est pas accessible PMR.</p>
+        <p data-e="reco-p2">Pour ne pas gêner les riverains, veuillez SVP vous garer aux emplacements gratuits le long de la « rue de Bellevue », près de l'arrêt de bus C6 ou 34 — « la Coulée ».<br>En marge de l'arrêt de bus, un chemin piéton vous permet de vous rendre directement au RDV à 2 min à pied.</p>
         <p data-e="reco-p4">Un démaquillage sur place est prévu avant la séance.</p>
         <p data-e="reco-p5">Pour un soin optimal, merci de retirer colliers et boucles d'oreilles avant la séance.</p>
         <p data-e="reco-p6">Au plaisir de vous recevoir pour un moment rien que pour vous.<br>Bien à vous.<br>Isabelle.</p>
@@ -1600,7 +1633,7 @@ header .btn-book{display:none !important}
   <div class="wrap">
     <span class="eyebrow fade-up">お客様の声</span>
     <h2 class="sec-title shine-title">Elles en parlent</h2>
-    <p class="sec-sub fade-up">★ 4,9 — 40 avis</p>
+    <p class="sec-sub fade-up">★ 4,9 — 43 avis</p>
     <div class="gold-bar"></div>
 
     <div class="review-cta fade-up">
