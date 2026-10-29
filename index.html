@@ -1115,6 +1115,10 @@ header .btn-book{display:none !important}
 .forfaits-intro{margin-top:6px;margin-bottom:0;text-wrap:balance}
 /* « 1ère » (carte KOBIDO Découverte) : 1 px de plus que le texte voisin. */
 .scard-stag .gr{font-size:calc(1em + 1px)}
+/* Carte KOGAO : lien vers l'article de presse, tout en bas du déroulé. */
+.scard-press{margin-top:14px}
+.scard-press a{display:inline-block;padding:6px 0;font-weight:600;color:#4a3006;text-decoration:underline;text-underline-offset:3px}
+.scard-press a:hover{color:#000}
 /* Carte PROS : seule sur sa rangée, elle s'étend sur les deux colonnes de la
    grille (= 2 cartes + l'espace entre elles). Sur téléphone la grille n'a
    qu'une colonne : la carte y garde la largeur normale. */
@@ -1349,6 +1353,7 @@ header .btn-book{display:none !important}
         <div class="scard-body" id="body-2">
           <p class="scard-desc" data-e="soin2-desc">Soin mixte. Hommes et femmes.<br>Sublimez votre visage avec le KOGAO par une technique d'acupression similaire à du Shiatsu.<br>Il se distingue d'un toucher maîtrisé et méthodique visant à l'harmonisation structurelle et esthétique de votre visage.<br>Véritable art japonais issu de l'enseignement du Maître Izuo Hidetsugu.<br>Le KOGAO associe des techniques de pressions et de stimulations des muscles du visage et du crâne en profondeur pour amincir et réaligner le visage dans la durabilité afin de révéler votre beauté naturelle.<br>Le KOGAO n'est pas un massage par frictions.<br>Ce massage favorise la microcirculation.<br>Les bienfaits :<br>Améliore la circulation sanguine<br>Revitalise les peaux ternes et fatiguées<br>Rééquilibre les tensions musculaires du visage<br>Offrez à votre visage un soin d'exception, des traits reposés et un véritable moment de sérénité.<br>Il s'agit d'un soin de découverte. Par conséquent une remise de 20 % est appliquée jusqu'au 31&nbsp;12&nbsp;2026.</p>
           <div class="promo-tag" data-promo="KOG311226" style="display:none">🎁 Code promo : KOG311226 — 20 % sur votre soin KOGAO, jusqu'au 31&nbsp;12&nbsp;2026</div>
+          <p class="scard-press"><a href="images/article-presse-kogao.jpg" target="_blank" rel="noopener" title="Lire l'article de presse sur le KOGAO (s'ouvre dans un nouvel onglet)">Article de Presse</a></p>
         </div>
         <div class="scard-foot">
           <button class="scard-toggle" onclick="toggleCard('body-2',this)">En savoir plus <span class="arr">▾</span></button>
@@ -1449,7 +1454,7 @@ header .btn-book{display:none !important}
       <!-- 7 PROS — Animation Bien-être au travail -->
       <div class="scard scard-pros fade-up">
         <div class="scard-head">
-          <img src="images/pros-bureau.jpg" alt="Animation bien-être au travail : massage du visage d'un salarié installé à son bureau" class="scard-thumb kobido-photo" loading="eager"
+          <img src="images/pros-illustration.jpg" alt="Animation bien-être au travail : massage du dos d'un salarié installé sur une chaise de massage" class="scard-thumb kobido-photo" loading="eager"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="scard-thumb-fb">🌸</div>
           <div class="scard-info">
