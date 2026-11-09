@@ -17,15 +17,9 @@
 <!-- Google Search Console : vérification de propriété du site -->
 <meta name="google-site-verification" content="002Rg-sBWzw4MxMhWoeEqgZKnDmO6bPkB31dWhjchTY" />
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3GTWPQ89EC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-3GTWPQ89EC');
-</script>
+<!-- Google Analytics (G-3GTWPQ89EC) : volontairement ABSENT du <head>.
+     Il n'est chargé qu'après un « Accepter » sur le bandeau Cookies (script
+     « Cookies » en fin de page), conformément aux règles de la CNIL. -->
 
 <!-- Favicon : médaillon « iKO » -->
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
@@ -298,7 +292,7 @@ section[id]{scroll-margin-top:82px}
 /* ============ TICKER ============ */
 .ticker{overflow:hidden;white-space:nowrap;padding:14px 0;background:rgba(201,168,76,.07);
   border-top:1px solid rgba(201,168,76,.18);border-bottom:1px solid rgba(201,168,76,.18)}
-.ticker-inner{display:inline-flex;animation:tickerRun 30s linear infinite}
+.ticker-inner{display:inline-flex;animation:tickerRun 41s linear infinite}
 .ticker-inner span{font-family:var(--font-jp);font-size:1.1rem;letter-spacing:.18em;color:var(--gold-lt);padding:0 8px}
 .ticker-inner .sep{color:var(--gold);opacity:.6}
 @keyframes tickerRun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -464,7 +458,7 @@ section[id]{scroll-margin-top:82px}
 
 .social-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:760px;margin:0 auto}
 .social-grid .ig-card{margin-top:36px}
-@media (max-width:768px){.social-grid{grid-template-columns:1fr}}
+@media (max-width:883px){.social-grid{grid-template-columns:1fr}}
 .ig-card{max-width:520px;margin:36px auto 0;text-align:center;padding:40px 30px;border-radius:20px;
   background:linear-gradient(160deg,rgba(44,28,16,.8),rgba(20,12,6,.9));border:1px solid rgba(201,168,76,.25)}
 .ig-card .ig-big{width:56px;height:56px;color:var(--gold-lt);margin:0 auto 16px}
@@ -483,7 +477,7 @@ footer{position:relative;background:linear-gradient(180deg,#160d06,#0a0602);bord
   color:var(--parch);opacity:.6;font-size:.85rem;letter-spacing:.05em}
 
 /* ============ RESPONSIVE ============ */
-@media (max-width:768px){
+@media (max-width:883px){
   .bamboo,.leaf-corner{display:none}
   .knob{width:150px}
   .nav{display:none}
@@ -578,7 +572,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-lt);outline-of
 /* ============================================================
    OPTIMISATIONS MOBILE
    ============================================================ */
-@media (max-width:768px){
+@media (max-width:883px){
   section{padding:60px 0}
   #hero{padding-top:100px}
   .wrap{padding:0 18px}
@@ -605,7 +599,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-lt);outline-of
   .forfait{padding:24px 18px}
   .scard{padding:20px}
 }
-@media (max-width:400px){
+@media (max-width:460px){
   .hero-title{font-size:2.43rem}
   .header-mobile-book{padding:7px 12px;font-size:.78rem}
   .price-table th,.price-table td{padding:9px 6px;font-size:.82rem}
@@ -719,7 +713,7 @@ header .navlink::after{background:#E8D48A !important}
    mêmes éléments, mêmes libellés, rien de masqué, rien en plus ;
    seule la mise en page se replie sur une colonne
    ============================================================ */
-@media (max-width:768px){
+@media (max-width:883px){
   /* EN-TÊTE SUR UNE SEULE LIGNE : marque à gauche, navigation à droite.
      Tout tient sur une rangée ; seul le sous-titre « Facialiste » est
      retiré, faute de largeur disponible sur un téléphone. */
@@ -792,7 +786,7 @@ header .navlink::after{background:#E8D48A !important}
    l'en-tête plus haut prévu pour les tablettes.
    NB : les media queries s'évaluent sur la largeur physique du viewport,
    pas sur la largeur CSS élargie par le zoom — vérifié. */
-@media (max-width:470px){
+@media (max-width:541px){
   /* on récupère la largeur qui manquait sur les écrans de 360px :
      marges de l'en-tête, écarts entre liens et taille du logo */
   header{padding:4px 10px;gap:6px}
@@ -829,9 +823,9 @@ header .navlink::after{background:#E8D48A !important}
           mask-image:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent)}
 
 /* ============================================================
-   DÉZOOM GLOBAL — rendu à 85 %, comme un zoom navigateur
+   ZOOM GLOBAL — 85 % (dézoom d'origine) × 1,15 = 97,75 %, comme un zoom navigateur
    ============================================================ */
-html{zoom:.85}
+html{zoom:.9775}
 
 /* ============================================================
    RÉVISION — barre noire/or, texte +2px, photos, divers
@@ -876,17 +870,17 @@ h3.sec-title{font-size:32px !important}
 .ig-card h3{font-size:24px !important}
 .footer-grid h4{font-size:14.4px !important}
 .reco-box h3{font-size:20px !important}
-@media (max-width:768px){
+@media (max-width:883px){
   .sec-title{font-size:32px !important}
   .hero-h2{font-size:21.6px !important}
 }
-@media (max-width:400px){
+@media (max-width:460px){
   .hero-title{font-size:38.88px !important}
 }
 
 /* --- 4 & 11 : retours à la ligne réservés à la version ordinateur --- */
 .br-pc{display:inline}
-@media (max-width:768px){.br-pc{display:none}}
+@media (max-width:883px){.br-pc{display:none}}
 
 /* --- 5 : le slogan ne se coupe jamais --- */
 .nowrap-slogan{white-space:nowrap}
@@ -903,7 +897,7 @@ h3.sec-title{font-size:32px !important}
 .photo-cell,.about-photo-wrap,.legend-img,.forfait-photo,.scard-thumb{
   border:2px solid #C9A84C !important;
   box-shadow:0 8px 22px rgba(60,40,10,.28) !important}
-@media (max-width:768px){
+@media (max-width:883px){
   .photo-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:14px !important}
 }
 
@@ -925,7 +919,7 @@ h3.sec-title{font-size:32px !important}
 .contact-card > div{background:linear-gradient(155deg,rgba(150,113,62,.42),rgba(120,88,44,.4));
   border:1px solid rgba(74,48,6,.45);border-radius:14px;
   box-shadow:0 8px 22px rgba(60,40,10,.22);padding:26px 26px}
-@media (max-width:768px){.contact-card{padding:0 !important}}
+@media (max-width:883px){.contact-card{padding:0 !important}}
 
 /* Horaires et Recommandations empilés : un seul encart par ligne,
    Recommandations en premier, Horaires en dessous. */
@@ -977,14 +971,14 @@ header .btn-book{display:none !important}
   padding:11px 15px;border-radius:9px}
 .panel-close{display:none !important}
 /* l'en-tête est plus basse sur téléphone : le menu remonte d'autant */
-@media (max-width:768px){.mobile-panel{top:74px !important}}
+@media (max-width:883px){.mobile-panel{top:74px !important}}
 
 /* --- Contact sur mobile : chaque ligne occupe toute la largeur ---
    L'emoji devient un marqueur de largeur fixe et le texte prend tout
    le reste, au lieu d'être repoussé puis coupé au milieu de l'adresse.
    Les guillemets restent solidaires de ce qu'ils encadrent. */
 .nowrap-cite{white-space:nowrap}
-@media (max-width:768px){
+@media (max-width:883px){
   .contact-card{padding:20px 14px !important}
   .contact-card ul{margin:0;padding:0;list-style:none}
   .contact-card li{display:flex;align-items:flex-start;gap:7px;width:100%}
@@ -1004,14 +998,14 @@ header .btn-book{display:none !important}
    moitié de la largeur, mais le rendaient minuscule sur ordinateur. Au-delà
    de 768 px il grandit donc avec la fenêtre, plafonné à 290 px. Le mobile
    conserve les 168 px de la règle ci-dessus. */
-@media (min-width:769px){
+@media (min-width:884px){
   .hero-logo-vid{width:clamp(270px,27vw,391px)}
 }
 
 /* Accueil : le retour à la ligne de l'accroche s'applique aussi sur
    téléphone, pour que « — massages sculptants — » forme sa propre ligne
    au lieu de se couper après le premier tiret. */
-@media (max-width:768px){
+@media (max-width:883px){
   .br-pc{display:inline}
 }
 
@@ -1030,11 +1024,11 @@ header .btn-book{display:none !important}
    titres soient alignés. Sur téléphone les cartes sont empilées :
    le badge fantôme n'a plus lieu d'être. */
 .scard-badge-ghost{visibility:hidden}
-@media (max-width:768px){.scard-badge-ghost{display:none}}
+@media (max-width:883px){.scard-badge-ghost{display:none}}
 
 /* Forfaits : deux encarts seulement, centrés sur ordinateur,
    en conservant la largeur qu'ils avaient à trois. */
-@media (min-width:769px){
+@media (min-width:884px){
   .forfaits{grid-template-columns:repeat(2,minmax(0,258.67px));justify-content:center}
 }
 
@@ -1052,7 +1046,7 @@ header .btn-book{display:none !important}
 
 /* Prestations : « Un rituel inspiré de la tradition japonaise » grossi
    d'un pixel, sur ordinateur uniquement. */
-@media (min-width:769px){
+@media (min-width:884px){
   #services .sec-sub{font-size:calc(1.15rem + 1px)}
 }
 
@@ -1064,12 +1058,12 @@ header .btn-book{display:none !important}
 .price-table th{font-size:calc(.82rem + 1px)}
 .price-table td{font-size:calc(1rem + 1px)}
 .price-table td:last-child{font-size:calc(1.1rem + 1px)}
-@media (max-width:768px){
+@media (max-width:883px){
   #tarifs .sec-sub{font-size:calc(1.05rem + 1px)}
   .price-table th,.price-table td{font-size:calc(.9rem + 1px)}
   .price-table td:last-child{font-size:calc(1.1rem + 1px)}
 }
-@media (max-width:400px){
+@media (max-width:460px){
   .price-table th,.price-table td{font-size:calc(.82rem + 1px)}
   .price-table td:last-child{font-size:calc(1.1rem + 1px)}
 }
@@ -1098,7 +1092,7 @@ header .btn-book{display:none !important}
    ligne comme avant, seule la 1re phrase reste solidaire — et le corps
    y est réduit à 23 px, l'ordinateur gardant ses 27 px. */
 .quote{font-size:23px}
-@media (min-width:769px){
+@media (min-width:884px){
   .quote{max-width:none;white-space:nowrap;font-size:min(27px,2.85vw)}
 }
 
@@ -1112,7 +1106,7 @@ header .btn-book{display:none !important}
 #legend .sec-sub{font-size:calc(1.15rem * 1.28);font-style:normal;
   font-weight:600;letter-spacing:.07em}
 #legend .kobido-sub{font-size:1em}
-@media (max-width:768px){
+@media (max-width:883px){
   #legend .sec-sub{font-size:calc(1.05rem * 1.28)}
 }
 
@@ -1139,7 +1133,87 @@ header .btn-book{display:none !important}
 /* Accroche d'accueil : avec « , drainants » la 2e ligne ne tient plus sur un
    téléphone. Plutôt que de laisser « liftants — » seul sur une 3e ligne, on
    équilibre les deux lignes (« …sculptants, / drainants et liftants… »). */
-@media (max-width:768px){.hero-h2 [data-e="accueil-ligne2"]{display:block;text-wrap:balance}}
+@media (max-width:883px){.hero-h2 [data-e="accueil-ligne2"]{display:block;text-wrap:balance}}
+
+/* ============================================================
+   COMPENSATIONS DU ZOOM GLOBAL (voir « ZOOM GLOBAL » plus haut)
+   Le site est rendu à 97,75 % = 85 % (dézoom d'origine) × 1,15.
+   `zoom` multiplie toutes les longueurs, y compris vh / vw, et ne
+   modifie pas les media queries (physiques). D'où :
+   • tous les points de rupture ont été multipliés par 1,15
+     (768 → 883 px, 400 → 460 px, 470 → 541 px) : la mise en page
+     bascule à la même largeur AFFICHÉE qu'avant ;
+   • les quelques tailles en vh / vw sont divisées par 1,15 ci-dessous
+     pour garder exactement leurs proportions d'avant.
+   ============================================================ */
+#hero{min-height:calc(100vh / 1.15)}
+.lightbox img{max-height:calc(90vh / 1.15)}
+@media (max-width:883px){.lightbox img{max-width:calc(92vw / 1.15);max-height:calc(82vh / 1.15)}}
+@media (min-width:884px){.quote{font-size:min(27px,calc(2.85vw / 1.15))}}
+
+/* Titre d'accueil : « Isabelle FAR. » en grand, puis, à la ligne, la suite de la
+   phrase (« – Facialiste à Cesson-Sévigné (35) ») en plus petit pour qu'elle
+   tienne sur une seule ligne. L'écart qui était porté par le mot « Facialiste »
+   (supprimé) reste sous le titre. */
+.hero-title{margin-bottom:26px}
+.hero-title-sub{display:block;margin-top:.12em;font-size:.55em;font-weight:500;line-height:1.25;letter-spacing:.02em;text-wrap:balance}
+
+/* Tableau des tarifs sur petit écran : les colonnes Genre / Durée / Tarifs ne
+   se coupent pas ; on resserre donc les marges et l'espacement des en-têtes
+   pour que le tableau tienne sans faire défiler la page, jusqu'à 320 px. */
+@media (max-width:460px){
+  .price-table th,.price-table td{padding:9px 4px}
+  .price-table th{letter-spacing:.04em}
+}
+@media (max-width:370px){
+  .price-table th,.price-table td{padding:8px 3px;font-size:.76rem}
+  .price-table td:last-child{font-size:.95rem}
+  .price-table th{letter-spacing:.02em;font-size:.66rem}
+}
+
+/* Carte PROS : « Demander un devis » ouvre, sur ordinateur, un petit menu
+   Gmail / Outlook / autre messagerie (voir le script correspondant). */
+.devis-wrap{position:relative;display:inline-block}
+.devis-menu{position:absolute;right:0;bottom:calc(100% + 8px);min-width:190px;z-index:30;padding:6px;border-radius:12px;
+  background:#2c1e0c;border:1px solid rgba(201,168,76,.55);box-shadow:0 10px 26px rgba(0,0,0,.35);
+  display:flex;flex-direction:column;gap:2px}
+.devis-menu[hidden]{display:none}
+.devis-menu a{display:block;padding:9px 14px;border-radius:8px;color:#E8D48A;font-size:.92rem;letter-spacing:.04em;text-align:left;white-space:nowrap}
+.devis-menu a:hover,.devis-menu a:focus-visible{background:rgba(232,212,138,.16);color:#fff;outline:0}
+
+/* ============================================================
+   BANDEAU DE CONSENTEMENT AUX COOKIES
+   Même habillage que la barre de navigation : fond noir, filet or,
+   texte crème, titre en or clair, police du site (Cormorant Garamond).
+   Les deux boutons ont la même taille : refuser est aussi simple qu'accepter.
+   ============================================================ */
+.cookie-banner{position:fixed;left:50%;bottom:max(16px,env(safe-area-inset-bottom));transform:translateX(-50%);
+  z-index:90;width:min(760px,calc(100% - 32px));box-sizing:border-box;padding:20px 24px 18px;
+  background:#000;color:#F5EDD8;border:1px solid rgba(201,168,76,.55);border-radius:16px;
+  box-shadow:0 14px 40px rgba(0,0,0,.5);font-family:var(--font-h);line-height:1.55;
+  max-height:75vh;overflow-y:auto;animation:cookieIn .5s cubic-bezier(.2,.8,.2,1) both}
+.cookie-banner[hidden]{display:none}
+@keyframes cookieIn{from{opacity:0;transform:translate(-50%,14px)}to{opacity:1;transform:translate(-50%,0)}}
+.cookie-banner h2{margin:0 0 6px;font-size:1.3rem;font-weight:600;letter-spacing:.04em;color:#E8D48A}
+.cookie-banner p{margin:0;font-size:1rem;color:#F5EDD8}
+.cookie-banner .cookie-details{margin-top:10px;font-size:.92rem;color:#EDD5A0}
+.cookie-more{background:none;border:0;padding:0;margin-top:8px;font:inherit;font-size:.92rem;color:#E8D48A;
+  text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.cookie-actions{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+.cookie-btn{flex:1 1 130px;font:inherit;font-size:.95rem;letter-spacing:.08em;font-weight:500;padding:10px 22px;
+  border-radius:30px;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.cookie-btn--ok{border:1px solid transparent;color:#2C1810;font-weight:600;
+  background:linear-gradient(135deg,#F0D080,#C9A84C 55%,#8B6914);
+  box-shadow:0 3px 12px rgba(201,168,76,.35),0 1px 0 rgba(255,255,255,.4) inset}
+.cookie-btn--ok:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(201,168,76,.55)}
+.cookie-btn--no{background:transparent;color:#E8D48A;border:1px solid rgba(201,168,76,.8)}
+.cookie-btn--no:hover{background:rgba(232,212,138,.14);color:#fff}
+.cookie-btn:focus-visible,.cookie-more:focus-visible,.cookie-open:focus-visible{outline:2px solid #E8D48A;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.cookie-banner{animation:none}}
+@media (max-width:460px){.cookie-banner{padding:14px 16px 14px}.cookie-banner h2{font-size:1.15rem}.cookie-banner p{font-size:.95rem}.cookie-actions{gap:10px;margin-top:12px;flex-wrap:nowrap}.cookie-btn{flex:1 1 0;min-width:0;padding:10px 8px;letter-spacing:.05em}}
+/* Lien « Gérer les cookies » du pied de page : rouvre le bandeau. */
+.cookie-open{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;
+  text-decoration:underline;text-underline-offset:3px}
 </style>
 
 <!-- (rouleaux de coin retirés pour un rendu plus épuré) -->
@@ -1285,8 +1359,7 @@ header .btn-book{display:none !important}
     <div class="hero-logo-fb">小</div>
 
     <div class="hero-jp">小顔 · 骨格矯正</div>
-    <h1 class="hero-title">Isabelle FAR.</h1>
-    <p class="hero-role">Facialiste</p>
+    <h1 class="hero-title">Isabelle FAR. <span class="hero-title-sub">–&nbsp;Facialiste à <span class="nowrap-lieu">Cesson-Sévigné</span>&nbsp;(35)</span></h1>
 
     <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-book hero-mobile-book">Réserver</a>
 
@@ -1297,7 +1370,7 @@ header .btn-book{display:none !important}
     <div class="hero-lines hero-lines-2"><i></i><i></i><i></i></div>
 
     <p class="hero-meta">
-      Praticienne certifiée dans le secteur du <strong>Bien-être</strong><br>
+      Praticienne certifiée dans le secteur du <strong>Bien-être</strong> de l'École du KOBIDO<br>Paris&nbsp;(75)/<wbr><span class="nowrap-lieu">Rochefort-sur-Mer&nbsp;(17)</span><br>
       Cabinet à domicile sur la commune de <strong class="nowrap-lieu">Cesson-Sévigné</strong> près de Rennes (35)
     </p>
   </div>
@@ -1308,9 +1381,9 @@ header .btn-book{display:none !important}
 <!-- ============ TICKER ============ -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-inner" id="ticker">
-    <span>Authentique KOBIDO</span><span class="sep">✦</span><span>KOGAO</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>KORUGI</span><span class="sep">✦</span><span>KANSA WAND</span><span class="sep">✦</span>
-    <span>Authentique KOBIDO</span><span class="sep">✦</span><span>KOGAO</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>KORUGI</span><span class="sep">✦</span><span>KANSA WAND</span><span class="sep">✦</span>
-    <span>Authentique KOBIDO</span><span class="sep">✦</span><span>KOGAO</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>KORUGI</span><span class="sep">✦</span><span>KANSA WAND</span><span class="sep">✦</span>
+    <span>Massage KOBIDO liftant</span><span class="sep">✦</span><span>KOGAO Acupression</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>KORUGI</span><span class="sep">✦</span><span>KANSA WAND</span><span class="sep">✦</span><span>ATAMA Cuir chevelu</span><span class="sep">✦</span>
+    <span>Massage KOBIDO liftant</span><span class="sep">✦</span><span>KOGAO Acupression</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>KORUGI</span><span class="sep">✦</span><span>KANSA WAND</span><span class="sep">✦</span><span>ATAMA Cuir chevelu</span><span class="sep">✦</span>
+    <span>Massage KOBIDO liftant</span><span class="sep">✦</span><span>KOGAO Acupression</span><span class="sep">✦</span><span>Drainage lymphatique visage</span><span class="sep">✦</span><span>KORUGI</span><span class="sep">✦</span><span>KANSA WAND</span><span class="sep">✦</span><span>ATAMA Cuir chevelu</span><span class="sep">✦</span>
   </div>
 </div>
 
@@ -1328,19 +1401,19 @@ header .btn-book{display:none !important}
       <!-- 1 KOBIDO -->
       <div class="scard fade-up">
         <div class="scard-head">
-          <img src="images/kobido.jpg" alt="Soin Authentique KOBIDO" class="scard-thumb kobido-photo" loading="eager"
+          <img src="images/kobido.jpg" alt="Massage KOBIDO" class="scard-thumb kobido-photo" loading="eager"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="scard-thumb-fb">🌸</div>
           <div class="scard-info">
             <span class="scard-badge">✦ Incontournable</span>
-            <h3 class="scard-name" data-e="soin1-nom">Authentique KOBIDO</h3>
-            <p class="scard-stag" data-e="soin1-accroche">Massage liftant</p>
+            <h3 class="scard-name" data-e="soin1-nom">Massage KOBIDO</h3>
+            <p class="scard-stag" data-e="soin1-accroche">Lifting naturel</p>
             <p class="scard-dur" data-e="soin1-duree">60 min</p>
             <p class="scard-price" data-e="soin1-prix">80 €</p>
           </div>
         </div>
         <div class="scard-body" id="body-1">
-          <p class="scard-desc" data-e="soin1-desc">Soin ancestral japonais dédié aux femmes.<br>Il s'agit d'un lifting naturel issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>Ce massage favorise la microcirculation.<br>C'est un soin qui permet de redonner de l'éclat au visage, de tonifier votre peau et de rééquilibrer vos énergies.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.</p>
+          <p class="scard-desc" data-e="soin1-desc">L'Authentique KOBIDO est un soin ancestral japonais dédié aux femmes et aux hommes sans barbe ni moustache.<br>Il s'agit d'un massage liftant issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique et relaxant du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>Ce massage favorise la microcirculation.<br>C'est un soin qui permet de redonner de l'éclat au visage, de repulper votre peau et lisser vos rides.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.</p>
           <div class="promo-tag" data-promo="BIENVENUE10" style="display:none">🎁 Code promo : BIENVENUE10 — 10% sur votre 1ère séance</div>
         </div>
         <div class="scard-foot">
@@ -1357,8 +1430,8 @@ header .btn-book{display:none !important}
           <div class="scard-thumb-fb">🌸</div>
           <div class="scard-info">
             <span class="scard-badge scard-badge-ghost" aria-hidden="true">✦</span>
-            <h3 class="scard-name" data-e="soin2-nom">KOGAO</h3>
-            <p class="scard-stag" data-e="soin2-accroche">Amincissement et réalignement du visage par acupression</p>
+            <h3 class="scard-name" data-e="soin2-nom">Massage KOGAO</h3>
+            <p class="scard-stag" data-e="soin2-accroche">Amincissement du visage par acupression</p>
             <p class="scard-dur" data-e="soin2-duree">45 min</p>
             <p class="scard-price" data-e="soin2-prix">50 €</p>
           </div>
@@ -1381,14 +1454,14 @@ header .btn-book{display:none !important}
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="scard-thumb-fb">🌸</div>
           <div class="scard-info">
-            <h3 class="scard-name" data-e="soin3-nom">KOGAO &amp; Drainage visage</h3>
+            <h3 class="scard-name" data-e="soin3-nom">Massage KOGAO &amp; Drainage visage</h3>
             <p class="scard-stag" data-e="soin3-accroche">Détox &amp; éclat</p>
             <p class="scard-dur" data-e="soin3-duree">60 min</p>
             <p class="scard-price" data-e="soin3-prix">70 €</p>
           </div>
         </div>
         <div class="scard-body" id="body-3">
-          <p class="scard-desc" data-e="soin3-desc">Soin dédié aux femmes.<br>Soin profond pour les visages gonflés. Pressions sur les muscles du visage et du crâne accompagné d'un drainage lymphatique dynamique et relaxant pour décongestionner le visage.<br>Stimulation des ganglions lymphatiques pour aider à éliminer les toxines.<br>Ses bienfaits :<br>Réduit les sensations de gonflements<br>Affine et redessine les contours du visage<br>Utilisation de l'huile d'amande douce pour le soin.</p>
+          <p class="scard-desc" data-e="soin3-desc">Soin mixte. Femmes et hommes.<br>Soin profond pour les visages gonflés. Pressions sur les muscles du visage et du crâne accompagné d'un drainage lymphatique dynamique et relaxant pour décongestionner le visage.<br>Stimulation des ganglions lymphatiques pour aider à éliminer les toxines.<br>Ses bienfaits :<br>Réduit les sensations de gonflements<br>Affine et redessine les contours du visage<br>Utilisation de l'huile d'amande douce pour le soin.</p>
           <div class="promo-tag" data-promo="BIENVENUE10" style="display:none">🎁 Code promo : BIENVENUE10 — 10% sur votre 1ère séance</div>
         </div>
         <div class="scard-foot">
@@ -1427,14 +1500,14 @@ header .btn-book{display:none !important}
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="scard-thumb-fb">🌸</div>
           <div class="scard-info">
-            <h3 class="scard-name" data-e="soin5-nom">KOBIDO Découverte</h3>
-            <p class="scard-stag" data-e="soin5-accroche">Massage liftant — <span class="gr">1ère</span> séance</p>
+            <h3 class="scard-name" data-e="soin5-nom">Massage KOBIDO Découverte</h3>
+            <p class="scard-stag" data-e="soin5-accroche">Lifting naturel — <span class="gr">1ère</span> séance</p>
             <p class="scard-dur" data-e="soin5-duree">60 min</p>
             <p class="scard-price" data-e="soin5-prix">60 €</p>
           </div>
         </div>
         <div class="scard-body" id="body-5">
-          <p class="scard-desc" data-e="soin5-desc">Soin ancestral japonais dédié aux nouvelles clientes. Valable une seule fois.<br>Il s'agit d'un lifting naturel issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>Ce massage favorise la microcirculation.<br>C'est un soin qui permet de redonner de l'éclat au visage, de tonifier votre peau et de rééquilibrer vos énergies.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.</p>
+          <p class="scard-desc" data-e="soin5-desc">L'Authentique KOBIDO est un soin ancestral japonais dédié aux nouvelles clientes et aux nouveaux clients sans barbe ni moustache. Valable une seule fois.<br>Il s'agit d'un massage liftant issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique et relaxant du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>Ce massage favorise la microcirculation.<br>C'est un soin qui permet de redonner de l'éclat au visage, de repulper votre peau et lisser vos rides.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.</p>
         </div>
         <div class="scard-foot">
           <button class="scard-toggle" onclick="toggleCard('body-5',this)">En savoir plus <span class="arr">▾</span></button>
@@ -1451,12 +1524,12 @@ header .btn-book{display:none !important}
           <div class="scard-info">
             <h3 class="scard-name" data-e="soin6-nom">KOBIDO à Domicile ou lieu Professionnel</h3>
             <p class="scard-stag" data-e="soin6-accroche">Secteur Cesson-Sévigné + rayon 8 km</p>
-            <p class="scard-dur" data-e="soin6-duree">90 min</p>
+            <p class="scard-dur" data-e="soin6-duree">75 min</p>
             <p class="scard-price" data-e="soin6-prix">110 €</p>
           </div>
         </div>
         <div class="scard-body" id="body-6">
-          <p class="scard-desc" data-e="soin6-desc">Soin ancestral japonais dédié aux femmes.<br>Déplacement à votre domicile ou sur un lieu professionnel (lieu de travail, hôtel, hôpital, résidence secondaire, maison de repos, résidence seniors…).<br>Il s'agit d'un lifting naturel issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>C'est un soin qui permet de redonner de l'éclat au visage, de tonifier votre peau et de rééquilibrer vos énergies et de profonde détente.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.<br>Travail complémentaire sur le décolleté et les ganglions lymphatiques du visage.<br>Durée du soin : 1h30 hors temps de déplacement.<br><br>Consignes avant le soin :<br>Retirer colliers, boucles d'oreilles et nez.<br>Espace de massage recommandé pour le soin : 330 cm de longueur minimum et 140 cm de largeur minimum.<br>Stationnement facile d'accès.<br>Ascenseur recommandé pour se rendre sur les lieux du RDV au-delà du 1<sup>er</sup> étage d'un bâtiment.<br>Soin possible en dehors des horaires fixés.<br>Je vous invite à m'adresser un mail SVP.</p>
+          <p class="scard-desc" data-e="soin6-desc">Soin ancestral japonais dédié aux femmes.<br>Déplacement à votre domicile ou sur un lieu professionnel (lieu de travail, hôtel, hôpital, résidence secondaire, maison de repos, résidence seniors…).<br>Il s'agit d'un lifting naturel issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>C'est un soin qui permet de redonner de l'éclat au visage, de tonifier votre peau et de rééquilibrer vos énergies et de profonde détente.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.<br>Travail complémentaire sur le décolleté.<br>Durée du soin : 1h30 hors temps de déplacement.<br><br>Consignes avant le soin :<br>Retirer colliers, boucles d'oreilles et nez.<br>Espace de massage recommandé pour le soin : 330 cm de longueur minimum et 140 cm de largeur minimum.<br>Stationnement facile d'accès.<br>Ascenseur recommandé pour se rendre sur les lieux du RDV au-delà du 1<sup>er</sup> étage d'un bâtiment.<br>Soin possible en dehors des horaires fixés.<br>Je vous invite à m'adresser un mail SVP.</p>
         </div>
         <div class="scard-foot">
           <button class="scard-toggle" onclick="toggleCard('body-6',this)">En savoir plus <span class="arr">▾</span></button>
@@ -1480,7 +1553,14 @@ header .btn-book{display:none !important}
         </div>
         <div class="scard-foot">
           <button class="scard-toggle" onclick="toggleCard('body-7',this)">En savoir plus <span class="arr">▾</span></button>
-          <a href="mailto:isabelle.far35@gmail.com?subject=Devis%20-%20Animation%20bien-%C3%AAtre%20au%20travail" class="btn-rsm">Demander un devis</a>
+          <div class="devis-wrap">
+            <a href="mailto:isabelle.far35@gmail.com?subject=Devis%20%E2%80%93%20Animation%20bien-%C3%AAtre%20au%20travail&amp;body=Bonjour%2C%0A%0AJe%20souhaite%20recevoir%20un%20devis%20pour%20une%20animation%20bien-%C3%AAtre%20au%20travail.%0A%0ALe%20nom%20de%20la%20soci%C3%A9t%C3%A9%20%3A%0AL'adresse%20%3A%0AL'intitul%C3%A9%20de%20l'%C3%A9v%C3%A8nement%20%3A%0ANbre%20de%20personnes%20concern%C3%A9es%20%3A%0ADates%20souhait%C3%A9es%20%3A%0ACr%C3%A9neaux%20horaires%20%3A%0A%0AMerci." class="btn-rsm devis-btn" aria-haspopup="menu" aria-expanded="false">Demander un devis</a>
+            <div class="devis-menu" role="menu" hidden>
+              <a role="menuitem" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=isabelle.far35%40gmail.com&amp;su=Devis%20%E2%80%93%20Animation%20bien-%C3%AAtre%20au%20travail&amp;body=Bonjour%2C%0A%0AJe%20souhaite%20recevoir%20un%20devis%20pour%20une%20animation%20bien-%C3%AAtre%20au%20travail.%0A%0ALe%20nom%20de%20la%20soci%C3%A9t%C3%A9%20%3A%0AL'adresse%20%3A%0AL'intitul%C3%A9%20de%20l'%C3%A9v%C3%A8nement%20%3A%0ANbre%20de%20personnes%20concern%C3%A9es%20%3A%0ADates%20souhait%C3%A9es%20%3A%0ACr%C3%A9neaux%20horaires%20%3A%0A%0AMerci." target="_blank" rel="noopener">Gmail</a>
+              <a role="menuitem" href="https://outlook.office.com/mail/deeplink/compose?to=isabelle.far35%40gmail.com&amp;subject=Devis%20%E2%80%93%20Animation%20bien-%C3%AAtre%20au%20travail&amp;body=Bonjour%2C%0A%0AJe%20souhaite%20recevoir%20un%20devis%20pour%20une%20animation%20bien-%C3%AAtre%20au%20travail.%0A%0ALe%20nom%20de%20la%20soci%C3%A9t%C3%A9%20%3A%0AL'adresse%20%3A%0AL'intitul%C3%A9%20de%20l'%C3%A9v%C3%A8nement%20%3A%0ANbre%20de%20personnes%20concern%C3%A9es%20%3A%0ADates%20souhait%C3%A9es%20%3A%0ACr%C3%A9neaux%20horaires%20%3A%0A%0AMerci." target="_blank" rel="noopener">Outlook (web)</a>
+              <a role="menuitem" href="mailto:isabelle.far35@gmail.com?subject=Devis%20%E2%80%93%20Animation%20bien-%C3%AAtre%20au%20travail&amp;body=Bonjour%2C%0A%0AJe%20souhaite%20recevoir%20un%20devis%20pour%20une%20animation%20bien-%C3%AAtre%20au%20travail.%0A%0ALe%20nom%20de%20la%20soci%C3%A9t%C3%A9%20%3A%0AL'adresse%20%3A%0AL'intitul%C3%A9%20de%20l'%C3%A9v%C3%A8nement%20%3A%0ANbre%20de%20personnes%20concern%C3%A9es%20%3A%0ADates%20souhait%C3%A9es%20%3A%0ACr%C3%A9neaux%20horaires%20%3A%0A%0AMerci.">Autre messagerie</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1501,12 +1581,12 @@ header .btn-book{display:none !important}
     <table class="price-table fade-up">
       <thead><tr><th>Soins</th><th>Genre</th><th>Durée</th><th>Tarifs</th></tr></thead>
       <tbody>
-        <tr><td data-e="tarif1-soin">Authentique KOBIDO Découverte</td><td data-e="tarif1-genre">Femmes</td><td data-e="tarif1-duree">60 min</td><td data-e="tarif1-prix">60 €</td></tr>
-        <tr><td data-e="tarif2-soin">Authentique KOBIDO</td><td data-e="tarif2-genre">Femmes</td><td data-e="tarif2-duree">60 min</td><td data-e="tarif2-prix">80 €</td></tr>
-        <tr><td data-e="tarif3-soin">Authentique KOBIDO Intrabuccal</td><td data-e="tarif3-genre">Femmes</td><td data-e="tarif3-duree">75 min</td><td data-e="tarif3-prix">90 €</td></tr>
-        <tr><td data-e="tarif4-soin">KOGAO Acupression et Amincissement du visage</td><td data-e="tarif4-genre">Mixte</td><td data-e="tarif4-duree">45 min</td><td data-e="tarif4-prix">50 €</td></tr>
-        <tr><td data-e="tarif5-soin">KOGAO &amp; Drainage visage</td><td data-e="tarif5-genre">Femmes</td><td data-e="tarif5-duree">60 min</td><td data-e="tarif5-prix">70 €</td></tr>
-        <tr><td data-e="tarif6-soin">Authentique KOBIDO à Domicile ou lieu Professionnel</td><td data-e="tarif6-genre">Femmes</td><td data-e="tarif6-duree">90 min</td><td data-e="tarif6-prix">110 €</td></tr>
+        <tr><td data-e="tarif1-soin">Massage liftant KOBIDO Découverte</td><td data-e="tarif1-genre">Mixte</td><td data-e="tarif1-duree">60 min</td><td data-e="tarif1-prix">60 €</td></tr>
+        <tr><td data-e="tarif2-soin">Massage liftant KOBIDO</td><td data-e="tarif2-genre">Mixte</td><td data-e="tarif2-duree">60 min</td><td data-e="tarif2-prix">80 €</td></tr>
+        <tr><td data-e="tarif3-soin">Massage liftant KOBIDO Intrabuccal</td><td data-e="tarif3-genre">Femmes</td><td data-e="tarif3-duree">75 min</td><td data-e="tarif3-prix">90 €</td></tr>
+        <tr><td data-e="tarif4-soin">Massage KOGAO Acupression visage</td><td data-e="tarif4-genre">Mixte</td><td data-e="tarif4-duree">45 min</td><td data-e="tarif4-prix">50 €</td></tr>
+        <tr><td data-e="tarif5-soin">Massage KOGAO &amp; Drainage lymphatique visage</td><td data-e="tarif5-genre">Mixte</td><td data-e="tarif5-duree">60 min</td><td data-e="tarif5-prix">70 €</td></tr>
+        <tr><td data-e="tarif6-soin">Massage liftant KOBIDO à Domicile ou lieu Professionnel</td><td data-e="tarif6-genre">Femmes</td><td data-e="tarif6-duree">75 min</td><td data-e="tarif6-prix">110 €</td></tr>
       </tbody>
     </table>
     <div style="text-align:center;margin:-6px 0 40px">
@@ -1520,7 +1600,7 @@ header .btn-book{display:none !important}
         <img src="images/kogao.jpg" alt="Forfait Essentiel" class="forfait-photo" loading="eager" onerror="this.style.display='none'">
         <h3 data-e="forfait1-nom">Essentiel</h3>
         <p class="forfait-sub" data-e="forfait1-sub">Éclat</p>
-        <p class="detail" data-e="forfait1-detail">8 X KOGAO Réalignement du visage<br>45 min</p>
+        <p class="detail" data-e="forfait1-detail">8 X massages KOGAO Acupression<br>45 min</p>
         <div class="price" data-e="forfait1-prix">360 €</div>
         <span class="eco" data-e="forfait1-eco">économie 40 €</span>
         <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-rsm">Réserver</a>
@@ -1529,7 +1609,7 @@ header .btn-book{display:none !important}
         <img src="images/forfait-essentiel.jpg" alt="Forfait Excellence" class="forfait-photo" loading="eager" onerror="this.style.display='none'">
         <h3 data-e="forfait2-nom">Excellence</h3>
         <p class="forfait-sub" data-e="forfait2-sub">Lift naturel</p>
-        <p class="detail" data-e="forfait2-detail">8 X Authentique KOBIDO<br>60 min</p>
+        <p class="detail" data-e="forfait2-detail">8 X massages liftants KOBIDO<br>60 min</p>
         <div class="price" data-e="forfait2-prix">540 €</div>
         <span class="eco" data-e="forfait2-eco">économie 100 €</span>
         <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-rsm">Réserver</a>
@@ -1749,8 +1829,79 @@ header .btn-book{display:none !important}
       <a href="https://isabelle-far.fr" target="_blank" rel="noopener">🌐 isabelle-far.fr</a>
     </div>
   </div>
-  <div class="footer-bottom">© 07.2026 Isabelle FAR. · isabelle-far.fr — Tous droits réservés</div>
+  <div class="footer-bottom">© 07.2026 Isabelle FAR. · isabelle-far.fr — Tous droits réservés · <button type="button" class="cookie-open" id="cookie-open">Gérer les cookies</button></div>
 </footer>
+
+<!-- Bandeau de consentement aux cookies (Google Analytics) -->
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-modal="false" aria-labelledby="cookie-titre" aria-describedby="cookie-texte" tabindex="-1" hidden>
+  <h2 id="cookie-titre">Cookies</h2>
+  <p id="cookie-texte">Ce site utilise Google Analytics pour mesurer sa fréquentation (pages consultées, appareils utilisés) afin de l'améliorer. Ces cookies ne sont déposés qu'avec votre accord.</p>
+  <button type="button" class="cookie-more" id="cookie-more" aria-expanded="false" aria-controls="cookie-details">En savoir plus</button>
+  <p class="cookie-details" id="cookie-details" hidden>Google Analytics (Google Ireland Limited) dépose deux cookies, « _ga » et « _ga_… », conservés 13 mois au maximum. Ils servent uniquement à compter les visites et à savoir quelles pages vous intéressent : aucune publicité personnalisée n'est activée. Votre choix est conservé 6 mois et vous pouvez le modifier à tout moment avec le lien « Gérer les cookies » en bas de page.</p>
+  <div class="cookie-actions">
+    <button type="button" class="cookie-btn cookie-btn--no" id="cookie-refuse">Refuser</button>
+    <button type="button" class="cookie-btn cookie-btn--ok" id="cookie-accept">Accepter</button>
+  </div>
+</div>
+
+<script>
+/* Cookies — Google Analytics n'est chargé QU'APRÈS un « Accepter ».
+   Tant que le visiteur n'a pas répondu (ou s'il refuse), aucune requête ne part
+   vers Google et aucun cookie n'est déposé. Le choix est mémorisé 6 mois dans le
+   navigateur (localStorage), puis la question est reposée. Comme le script des
+   statistiques, rien n'est envoyé depuis un poste de test (localhost, fichier). */
+(function(){
+  var GA_ID='G-3GTWPQ89EC', CLE='if_cookies', DUREE=182*24*3600*1000;
+  var local=location.protocol==='file:'||/^(localhost|127\.)/.test(location.hostname)||navigator.webdriver;
+  var banniere=document.getElementById('cookie-banner');
+  if(!banniere) return;
+  var bPlus=document.getElementById('cookie-more'), details=document.getElementById('cookie-details');
+  function lire(){
+    try{var v=JSON.parse(localStorage.getItem(CLE));
+      if(v&&(v.choix==='oui'||v.choix==='non')&&Date.now()-v.date<DUREE) return v.choix;}catch(e){}
+    return null;
+  }
+  function ecrire(c){try{localStorage.setItem(CLE,JSON.stringify({choix:c,date:Date.now()}));}catch(e){}}
+  var charge=false;
+  function chargerGA(){
+    window['ga-disable-'+GA_ID]=false;
+    if(charge||local) return;
+    charge=true;
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=function(){dataLayer.push(arguments);};
+    var s=document.createElement('script');s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
+    document.head.appendChild(s);
+    gtag('js',new Date());
+    gtag('config',GA_ID,{cookie_expires:34128000,allow_google_signals:false,allow_ad_personalization_signals:false});
+  }
+  function effacerCookiesGA(){
+    window['ga-disable-'+GA_ID]=true;
+    var h=location.hostname.split('.'), racine=h.slice(-2).join('.');
+    var domaines=[location.hostname,'.'+location.hostname,racine,'.'+racine];
+    document.cookie.split(';').forEach(function(c){
+      var n=c.split('=')[0].trim();
+      if(n==='_ga'||n.indexOf('_ga_')===0||n==='_gid'||n.indexOf('_gat')===0){
+        var base=n+'=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+        document.cookie=base;
+        domaines.forEach(function(d){document.cookie=base+'; domain='+d;});
+      }
+    });
+  }
+  function afficher(focus){banniere.hidden=false;if(focus)banniere.focus();}
+  document.getElementById('cookie-accept').addEventListener('click',function(){ecrire('oui');chargerGA();banniere.hidden=true;});
+  document.getElementById('cookie-refuse').addEventListener('click',function(){ecrire('non');effacerCookiesGA();banniere.hidden=true;});
+  bPlus.addEventListener('click',function(){
+    var ouvre=details.hidden;details.hidden=!ouvre;
+    bPlus.setAttribute('aria-expanded',String(ouvre));
+    bPlus.textContent=ouvre?'Masquer les détails':'En savoir plus';
+  });
+  var ouvrir=document.getElementById('cookie-open');
+  if(ouvrir) ouvrir.addEventListener('click',function(){afficher(true);});
+  var choix=lire();
+  if(choix==='oui') chargerGA(); else if(choix===null) afficher(false);
+})();
+</script>
 
 <script>
 /* 7.1 Toggle prestation cards (inline) */
@@ -1832,6 +1983,8 @@ document.querySelectorAll('.promo-tag').forEach(t=>{
 (function(){
   const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const FINE = matchMedia('(pointer: fine)').matches;
+  /* zoom global : la position réelle du curseur est ramenée à l'échelle du zoom */
+  const Z = parseFloat(getComputedStyle(document.documentElement).zoom) || 1;
 
   /* aurora + spotlight + scroll thread injected once */
   const aurora=document.createElement('div');aurora.className='aurora';document.body.appendChild(aurora);
@@ -1859,8 +2012,8 @@ document.querySelectorAll('.promo-tag').forEach(t=>{
   if(FINE && !RM){
     /* cursor spotlight */
     const spot=document.createElement('div');spot.className='spotlight';document.body.appendChild(spot);
-    let sx=innerWidth/2, sy=innerHeight/2, tx=sx, ty=sy;
-    window.addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;spot.style.opacity='1';});
+    let sx=innerWidth/2/Z, sy=innerHeight/2/Z, tx=sx, ty=sy;
+    window.addEventListener('mousemove',e=>{tx=e.clientX/Z;ty=e.clientY/Z;spot.style.opacity='1';});
     window.addEventListener('mouseleave',()=>spot.style.opacity='0');
     (function loop(){sx+=(tx-sx)*.14;sy+=(ty-sy)*.14;
       spot.style.left=sx+'px';spot.style.top=sy+'px';requestAnimationFrame(loop);})();
@@ -1982,6 +2135,34 @@ document.querySelectorAll('.promo-tag').forEach(t=>{
   addEventListener('scroll',onScroll,{passive:true});
   addEventListener('resize',onScroll,{passive:true});
   move();
+})();
+</script>
+
+<script>
+/* Carte PROS — « Demander un devis ».
+   Ordinateur (souris) : le bouton ouvre un petit menu Gmail / Outlook / autre
+   messagerie, car un lien « mailto » seul ne fait rien quand aucun logiciel de
+   messagerie n'est installé. Téléphone et tablette : le lien mailto ouvre
+   directement l'application de messagerie. Sans JavaScript, le lien mailto
+   reste actif. */
+(function(){
+  var btn=document.querySelector('.devis-btn'), menu=document.querySelector('.devis-menu');
+  if(!btn||!menu) return;
+  if(!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  function ferme(){menu.hidden=true;btn.setAttribute('aria-expanded','false');}
+  btn.addEventListener('click',function(e){
+    e.preventDefault();
+    if(btn.getAttribute('aria-expanded')==='true'){ferme();return;}
+    menu.hidden=false;btn.setAttribute('aria-expanded','true');
+    var premier=menu.querySelector('a');if(premier)premier.focus();
+  });
+  document.addEventListener('click',function(e){
+    if(!menu.hidden&&!menu.contains(e.target)&&!btn.contains(e.target))ferme();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&!menu.hidden){ferme();btn.focus();}
+  });
+  menu.addEventListener('click',function(){setTimeout(ferme,0);});
 })();
 </script>
 
