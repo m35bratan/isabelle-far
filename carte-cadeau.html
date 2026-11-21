@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Carte cadeau — Isabelle FAR. · Facialiste</title>
+<meta name="description" content="Offrez une carte cadeau Isabelle FAR., facialiste KOBIDO à Cesson-Sévigné : montant au choix ou soin précis.">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<style>
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300;font-display:swap;src:url(fonts/cormorant-garamond-latin-300-normal.woff2) format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/cormorant-garamond-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/cormorant-garamond-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300;font-display:swap;src:url(fonts/cormorant-garamond-latin-300-italic.woff2) format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:400;font-display:swap;src:url(fonts/cormorant-garamond-latin-400-italic.woff2) format('woff2')}
+:root{--gold:#C9A84C;--gold-lt:#E8D48A;--brown:#4a3006;--ink:#2c1e0c;--font:'Cormorant Garamond',Georgia,serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:18px}
+body{font-family:var(--font);color:#111;line-height:1.55;-webkit-font-smoothing:antialiased;
+  /* fond agrandi et calé à droite : la tige de gauche sort du cadre, seule celle de droite reste */
+  background:url(images/fond-seamless.webp) top right/108% auto repeat-y,#c9ab77;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.back{display:inline-block;margin:18px 0 0 22px;font-size:.95rem;letter-spacing:.08em;color:var(--brown);border-bottom:1px solid rgba(74,48,6,.5)}
+.wrap{max-width:1180px;margin:0 auto;padding:10px 22px 70px}
+h1{text-align:center;font-weight:700;font-size:calc(clamp(2.2rem,5vw,3rem) + 4px);color:#111;margin-top:18px;letter-spacing:.03em}
+.sub{text-align:center;font-style:italic;font-size:1.2rem;color:#3a2710;margin-top:6px}
+.bars{width:56px;margin:18px auto 34px;display:grid;gap:4px}
+.bars i{height:1px;background:linear-gradient(90deg,transparent,var(--brown),transparent)}
+.layout{display:grid;grid-template-columns:minmax(300px,380px) 1fr;gap:34px;align-items:start}
+@media(max-width:940px){.layout{grid-template-columns:1fr}}
+
+/* panneau de personnalisation */
+.panel{background:linear-gradient(155deg,rgba(150,113,62,.42),rgba(120,88,44,.4));border:1px solid rgba(74,48,6,.45);border-radius:16px;
+  padding:24px 22px;box-shadow:0 10px 26px rgba(60,40,10,.22)}
+.panel h2{font-weight:400;font-size:1.9rem;color:#2c1e0c;margin-bottom:6px}
+.panel h3{font-weight:400;font-size:1.45rem;margin:20px 0 4px;padding-top:18px;border-top:1px solid rgba(74,48,6,.35)}
+.lab{display:flex;justify-content:space-between;align-items:baseline;margin:14px 0 6px;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#3a2710}
+.lab em{font-style:normal;letter-spacing:.05em;opacity:.8}
+.req{color:#8a2a1a}
+input[type=text],input[type=email],input[type=tel],input[type=number],select,textarea{width:100%;font:inherit;font-size:1.05rem;color:#111;
+  background:#e8dfc8;border:1px solid rgba(74,48,6,.25);border-radius:10px;padding:10px 12px}
+textarea{resize:vertical;min-height:84px}
+:focus-visible{outline:2px solid var(--brown);outline-offset:2px}
+.hint{font-style:italic;font-size:.9rem;color:#3a2710;margin-top:6px}
+.pill-btn{font:inherit;font-size:1.1rem;cursor:pointer;border-radius:30px;padding:9px 20px;border:1px solid rgba(74,48,6,.55);
+  background:rgba(232,223,200,.55);color:#4a3006}
+.btn-gold{width:100%;font:inherit;font-size:1.1rem;font-weight:600;letter-spacing:.06em;cursor:pointer;border-radius:30px;padding:13px;margin-top:18px;
+  border:1px solid rgba(139,105,20,.6);color:#2C1810;background:linear-gradient(135deg,#F0D080,#C9A84C 55%,#8B6914);box-shadow:0 3px 12px rgba(201,168,76,.35),0 1px 0 rgba(255,255,255,.4) inset}
+.btn-gold:hover{transform:translateY(-2px)}
+.btn-ghost{width:100%;font:inherit;font-size:1.05rem;letter-spacing:.1em;cursor:pointer;border-radius:30px;padding:12px;margin-top:10px;background:transparent;color:#4a3006;border:1px solid rgba(74,48,6,.55)}
+.err{color:#8a2a1a;font-size:.92rem;margin-top:4px;min-height:1em}
+[hidden]{display:none!important}
+
+/* aperçu */
+.sidelab{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 8px;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;color:#3a2710}
+.sidelab em{font-size:.85rem;letter-spacing:.02em;text-transform:none;opacity:.85}
+.cardbox{margin-bottom:22px}
+.recto,.verso{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 14px 34px rgba(40,26,6,.35);
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.recto{display:grid;grid-template-columns:27% 1fr;aspect-ratio:1.585/1;min-height:300px}
+.rl{background:#0f0905;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:7% 4%;text-align:center;color:var(--gold-lt)}
+.rl::before{content:"";position:absolute;inset:8px;border:1px solid rgba(201,168,76,.55);border-radius:8px;box-shadow:0 0 0 4px #0f0905,0 0 0 5px rgba(201,168,76,.3);pointer-events:none}
+.medal{width:clamp(48px,6.5vw,80px);height:auto;border-radius:0;box-shadow:none;border:0;outline:0}
+.rl .rgroup{margin:auto 0;display:flex;flex-direction:column;align-items:center}
+.rl b{display:block;font-weight:500;font-size:clamp(1.05rem,2.2vw,1.65rem);letter-spacing:.04em;color:var(--gold-lt);margin-top:8px}
+.rl small{display:block;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-top:2px}
+/* tirets or : identiques à .hero-lines du site (60 px, dégradé transparent → or → transparent, écart 8 px) */
+.rl .lines{display:flex;flex-direction:column;gap:8px;align-items:center;margin:22px 0 0}
+.rl .lines i{display:block;width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.rl .bot{font-size:clamp(.72rem,1.2vw,.88rem);line-height:1.55;color:#f1e4bd}
+.rr{position:relative;padding:5% 9% 4% 4.5%;display:flex;flex-direction:column;gap:3%;
+  /* bord droit du fond parchemin : feuilles + tige de bambou à droite, tige de gauche rognée */
+  background:linear-gradient(155deg,rgba(150,113,62,.28),rgba(120,88,44,.26)),url(images/fond-seamless.webp) right top/112% auto no-repeat,#c9ab77}
+.rr::before{content:"";position:absolute;inset:8px 0 8px 0;border-top:1px solid rgba(139,105,20,.55);border-bottom:1px solid rgba(139,105,20,.55);pointer-events:none}
+/* bambou : même tige que celle du fond de page (extraite de la même image) */
+.bamboo{position:absolute;top:0;bottom:0;right:0;width:26px;
+  background:none;display:none}
+.kick{font-size:.78rem;letter-spacing:.34em;text-transform:uppercase;color:#4a3006}
+.rtitle{font-style:italic;font-weight:400;font-size:calc(clamp(1.5rem,3.1vw,2.35rem) - 2px);line-height:1.1;color:#111}
+.cart{background:#000;border:1px solid rgba(201,168,76,.8);border-radius:12px;text-align:center;padding:2.2% 4%;box-shadow:0 0 0 1px rgba(0,0,0,.4)}
+.cart .nm{font-size:clamp(1.15rem,2.7vw,2rem);line-height:1.15;color:var(--gold-lt)}
+.cart .nm.big{font-size:clamp(1.8rem,4.2vw,3rem);font-weight:500}
+.cart .vl{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-top:6px}
+.fl{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:baseline}
+.fl span.k{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:#4a3006}
+.fl span.v{font-style:italic;font-size:clamp(1.15rem,2.4vw,1.7rem);color:#1a1208;border-bottom:1px dotted rgba(74,48,6,.6);min-height:1.5em;overflow-wrap:anywhere}
+.msg{font-style:italic;font-size:clamp(.95rem,1.6vw,1.2rem);color:#2c1e0c;min-height:1.4em;overflow-wrap:anywhere;line-height:1.3}
+.rfoot{margin-top:auto;display:flex;justify-content:space-between;gap:10px;border-top:1px solid rgba(74,48,6,.4);padding-top:6px;font-size:clamp(.8rem,1.3vw,.95rem);color:#3a2710}
+.rfoot b{font-weight:500;letter-spacing:.14em}
+
+/* test : texte du recto (partie sable) en noir pur */
+.rr .kick,.rr .rtitle,.rr .fl span.k,.rr .fl span.v,.rr .msg,.rr .rfoot,.rr .rfoot b{color:#000}
+.rr .fl span.v{border-bottom-color:rgba(0,0,0,.6)}
+.rr .rfoot{border-top-color:rgba(0,0,0,.45)}
+.verso{background:#100a05;color:#f1e4bd;padding:5% 5.5% 4%}
+.verso::before{content:"";position:absolute;inset:8px;border:1px solid rgba(201,168,76,.55);border-radius:12px;box-shadow:inset 0 0 0 4px #100a05,inset 0 0 0 5px rgba(201,168,76,.3);pointer-events:none}
+.vh{display:flex;gap:20px;align-items:center;padding:0 2%}
+.vh .medal{width:clamp(40px,5vw,52px)}
+.vh .k{font-size:.78rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.vh .t{font-style:italic;font-size:clamp(1.5rem,3vw,2.1rem);color:var(--gold-lt);line-height:1.1}
+.vl{list-style:none;margin:18px 2% 0;display:grid;gap:12px;font-size:calc(clamp(1rem,1.9vw,1.3rem) + 1px)}
+.vl li{display:grid;grid-template-columns:22px 1fr}
+.vl li::before{content:"✦";color:var(--gold);font-size:.8em;padding-top:.3em}
+.vcols{margin:16px 2% 0;padding-top:12px;border-top:1px solid rgba(201,168,76,.35);display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;font-size:clamp(.92rem,1.6vw,1.1rem);line-height:1.45}
+.vcols .k{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.vleg{text-align:center;margin-top:12px;font-size:.78rem;letter-spacing:.05em;color:var(--gold);opacity:.85}
+.how{font-size:.95rem;font-style:italic;color:#3a2710;line-height:1.5}
+.how b{font-weight:500;font-style:normal}
+
+/* dernière étape : fenêtre de règlement */
+.pay{border:1px solid rgba(201,168,76,.6);border-radius:20px;background:linear-gradient(180deg,#1a1008,#0f0905);color:#f1e4bd;
+  width:min(720px,calc(100% - 24px));max-height:calc(100vh - 24px);padding:30px 32px 26px;overflow:auto;font-family:var(--font);box-shadow:0 24px 70px rgba(0,0,0,.6)}
+.pay::backdrop{background:rgba(20,12,4,.72)}
+.pay-x{position:absolute;top:14px;right:18px;background:none;border:0;color:var(--gold-lt);font-size:1.8rem;line-height:1;cursor:pointer}
+.pay-kick{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.pay h2{font-style:italic;font-weight:400;font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.15;color:var(--gold-lt);margin:8px 0 14px}
+.pay-intro{font-size:1.1rem;line-height:1.55;margin-bottom:16px}
+.pay-intro b{font-weight:500;color:var(--gold-lt)}
+.pay-recap{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 20px;border:1px solid rgba(201,168,76,.4);border-radius:14px;padding:14px 16px;margin-bottom:16px;background:rgba(255,255,255,.02)}
+.pay .k{display:block;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.pay-recap span:not(.k){font-size:1.02rem;line-height:1.35;overflow-wrap:anywhere}
+.pay-rib{border:1px solid rgba(201,168,76,.5);border-radius:14px;overflow:hidden;margin-bottom:16px}
+.pay-rib .row{display:grid;grid-template-columns:120px 1fr auto;gap:12px;align-items:center;padding:10px 16px;border-top:1px solid rgba(201,168,76,.25);min-height:52px}
+.pay-rib .row:first-child{border-top:0}
+.pay-rib .row .k{margin:0}
+.pay-rib .v{font-size:1.1rem;overflow-wrap:anywhere}
+.pay-rib .v.gold{color:var(--gold-lt);letter-spacing:.04em;font-weight:500}
+.pay-rib .row.small{display:block;font-size:.88rem;color:var(--gold);opacity:.9}
+.cp{font:inherit;font-size:.95rem;color:var(--gold-lt);background:transparent;border:1px solid rgba(201,168,76,.7);border-radius:30px;padding:5px 16px;cursor:pointer}
+.cp:hover,.cp.ok{background:rgba(232,212,138,.16);color:#fff}
+.pay-steps{margin:0 0 18px 22px;display:grid;gap:6px;font-size:1.02rem;line-height:1.45}
+.pay-steps b{font-weight:500;color:var(--gold-lt)}
+.pay-actions .btn-gold{display:block;text-align:center;margin-top:0}
+.pay-actions .btn-ghost{color:var(--gold-lt);border-color:rgba(201,168,76,.6)}
+@media(max-width:620px){.pay{padding:24px 16px 20px}.pay-recap{grid-template-columns:1fr}.pay-rib .row{grid-template-columns:1fr auto;gap:4px 10px}.pay-rib .row .k{grid-column:1/-1}}
+
+@media(max-width:620px){
+  html{font-size:17.1px}
+  .recto{grid-template-columns:20% 1fr;min-height:0;aspect-ratio:auto}
+  .rl small,.rl .bot,.rl b,.rl .lines{display:none}
+  .rl{justify-content:center}
+  .rr{padding:18px 30px 14px 16px;gap:10px}
+  .vcols{grid-template-columns:1fr}
+}
+@media print{
+  body{background:#fff}
+  .back,.panel,.how,h1,.sub,.bars,.sidelab{display:none!important}
+  .layout{display:block}
+}
+</style>
+</head>
+<body>
+<a class="back" href="index.html#tarifs">← Retour au site</a>
+<main class="wrap">
+  <h1>Carte cadeau</h1>
+  <p class="sub">Le plaisir d’offrir</p>
+  <div class="bars"><i></i><i></i><i></i></div>
+
+  <div class="layout">
+    <!-- ===== Panneau ===== -->
+    <section class="panel" id="panel">
+      <div id="step1">
+        <h2>Personnaliser</h2>
+
+        <label class="lab" for="gc-choix">Soin, forfait ou montant</label>
+        <select id="gc-choix"></select>
+        <div id="gc-montant-box" hidden>
+          <label class="lab" for="gc-montant">Montant (€)</label>
+          <input type="number" id="gc-montant" min="10" max="1000" step="5" value="70" inputmode="numeric">
+        </div>
+        <p class="hint">Tarifs du site à ce jour.</p>
+
+        <label class="lab" for="gc-pour">Pour</label>
+        <input type="text" id="gc-pour" maxlength="40" autocomplete="off">
+        <label class="lab" for="gc-de">De la part de</label>
+        <input type="text" id="gc-de" maxlength="40" autocomplete="off">
+        <label class="lab" for="gc-msg">Petit mot <em id="gc-count">0 / 140</em></label>
+        <textarea id="gc-msg" maxlength="140" rows="3"></textarea>
+
+        <h3>Vos coordonnées</h3>
+        <label class="lab" for="gc-nom">Nom et prénom <span class="req">*</span></label>
+        <input type="text" id="gc-nom" autocomplete="name" maxlength="60">
+        <label class="lab" for="gc-mail">E-mail <span class="req">*</span></label>
+        <input type="email" id="gc-mail" autocomplete="email" maxlength="80">
+        <p class="hint">C’est à cette adresse qu’Isabelle vous enverra la carte en PDF, une fois votre virement reçu.</p>
+        <label class="lab" for="gc-tel">Téléphone (facultatif)</label>
+        <input type="tel" id="gc-tel" autocomplete="tel" maxlength="20">
+        <p class="err" id="gc-err" role="alert"></p>
+        <button type="button" class="btn-gold" id="gc-valider">Valider ma carte cadeau</button>
+        <button type="button" class="btn-ghost" id="gc-reset">Réinitialiser</button>
+      </div>
+
+    </section>
+
+    <!-- ===== Aperçu ===== -->
+    <section>
+      <div class="cardbox">
+        <div class="sidelab">Recto <em>aperçu en direct</em></div>
+        <div class="recto" id="recto">
+          <div class="rl">
+            <div class="rgroup"><img class="medal" src="images/logo.webp" alt=""><b>Isabelle FAR.</b><small>Facialiste</small><div class="lines"><i></i><i></i></div></div>
+            <div class="bot">Cesson-Sévigné (35)<br>isabelle-far.fr</div>
+          </div>
+          <div class="rr">
+            <div class="kick">Carte cadeau</div>
+            <div class="rtitle">Le plaisir d’offrir</div>
+            <div class="cart"><div class="nm" id="p-nom"></div><div class="vl" id="p-val"></div></div>
+            <div class="fl"><span class="k">Pour</span><span class="v" id="p-pour"></span>
+              <span class="k">De la part de</span><span class="v" id="p-de"></span></div>
+            <div class="msg" id="p-msg"></div>
+            <div class="rfoot"><span id="p-valid"></span><b id="p-num"></b></div>
+            <div class="bamboo"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cardbox">
+        <div class="sidelab">Verso <em>conditions indicatives</em></div>
+        <div class="verso">
+          <div class="vh"><img class="medal" src="images/logo.webp" alt="">
+            <div><div class="k">Isabelle FAR. · Facialiste</div><div class="t">Conditions d'utilisation</div></div></div>
+          <ul class="vl">
+            <li>Valable 12 mois à compter de la date d'émission, sur l'ensemble des prestations et des forfaits.</li>
+            <li>Remettre cette carte à Isabelle au moment du rendez-vous.</li>
+            <li>Non remboursable et non échangeable.</li>
+          </ul>
+          <div class="vcols">
+            <div><div class="k">Réserver</div>isabelle.far35@gmail.com<br>06 20 43 78 41<br>isabelle-far.fr</div>
+            <div><div class="k">Cabinet</div>76 rue de la Coulée<br>35510 Cesson-Sévigné<br>Sur rendez-vous</div>
+          </div>
+          <div class="vleg">EURL Isabelle FAR. · RCS Rennes · SIRET 107 510 430 00013</div>
+        </div>
+      </div>
+
+      <p class="how"><b>Comment ça marche :</b> vous remplissez la carte, puis vous réglez la somme par virement bancaire (le RIB s’affiche à l’étape suivante). Dès réception du virement, Isabelle vous envoie la carte en PDF par e-mail, prête à offrir : elle n’est valable qu’une fois réglée. Aperçu non contractuel.</p>
+    </section>
+  </div>
+</main>
+
+<!-- ===== Dernière étape : fenêtre de règlement par virement ===== -->
+<dialog id="pay" class="pay" aria-labelledby="pay-titre">
+  <form method="dialog"><button class="pay-x" aria-label="Fermer">×</button></form>
+  <div class="pay-kick">Dernière étape</div>
+  <h2 id="pay-titre"></h2>
+  <p class="pay-intro" id="pay-intro"></p>
+  <div class="pay-recap">
+    <div><span class="k">Pour</span><span id="pay-pour"></span></div>
+    <div><span class="k">De la part de</span><span id="pay-de"></span></div>
+    <div><span class="k">Carte</span><span id="pay-carte"></span></div>
+  </div>
+  <div class="pay-rib">
+    <div class="row"><span class="k">Montant</span><span class="v gold" id="pay-montant"></span><button type="button" class="cp" data-c="pay-montant">Copier</button></div>
+    <div class="row"><span class="k">Bénéficiaire</span><span class="v">ISABELLE FAR.</span><span></span></div>
+    <div class="row"><span class="k">IBAN</span><span class="v gold" id="pay-iban">FR76 1558 9351 1300 2539 9364 043</span><button type="button" class="cp" data-c="pay-iban">Copier</button></div>
+    <div class="row"><span class="k">BIC</span><span class="v gold" id="pay-bic">CMBRFR2BXXX</span><button type="button" class="cp" data-c="pay-bic">Copier</button></div>
+    <div class="row"><span class="k">Banque</span><span class="v">Crédit Mutuel de Bretagne — CCM Cesson-Sévigné</span><span></span></div>
+    <div class="row"><span class="k">Libellé</span><span class="v gold" id="pay-lib"></span><button type="button" class="cp" data-c="pay-lib">Copier</button></div>
+    <div class="row small">RIB : banque 15589 · guichet 35113 · compte 00253993640 · clé 43</div>
+  </div>
+  <ol class="pay-steps">
+    <li id="pay-s1"></li>
+    <li>Validez ci-dessous : votre messagerie s'ouvre avec votre commande déjà rédigée, à envoyer à Isabelle.</li>
+    <li id="pay-s3"></li>
+  </ol>
+  <div class="pay-actions">
+    <a class="btn-gold" id="pay-mailto" href="#">Valider et envoyer ma commande</a>
+    <button type="button" class="btn-ghost" id="pay-modif">Modifier ma carte</button>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  var MAIL='isabelle.far35@gmail.com';
+  var OPTIONS=[
+    {id:'montant',nom:'Montant au choix',type:'montant'},
+    {nom:'Massage KOBIDO Découverte',prix:60,duree:'60 min'},
+    {nom:'Massage KOBIDO',prix:70,duree:'60 min'},
+    {nom:'KOBIDO Intrabuccal',prix:80,duree:'75 min'},
+    {nom:'Massage KOGAO',prix:50,duree:'45 min'},
+    {nom:'Drainage lymphatique visage',prix:50,duree:'45 min'},
+    {nom:'KOBIDO à Domicile ou lieu Professionnel',prix:100,duree:'75 min'},
+    {nom:'Forfait Essentiel — 8 massages KOGAO',prix:360,duree:'8 séances'},
+    {nom:'Forfait Excellence — 8 massages KOBIDO',prix:520,duree:'8 séances'}
+  ];
+  var $=function(i){return document.getElementById(i);};
+  var sel=$('gc-choix');
+  OPTIONS.forEach(function(o,i){var e=document.createElement('option');e.value=i;
+    e.textContent=o.type?o.nom:o.nom+' — '+o.prix+' €';sel.appendChild(e);});
+  sel.value=2;
+
+  function code(){var a='ABCDEFGHJKMNPQRSTUVWXYZ23456789',s='IF-';
+    var r=new Uint8Array(6);(window.crypto||{getRandomValues:function(x){for(var i=0;i<x.length;i++)x[i]=Math.random()*256;}}).getRandomValues(r);
+    for(var i=0;i<6;i++)s+=a[r[i]%a.length];return s;}
+  var NUM=code();
+  var MOIS=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  function validite(){var d=new Date();d.setFullYear(d.getFullYear()+1);return d.getDate()+(d.getDate()===1?'er':'')+' '+MOIS[d.getMonth()]+' '+d.getFullYear();}
+
+  function etat(){
+    var o=OPTIONS[+sel.value], n=parseInt($('gc-montant').value,10);
+    if(o.type==='montant'){var m=(n>0?Math.min(n,1000):0);return {nom:m?m+' €':'…',big:true,val:'À valoir sur toutes les prestations',prix:m,label:'Montant au choix : '+m+' €'};}
+    return {nom:o.nom,big:false,val:o.duree+' · Valeur '+o.prix+' €',prix:o.prix,label:o.nom+' (valeur '+o.prix+' €)'};
+  }
+  function maj(){
+    var e=etat(), o=OPTIONS[+sel.value];
+    $('gc-montant-box').hidden=o.type!=='montant';
+    $('p-nom').textContent=e.nom;$('p-nom').classList.toggle('big',e.big);
+    $('p-val').textContent=e.val;
+    $('p-pour').textContent=$('gc-pour').value;
+    $('p-de').textContent=$('gc-de').value;
+    $('p-msg').textContent=$('gc-msg').value?'« '+$('gc-msg').value+' »':'';
+    $('gc-count').textContent=$('gc-msg').value.length+' / 140';
+    $('p-valid').textContent='Valable jusqu’au '+validite();
+    $('p-num').textContent='N° '+NUM;
+  }
+  ['gc-choix','gc-montant','gc-pour','gc-de','gc-msg'].forEach(function(i){$(i).addEventListener('input',maj);});
+
+  $('gc-valider').addEventListener('click',function(){
+    var nom=$('gc-nom').value.trim(), mail=$('gc-mail').value.trim(), err=$('gc-err'), e=etat();
+    err.textContent='';
+    if(!e.prix){err.textContent='Merci d’indiquer un montant.';$('gc-montant').focus();return;}
+    if(!nom){err.textContent='Merci d’indiquer votre nom et prénom.';$('gc-nom').focus();return;}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)){err.textContent='Merci d’indiquer une adresse e-mail valide.';$('gc-mail').focus();return;}
+    var L=[['Carte N°',NUM],['Contenu',e.label],['Pour',$('gc-pour').value||'—'],['De la part de',$('gc-de').value||'—'],
+           ['Valable jusqu’au',validite()],['À régler',e.prix+' €']];
+    var prenom=nom.split(/\s+/)[0], som=e.prix+' €';
+    $('pay-titre').textContent='Bonjour '+prenom+', votre carte cadeau est prête';
+    var intro=$('pay-intro');intro.textContent='';
+    intro.appendChild(document.createTextNode('Pour valider votre carte cadeau, merci de régler '));
+    var bb=document.createElement('b');bb.textContent=som;intro.appendChild(bb);
+    intro.appendChild(document.createTextNode(' par virement bancaire sur le compte d’Isabelle FAR., en indiquant le libellé ci-dessous.'));
+    $('pay-pour').textContent=$('gc-pour').value||'—';
+    $('pay-de').textContent=$('gc-de').value||'—';
+    $('pay-carte').textContent=e.nom;
+    $('pay-montant').textContent=som;
+    $('pay-lib').textContent='Carte cadeau '+NUM;
+    $('pay-s1').textContent='Réglez '+som+' par virement, avec le libellé ci-dessus.';
+    $('pay-s3').textContent='Dès réception du virement, Isabelle vous envoie votre carte cadeau en PDF à '+mail+', prête à offrir.';
+    var body='Bonjour Isabelle,\n\nJe souhaite commander une carte cadeau.\n\n'+L.map(function(r){return r[0]+' : '+r[1];}).join('\n')
+      +'\nMessage : '+($('gc-msg').value||'—')+'\n\nMes coordonnées :\n'+nom+'\n'+mail+'\n'+($('gc-tel').value||'')+'\n\nMerci !';
+    $('pay-mailto').href='mailto:'+MAIL+'?subject='+encodeURIComponent('Carte cadeau '+NUM)+'&body='+encodeURIComponent(body);
+    $('pay').showModal();
+  });
+  $('pay-modif').addEventListener('click',function(){$('pay').close();});
+  $('pay').addEventListener('click',function(ev){if(ev.target===$('pay'))$('pay').close();});
+  document.querySelectorAll('.cp').forEach(function(b){b.addEventListener('click',function(){
+    var txt=$(b.dataset.c).textContent;
+    var ok=function(){var o=b.textContent;b.textContent='Copié';b.classList.add('ok');setTimeout(function(){b.textContent=o;b.classList.remove('ok');},1400);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok,function(){});}
+    else{var t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();try{document.execCommand('copy');ok();}catch(x){}t.remove();}
+  });});
+  $('gc-reset').addEventListener('click',function(){
+    ['gc-pour','gc-de','gc-msg','gc-nom','gc-mail','gc-tel'].forEach(function(i){$(i).value='';});
+    sel.value=2;$('gc-montant').value=70;$('gc-err').textContent='';NUM=code();maj();});
+  maj();
+})();
+</script>
+</body>
+</html>

@@ -17,9 +17,7 @@
 <!-- Google Search Console : vérification de propriété du site -->
 <meta name="google-site-verification" content="002Rg-sBWzw4MxMhWoeEqgZKnDmO6bPkB31dWhjchTY" />
 
-<!-- Google Analytics (G-3GTWPQ89EC) : volontairement ABSENT du <head>.
-     Il n'est chargé qu'après un « Accepter » sur le bandeau Cookies (script
-     « Cookies » en fin de page), conformément aux règles de la CNIL. -->
+<!-- Google Analytics : absent (bandeau cookies supprimé). -->
 
 <!-- Favicon : médaillon « iKO » -->
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
@@ -864,9 +862,22 @@ html{font-size:18px}
 h3.sec-title{font-size:32px !important}
 .scard-name{font-size:21.6px !important}
 .forfait h3{font-size:24px !important}
-.giftcard-txt h3{font-size:25.6px !important}
+.giftcard-txt h3{font-size:27.6px !important}
 .about-txt h3{font-size:30.4px !important}
 .contact-card h3{font-size:21.6px !important}
+/* Téléphone uniquement : police réduite de 5 % (texte en rem + titres fixés en px) */
+@media (max-width:600px){
+  html{font-size:17.1px}
+  .hero-title{font-size:clamp(28.73px,5.13vw,54.72px) !important}
+  .hero-h2{font-size:clamp(19.76px,3.04vw,28.88px) !important}
+  .sec-title{font-size:clamp(30.4px,4.75vw,48.64px) !important}
+  h3.sec-title{font-size:30.4px !important}
+  .scard-name{font-size:20.52px !important}
+  .forfait h3{font-size:22.8px !important}
+  .giftcard-txt h3{font-size:26.22px !important}
+  .about-txt h3{font-size:28.88px !important}
+  .contact-card h3{font-size:20.52px !important}
+}
 .ig-card h3{font-size:24px !important}
 .footer-grid h4{font-size:14.4px !important}
 .reco-box h3{font-size:20px !important}
@@ -876,6 +887,14 @@ h3.sec-title{font-size:32px !important}
 }
 @media (max-width:460px){
   .hero-title{font-size:38.88px !important}
+}
+/* Téléphone : −5 % (reprend les tailles ci-dessus) */
+@media (max-width:600px){
+  .sec-title{font-size:30.4px !important}
+  .hero-h2{font-size:20.52px !important}
+}
+@media (max-width:460px){
+  .hero-title{font-size:36.94px !important}
 }
 
 /* --- 4 & 11 : retours à la ligne réservés à la version ordinateur --- */
@@ -1178,42 +1197,18 @@ header .btn-book{display:none !important}
   background:#2c1e0c;border:1px solid rgba(201,168,76,.55);box-shadow:0 10px 26px rgba(0,0,0,.35);
   display:flex;flex-direction:column;gap:2px}
 .devis-menu[hidden]{display:none}
+/* Téléphone : le bouton « Demander un devis » ne tient pas à côté de « En savoir plus »
+   et se coupait en deux. Le pied de carte passe sur 2 lignes : « En savoir plus » puis
+   le bouton, pleine largeur, texte sur une seule ligne. */
+@media (max-width:600px){
+  .scard-pros .scard-foot{flex-wrap:wrap;justify-content:center}
+  .scard-pros .devis-wrap{flex:1 1 100%;display:block}
+  .scard-pros .devis-btn{display:flex;justify-content:center;width:100%;white-space:nowrap;text-align:center}
+  .scard-pros .devis-menu{left:0;right:0}
+}
 .devis-menu a{display:block;padding:9px 14px;border-radius:8px;color:#E8D48A;font-size:.92rem;letter-spacing:.04em;text-align:left;white-space:nowrap}
 .devis-menu a:hover,.devis-menu a:focus-visible{background:rgba(232,212,138,.16);color:#fff;outline:0}
 
-/* ============================================================
-   BANDEAU DE CONSENTEMENT AUX COOKIES
-   Même habillage que la barre de navigation : fond noir, filet or,
-   texte crème, titre en or clair, police du site (Cormorant Garamond).
-   Les deux boutons ont la même taille : refuser est aussi simple qu'accepter.
-   ============================================================ */
-.cookie-banner{position:fixed;left:50%;bottom:max(16px,env(safe-area-inset-bottom));transform:translateX(-50%);
-  z-index:90;width:min(760px,calc(100% - 32px));box-sizing:border-box;padding:20px 24px 18px;
-  background:#000;color:#F5EDD8;border:1px solid rgba(201,168,76,.55);border-radius:16px;
-  box-shadow:0 14px 40px rgba(0,0,0,.5);font-family:var(--font-h);line-height:1.55;
-  max-height:75vh;overflow-y:auto;animation:cookieIn .5s cubic-bezier(.2,.8,.2,1) both}
-.cookie-banner[hidden]{display:none}
-@keyframes cookieIn{from{opacity:0;transform:translate(-50%,14px)}to{opacity:1;transform:translate(-50%,0)}}
-.cookie-banner h2{margin:0 0 6px;font-size:1.3rem;font-weight:600;letter-spacing:.04em;color:#E8D48A}
-.cookie-banner p{margin:0;font-size:1rem;color:#F5EDD8}
-.cookie-banner .cookie-details{margin-top:10px;font-size:.92rem;color:#EDD5A0}
-.cookie-more{background:none;border:0;padding:0;margin-top:8px;font:inherit;font-size:.92rem;color:#E8D48A;
-  text-decoration:underline;text-underline-offset:3px;cursor:pointer}
-.cookie-actions{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
-.cookie-btn{flex:1 1 130px;font:inherit;font-size:.95rem;letter-spacing:.08em;font-weight:500;padding:10px 22px;
-  border-radius:30px;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
-.cookie-btn--ok{border:1px solid transparent;color:#2C1810;font-weight:600;
-  background:linear-gradient(135deg,#F0D080,#C9A84C 55%,#8B6914);
-  box-shadow:0 3px 12px rgba(201,168,76,.35),0 1px 0 rgba(255,255,255,.4) inset}
-.cookie-btn--ok:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(201,168,76,.55)}
-.cookie-btn--no{background:transparent;color:#E8D48A;border:1px solid rgba(201,168,76,.8)}
-.cookie-btn--no:hover{background:rgba(232,212,138,.14);color:#fff}
-.cookie-btn:focus-visible,.cookie-more:focus-visible,.cookie-open:focus-visible{outline:2px solid #E8D48A;outline-offset:3px}
-@media (prefers-reduced-motion:reduce){.cookie-banner{animation:none}}
-@media (max-width:460px){.cookie-banner{padding:14px 16px 14px}.cookie-banner h2{font-size:1.15rem}.cookie-banner p{font-size:.95rem}.cookie-actions{gap:10px;margin-top:12px;flex-wrap:nowrap}.cookie-btn{flex:1 1 0;min-width:0;padding:10px 8px;letter-spacing:.05em}}
-/* Lien « Gérer les cookies » du pied de page : rouvre le bandeau. */
-.cookie-open{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;
-  text-decoration:underline;text-underline-offset:3px}
 </style>
 
 <!-- (rouleaux de coin retirés pour un rendu plus épuré) -->
@@ -1359,7 +1354,7 @@ header .btn-book{display:none !important}
     <div class="hero-logo-fb">小</div>
 
     <div class="hero-jp">小顔 · 骨格矯正</div>
-    <h1 class="hero-title">Isabelle FAR. <span class="hero-title-sub">–&nbsp;Facialiste à <span class="nowrap-lieu">Cesson-Sévigné</span>&nbsp;(35)</span></h1>
+    <h1 class="hero-title">Isabelle FAR. <span class="hero-title-sub">Facialiste à <span class="nowrap-lieu">Cesson-Sévigné</span>&nbsp;(35)</span></h1>
 
     <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-book hero-mobile-book">Réserver</a>
 
@@ -1370,7 +1365,7 @@ header .btn-book{display:none !important}
     <div class="hero-lines hero-lines-2"><i></i><i></i><i></i></div>
 
     <p class="hero-meta">
-      Praticienne certifiée dans le secteur du <strong>Bien-être</strong> de l'École du KOBIDO<br>Paris&nbsp;(75)/<wbr><span class="nowrap-lieu">Rochefort-sur-Mer&nbsp;(17)</span><br>
+      Praticienne certifiée dans le secteur du <strong>Bien-être</strong> de l'École du KOBIDO<br>de <span class="nowrap-lieu">Rochefort-sur-Mer&nbsp;(17)</span><br>
       Cabinet à domicile sur la commune de <strong class="nowrap-lieu">Cesson-Sévigné</strong> près de Rennes (35)
     </p>
   </div>
@@ -1409,11 +1404,11 @@ header .btn-book{display:none !important}
             <h3 class="scard-name" data-e="soin1-nom">Massage KOBIDO</h3>
             <p class="scard-stag" data-e="soin1-accroche">Lifting naturel</p>
             <p class="scard-dur" data-e="soin1-duree">60 min</p>
-            <p class="scard-price" data-e="soin1-prix">80 €</p>
+            <p class="scard-price" data-e="soin1-prix">70 €</p>
           </div>
         </div>
         <div class="scard-body" id="body-1">
-          <p class="scard-desc" data-e="soin1-desc">L'Authentique KOBIDO est un soin ancestral japonais dédié aux femmes et aux hommes sans barbe ni moustache.<br>Il s'agit d'un massage liftant issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique et relaxant du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>Ce massage favorise la microcirculation.<br>C'est un soin qui permet de redonner de l'éclat au visage, de repulper votre peau et lisser vos rides.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.</p>
+          <p class="scard-desc" data-e="soin1-desc">L'Authentique KOBIDO est un soin ancestral japonais dédié aux femmes et aux hommes sans barbe ni moustache.<br>Il s'agit d'un massage liftant issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique et relaxant du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>Ce massage favorise la microcirculation.<br>C'est un soin qui permet de redonner de l'éclat au visage, de repulper votre peau et de lisser vos rides.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.</p>
           <div class="promo-tag" data-promo="BIENVENUE10" style="display:none">🎁 Code promo : BIENVENUE10 — 10% sur votre 1ère séance</div>
         </div>
         <div class="scard-foot">
@@ -1454,14 +1449,14 @@ header .btn-book{display:none !important}
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="scard-thumb-fb">🌸</div>
           <div class="scard-info">
-            <h3 class="scard-name" data-e="soin3-nom">Massage KOGAO &amp; Drainage visage</h3>
-            <p class="scard-stag" data-e="soin3-accroche">Détox &amp; éclat</p>
-            <p class="scard-dur" data-e="soin3-duree">60 min</p>
-            <p class="scard-price" data-e="soin3-prix">70 €</p>
+            <h3 class="scard-name" data-e="soin3-nom">Drainage lymphatique visage</h3>
+            <p class="scard-stag" data-e="soin3-accroche">Détox</p>
+            <p class="scard-dur" data-e="soin3-duree">45 min</p>
+            <p class="scard-price" data-e="soin3-prix">50 €</p>
           </div>
         </div>
         <div class="scard-body" id="body-3">
-          <p class="scard-desc" data-e="soin3-desc">Soin mixte. Femmes et hommes.<br>Soin profond pour les visages gonflés. Pressions sur les muscles du visage et du crâne accompagné d'un drainage lymphatique dynamique et relaxant pour décongestionner le visage.<br>Stimulation des ganglions lymphatiques pour aider à éliminer les toxines.<br>Ses bienfaits :<br>Réduit les sensations de gonflements<br>Affine et redessine les contours du visage<br>Utilisation de l'huile d'amande douce pour le soin.</p>
+          <p class="scard-desc" data-e="soin3-desc">Soin mixte. Femmes et hommes.<br>Soin profond pour les visages gonflés. Stimulation des ganglions lymphatiques pour aider à éliminer les toxines et décongestionner le visage.<br>Ses bienfaits :<br>Réduit les sensations de gonflements<br>Affine et redessine les contours du visage</p>
           <div class="promo-tag" data-promo="BIENVENUE10" style="display:none">🎁 Code promo : BIENVENUE10 — 10% sur votre 1ère séance</div>
         </div>
         <div class="scard-foot">
@@ -1480,7 +1475,7 @@ header .btn-book{display:none !important}
             <h3 class="scard-name" data-e="soin4-nom">KOBIDO Intrabuccal</h3>
             <p class="scard-stag" data-e="soin4-accroche">Massage liftant en profondeur</p>
             <p class="scard-dur" data-e="soin4-duree">75 min</p>
-            <p class="scard-price" data-e="soin4-prix">90 €</p>
+            <p class="scard-price" data-e="soin4-prix">80 €</p>
           </div>
         </div>
         <div class="scard-body" id="body-4">
@@ -1507,7 +1502,7 @@ header .btn-book{display:none !important}
           </div>
         </div>
         <div class="scard-body" id="body-5">
-          <p class="scard-desc" data-e="soin5-desc">L'Authentique KOBIDO est un soin ancestral japonais dédié aux nouvelles clientes et aux nouveaux clients sans barbe ni moustache. Valable une seule fois.<br>Il s'agit d'un massage liftant issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique et relaxant du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>Ce massage favorise la microcirculation.<br>C'est un soin qui permet de redonner de l'éclat au visage, de repulper votre peau et lisser vos rides.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.</p>
+          <p class="scard-desc" data-e="soin5-desc">L'Authentique KOBIDO est un soin ancestral japonais dédié aux nouvelles clientes et aux nouveaux clients sans barbe ni moustache. Valable une seule fois.<br>Il s'agit d'un massage liftant issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique et relaxant du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>Ce massage favorise la microcirculation.<br>C'est un soin qui permet de redonner de l'éclat au visage, de repulper votre peau et de lisser vos rides.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.</p>
         </div>
         <div class="scard-foot">
           <button class="scard-toggle" onclick="toggleCard('body-5',this)">En savoir plus <span class="arr">▾</span></button>
@@ -1525,11 +1520,11 @@ header .btn-book{display:none !important}
             <h3 class="scard-name" data-e="soin6-nom">KOBIDO à Domicile ou lieu Professionnel</h3>
             <p class="scard-stag" data-e="soin6-accroche">Secteur Cesson-Sévigné + rayon 8 km</p>
             <p class="scard-dur" data-e="soin6-duree">75 min</p>
-            <p class="scard-price" data-e="soin6-prix">110 €</p>
+            <p class="scard-price" data-e="soin6-prix">100 €</p>
           </div>
         </div>
         <div class="scard-body" id="body-6">
-          <p class="scard-desc" data-e="soin6-desc">Soin ancestral japonais dédié aux femmes.<br>Déplacement à votre domicile ou sur un lieu professionnel (lieu de travail, hôtel, hôpital, résidence secondaire, maison de repos, résidence seniors…).<br>Il s'agit d'un lifting naturel issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>C'est un soin qui permet de redonner de l'éclat au visage, de tonifier votre peau et de rééquilibrer vos énergies et de profonde détente.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.<br>Travail complémentaire sur le décolleté.<br>Durée du soin : 1h30 hors temps de déplacement.<br><br>Consignes avant le soin :<br>Retirer colliers, boucles d'oreilles et nez.<br>Espace de massage recommandé pour le soin : 330 cm de longueur minimum et 140 cm de largeur minimum.<br>Stationnement facile d'accès.<br>Ascenseur recommandé pour se rendre sur les lieux du RDV au-delà du 1<sup>er</sup> étage d'un bâtiment.<br>Soin possible en dehors des horaires fixés.<br>Je vous invite à m'adresser un mail SVP.</p>
+          <p class="scard-desc" data-e="soin6-desc">Soin ancestral japonais dédié aux femmes.<br>Déplacement à votre domicile ou sur un lieu professionnel (lieu de travail, hôtel, hôpital, résidence secondaire, maison de repos, résidence seniors…).<br>Il s'agit d'un lifting naturel issu des techniques du Maître Shogo Mochizuki.<br>Massage tonique du visage rythmé d'effleurages, de pétrissages, de pressions et de percussions sur votre peau.<br>C'est un soin qui permet de redonner de l'éclat au visage, de tonifier votre peau et de rééquilibrer vos énergies et de profonde détente.<br>Utilisation d'une huile sèche aux 3 vertus essentielles pour le soin.<br>Travail complémentaire sur le décolleté.<br>Consignes avant le soin :<br>Retirer colliers, boucles d'oreilles et nez.<br>Espace de massage recommandé pour le soin : 330 cm de longueur minimum et 140 cm de largeur minimum.<br>Stationnement facile d'accès.<br>Ascenseur recommandé pour se rendre sur les lieux du RDV au-delà du 1<sup>er</sup> étage d'un bâtiment.<br>Soin possible en dehors des horaires fixés.<br>Je vous invite à m'adresser un mail SVP.</p>
         </div>
         <div class="scard-foot">
           <button class="scard-toggle" onclick="toggleCard('body-6',this)">En savoir plus <span class="arr">▾</span></button>
@@ -1582,11 +1577,11 @@ header .btn-book{display:none !important}
       <thead><tr><th>Soins</th><th>Genre</th><th>Durée</th><th>Tarifs</th></tr></thead>
       <tbody>
         <tr><td data-e="tarif1-soin">Massage liftant KOBIDO Découverte</td><td data-e="tarif1-genre">Mixte</td><td data-e="tarif1-duree">60 min</td><td data-e="tarif1-prix">60 €</td></tr>
-        <tr><td data-e="tarif2-soin">Massage liftant KOBIDO</td><td data-e="tarif2-genre">Mixte</td><td data-e="tarif2-duree">60 min</td><td data-e="tarif2-prix">80 €</td></tr>
-        <tr><td data-e="tarif3-soin">Massage liftant KOBIDO Intrabuccal</td><td data-e="tarif3-genre">Femmes</td><td data-e="tarif3-duree">75 min</td><td data-e="tarif3-prix">90 €</td></tr>
+        <tr><td data-e="tarif2-soin">Massage liftant KOBIDO</td><td data-e="tarif2-genre">Mixte</td><td data-e="tarif2-duree">60 min</td><td data-e="tarif2-prix">70 €</td></tr>
+        <tr><td data-e="tarif3-soin">Massage liftant KOBIDO Intrabuccal</td><td data-e="tarif3-genre">Femmes</td><td data-e="tarif3-duree">75 min</td><td data-e="tarif3-prix">80 €</td></tr>
         <tr><td data-e="tarif4-soin">Massage KOGAO Acupression visage</td><td data-e="tarif4-genre">Mixte</td><td data-e="tarif4-duree">45 min</td><td data-e="tarif4-prix">50 €</td></tr>
-        <tr><td data-e="tarif5-soin">Massage KOGAO &amp; Drainage lymphatique visage</td><td data-e="tarif5-genre">Mixte</td><td data-e="tarif5-duree">60 min</td><td data-e="tarif5-prix">70 €</td></tr>
-        <tr><td data-e="tarif6-soin">Massage liftant KOBIDO à Domicile ou lieu Professionnel</td><td data-e="tarif6-genre">Femmes</td><td data-e="tarif6-duree">75 min</td><td data-e="tarif6-prix">110 €</td></tr>
+        <tr><td data-e="tarif5-soin">Drainage lymphatique visage</td><td data-e="tarif5-genre">Mixte</td><td data-e="tarif5-duree">45 min</td><td data-e="tarif5-prix">50 €</td></tr>
+        <tr><td data-e="tarif6-soin">Massage liftant KOBIDO à Domicile ou lieu Professionnel</td><td data-e="tarif6-genre">Femmes</td><td data-e="tarif6-duree">75 min</td><td data-e="tarif6-prix">100 €</td></tr>
       </tbody>
     </table>
     <div style="text-align:center;margin:-6px 0 40px">
@@ -1610,7 +1605,7 @@ header .btn-book{display:none !important}
         <h3 data-e="forfait2-nom">Excellence</h3>
         <p class="forfait-sub" data-e="forfait2-sub">Lift naturel</p>
         <p class="detail" data-e="forfait2-detail">8 X massages liftants KOBIDO<br>60 min</p>
-        <div class="price" data-e="forfait2-prix">540 €</div>
+        <div class="price" data-e="forfait2-prix">520 €</div>
         <span class="eco" data-e="forfait2-eco">économie 100 €</span>
         <a href="https://glaads.com/profil-professionnel/isabelle-far-facialiste" target="_blank" rel="noopener" class="btn-rsm">Réserver</a>
       </div>
@@ -1621,11 +1616,10 @@ header .btn-book{display:none !important}
       <span class="giftcard-jp">ギフト券</span>
       <div class="giftcard-txt">
         <h3>Carte cadeau</h3>
-        <p>Offrez un instant de bien-être. Montant <strong>au choix</strong>, valable sur toutes les prestations — un cadeau raffiné, à composer selon le soin souhaité.</p>
+        <p>Le plaisir d’offrir. Montant <strong>au choix</strong>, valable sur toutes les prestations — un cadeau raffiné, à composer selon le soin souhaité.</p>
       </div>
       <div class="giftcard-btn">
-        <span class="btn-book giftcard-cta-off" aria-disabled="true">🎁 Offrir une carte cadeau</span>
-        <span class="giftcard-note">En cours d'édition</span>
+        <a href="carte-cadeau.html" class="btn-book" id="gc-open">🎁 Offrir une carte cadeau</a>
       </div>
     </div>
 
@@ -1829,79 +1823,8 @@ header .btn-book{display:none !important}
       <a href="https://isabelle-far.fr" target="_blank" rel="noopener">🌐 isabelle-far.fr</a>
     </div>
   </div>
-  <div class="footer-bottom">© 07.2026 Isabelle FAR. · isabelle-far.fr — Tous droits réservés · <button type="button" class="cookie-open" id="cookie-open">Gérer les cookies</button></div>
+  <div class="footer-bottom">© 07.2026 Isabelle FAR. · isabelle-far.fr — Tous droits réservés</div>
 </footer>
-
-<!-- Bandeau de consentement aux cookies (Google Analytics) -->
-<div id="cookie-banner" class="cookie-banner" role="dialog" aria-modal="false" aria-labelledby="cookie-titre" aria-describedby="cookie-texte" tabindex="-1" hidden>
-  <h2 id="cookie-titre">Cookies</h2>
-  <p id="cookie-texte">Ce site utilise Google Analytics pour mesurer sa fréquentation (pages consultées, appareils utilisés) afin de l'améliorer. Ces cookies ne sont déposés qu'avec votre accord.</p>
-  <button type="button" class="cookie-more" id="cookie-more" aria-expanded="false" aria-controls="cookie-details">En savoir plus</button>
-  <p class="cookie-details" id="cookie-details" hidden>Google Analytics (Google Ireland Limited) dépose deux cookies, « _ga » et « _ga_… », conservés 13 mois au maximum. Ils servent uniquement à compter les visites et à savoir quelles pages vous intéressent : aucune publicité personnalisée n'est activée. Votre choix est conservé 6 mois et vous pouvez le modifier à tout moment avec le lien « Gérer les cookies » en bas de page.</p>
-  <div class="cookie-actions">
-    <button type="button" class="cookie-btn cookie-btn--no" id="cookie-refuse">Refuser</button>
-    <button type="button" class="cookie-btn cookie-btn--ok" id="cookie-accept">Accepter</button>
-  </div>
-</div>
-
-<script>
-/* Cookies — Google Analytics n'est chargé QU'APRÈS un « Accepter ».
-   Tant que le visiteur n'a pas répondu (ou s'il refuse), aucune requête ne part
-   vers Google et aucun cookie n'est déposé. Le choix est mémorisé 6 mois dans le
-   navigateur (localStorage), puis la question est reposée. Comme le script des
-   statistiques, rien n'est envoyé depuis un poste de test (localhost, fichier). */
-(function(){
-  var GA_ID='G-3GTWPQ89EC', CLE='if_cookies', DUREE=182*24*3600*1000;
-  var local=location.protocol==='file:'||/^(localhost|127\.)/.test(location.hostname)||navigator.webdriver;
-  var banniere=document.getElementById('cookie-banner');
-  if(!banniere) return;
-  var bPlus=document.getElementById('cookie-more'), details=document.getElementById('cookie-details');
-  function lire(){
-    try{var v=JSON.parse(localStorage.getItem(CLE));
-      if(v&&(v.choix==='oui'||v.choix==='non')&&Date.now()-v.date<DUREE) return v.choix;}catch(e){}
-    return null;
-  }
-  function ecrire(c){try{localStorage.setItem(CLE,JSON.stringify({choix:c,date:Date.now()}));}catch(e){}}
-  var charge=false;
-  function chargerGA(){
-    window['ga-disable-'+GA_ID]=false;
-    if(charge||local) return;
-    charge=true;
-    window.dataLayer=window.dataLayer||[];
-    window.gtag=function(){dataLayer.push(arguments);};
-    var s=document.createElement('script');s.async=true;
-    s.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID;
-    document.head.appendChild(s);
-    gtag('js',new Date());
-    gtag('config',GA_ID,{cookie_expires:34128000,allow_google_signals:false,allow_ad_personalization_signals:false});
-  }
-  function effacerCookiesGA(){
-    window['ga-disable-'+GA_ID]=true;
-    var h=location.hostname.split('.'), racine=h.slice(-2).join('.');
-    var domaines=[location.hostname,'.'+location.hostname,racine,'.'+racine];
-    document.cookie.split(';').forEach(function(c){
-      var n=c.split('=')[0].trim();
-      if(n==='_ga'||n.indexOf('_ga_')===0||n==='_gid'||n.indexOf('_gat')===0){
-        var base=n+'=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
-        document.cookie=base;
-        domaines.forEach(function(d){document.cookie=base+'; domain='+d;});
-      }
-    });
-  }
-  function afficher(focus){banniere.hidden=false;if(focus)banniere.focus();}
-  document.getElementById('cookie-accept').addEventListener('click',function(){ecrire('oui');chargerGA();banniere.hidden=true;});
-  document.getElementById('cookie-refuse').addEventListener('click',function(){ecrire('non');effacerCookiesGA();banniere.hidden=true;});
-  bPlus.addEventListener('click',function(){
-    var ouvre=details.hidden;details.hidden=!ouvre;
-    bPlus.setAttribute('aria-expanded',String(ouvre));
-    bPlus.textContent=ouvre?'Masquer les détails':'En savoir plus';
-  });
-  var ouvrir=document.getElementById('cookie-open');
-  if(ouvrir) ouvrir.addEventListener('click',function(){afficher(true);});
-  var choix=lire();
-  if(choix==='oui') chargerGA(); else if(choix===null) afficher(false);
-})();
-</script>
 
 <script>
 /* 7.1 Toggle prestation cards (inline) */
