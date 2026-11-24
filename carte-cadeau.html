@@ -131,6 +131,23 @@ textarea{resize:vertical;min-height:84px}
 .pay-steps b{font-weight:500;color:var(--gold-lt)}
 .pay-actions .btn-gold{display:block;text-align:center;margin-top:0}
 .pay-actions .btn-ghost{color:var(--gold-lt);border-color:rgba(201,168,76,.6)}
+.pay-status{min-height:1.4em;margin-top:12px;text-align:center;font-style:italic;font-size:1.02rem;color:var(--gold-lt)}
+.pay-status.bad{color:#f0b39a}
+.pay-alt{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.pay-alt a{color:var(--gold-lt);border-bottom:1px solid rgba(201,168,76,.7);font-size:1rem}
+.btn-gold[disabled]{opacity:.7;cursor:default;transform:none}
+/* mode « rendu PDF » : la page est chargée dans une iframe invisible, seules les 2 faces de la carte s'affichent (mêmes styles que l'aperçu) */
+html.pdfmode body{background:#fff;min-height:0}
+html.pdfmode .back,html.pdfmode h1,html.pdfmode .sub,html.pdfmode .bars,html.pdfmode .panel,html.pdfmode .how,html.pdfmode .sidelab,html.pdfmode .pay{display:none!important}
+html.pdfmode .wrap{max-width:none;padding:0}
+html.pdfmode .layout{display:block}
+html.pdfmode .recto,html.pdfmode .verso{box-shadow:none}
+/* le moteur de capture ne gère pas les ombres « inset » : double filet du verso redessiné avec de vraies bordures */
+html.pdfmode .verso::before{box-shadow:none}
+html.pdfmode .verso::after{content:"";position:absolute;inset:13px;border:1px solid rgba(201,168,76,.3);border-radius:8px;pointer-events:none}
+html.pdfmode .rl::before{box-shadow:none}
+html.pdfmode .rl::after{content:"";position:absolute;inset:3px;border:1px solid rgba(201,168,76,.3);border-radius:12px;pointer-events:none}
+html.pdfmode .cardbox{margin:0 0 24px}
 @media(max-width:620px){.pay{padding:24px 16px 20px}.pay-recap{grid-template-columns:1fr}.pay-rib .row{grid-template-columns:1fr auto;gap:4px 10px}.pay-rib .row .k{grid-column:1/-1}}
 
 @media(max-width:620px){
@@ -215,7 +232,7 @@ textarea{resize:vertical;min-height:84px}
 
       <div class="cardbox">
         <div class="sidelab">Verso <em>conditions indicatives</em></div>
-        <div class="verso">
+        <div class="verso" id="verso">
           <div class="vh"><img class="medal" src="images/logo.webp" alt="">
             <div><div class="k">Isabelle FAR. · Facialiste</div><div class="t">Conditions d'utilisation</div></div></div>
           <ul class="vl">
@@ -258,11 +275,13 @@ textarea{resize:vertical;min-height:84px}
   </div>
   <ol class="pay-steps">
     <li id="pay-s1"></li>
-    <li>Validez ci-dessous : votre messagerie s'ouvre avec votre commande déjà rédigée, à envoyer à Isabelle.</li>
+    <li>Validez ci-dessous : votre commande est transmise à Isabelle avec votre carte déjà remplie.</li>
     <li id="pay-s3"></li>
   </ol>
   <div class="pay-actions">
-    <a class="btn-gold" id="pay-mailto" href="#">Valider et envoyer ma commande</a>
+    <button type="button" class="btn-gold" id="pay-send">Valider et envoyer ma commande</button>
+    <p class="pay-status" id="pay-status" role="status" aria-live="polite"></p>
+    <div class="pay-alt" id="pay-alt" hidden><a id="pay-dl" href="#" download>Télécharger ma carte (PDF)</a><a id="pay-mailto" href="#">Écrire à Isabelle</a></div>
     <button type="button" class="btn-ghost" id="pay-modif">Modifier ma carte</button>
   </div>
 </dialog>
@@ -337,8 +356,98 @@ textarea{resize:vertical;min-height:84px}
     var body='Bonjour Isabelle,\n\nJe souhaite commander une carte cadeau.\n\n'+L.map(function(r){return r[0]+' : '+r[1];}).join('\n')
       +'\nMessage : '+($('gc-msg').value||'—')+'\n\nMes coordonnées :\n'+nom+'\n'+mail+'\n'+($('gc-tel').value||'')+'\n\nMerci !';
     $('pay-mailto').href='mailto:'+MAIL+'?subject='+encodeURIComponent('Carte cadeau '+NUM)+'&body='+encodeURIComponent(body);
+    // instantané de la commande : c'est lui qui sert au PDF et à l'e-mail envoyé à Isabelle
+    CMD={nom:nom,mail:mail,tel:$('gc-tel').value.trim(),num:NUM,valid:validite(),carte:e.nom,big:e.big,val:e.val,label:e.label,prix:e.prix,
+         pour:$('gc-pour').value.trim(),de:$('gc-de').value.trim(),msg:$('gc-msg').value.trim(),body:body};
+    $('pay-send').disabled=false;$('pay-send').textContent='Valider et envoyer ma commande';
+    $('pay-status').textContent='';$('pay-status').classList.remove('bad');$('pay-alt').hidden=true;
     $('pay').showModal();
   });
+
+  /* ---------- PDF de la carte (recto + verso, même rendu que l'aperçu) + envoi à Isabelle ---------- */
+  var CMD=null;
+  var H2C='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+  var JSPDF='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+  function loadScript(src){return new Promise(function(ok,ko){var s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=function(){ko(new Error('script '+src));};document.head.appendChild(s);});}
+  function libs(){return (window.html2canvas&&window.jspdf)?Promise.resolve():loadScript(H2C).then(function(){return loadScript(JSPDF);});}
+  // la carte est dessinée dans une iframe invisible de 1000 px (rendu « bureau » identique à l'aperçu, quel que soit l'écran du client)
+  function rendu(d){
+    return new Promise(function(ok,ko){
+      var f=document.createElement('iframe');
+      f.setAttribute('aria-hidden','true');f.tabIndex=-1;
+      f.style.cssText='position:fixed;left:-12000px;top:0;width:1000px;height:2400px;border:0;opacity:0;pointer-events:none';
+      var done=false,t=setTimeout(function(){fin(new Error('délai dépassé'));},25000);
+      function fin(err,res){if(done)return;done=true;clearTimeout(t);setTimeout(function(){f.remove();},0);err?ko(err):ok(res);}
+      f.onload=function(){
+        var w=f.contentWindow,doc=f.contentDocument;
+        if(!w.__pdfFill){return fin(new Error('iframe'));}
+        w.__pdfFill(d);
+        var attente=[doc.fonts?doc.fonts.ready:Promise.resolve()];
+        Array.prototype.forEach.call(doc.images,function(im){if(!im.complete)attente.push(new Promise(function(r){im.onload=im.onerror=r;}));});
+        Promise.all(attente).then(function(){
+          var opt={scale:2,backgroundColor:'#ffffff',useCORS:true,logging:false,windowWidth:1000,windowHeight:2400};
+          var res=[];
+          return window.html2canvas(doc.getElementById('recto'),opt).then(function(a){res.push(a);return window.html2canvas(doc.getElementById('verso'),opt);}).then(function(b){res.push(b);return res;});
+        }).then(function(c){fin(null,c);},fin);
+      };
+      f.src='carte-cadeau.html?pdf=1';
+      document.body.appendChild(f);
+    });
+  }
+  function fabriquerPdf(d){
+    return libs().then(function(){return rendu(d);}).then(function(c){
+      var J=window.jspdf.jsPDF,pdf=new J({unit:'mm',format:'a4',orientation:'portrait',compress:true});
+      var W=170,x=(210-W)/2,y=22;
+      c.forEach(function(cv,i){
+        var h=W*cv.height/cv.width;
+        pdf.addImage(cv.toDataURL('image/jpeg',0.92),'JPEG',x,y,W,h,undefined,'FAST');
+        y+=h+14;
+      });
+      pdf.setProperties({title:'Carte cadeau '+d.num+' — Isabelle FAR.',author:'Isabelle FAR.'});
+      return pdf.output('blob');
+    });
+  }
+  function envoyer(d,pdf){
+    var fd=new FormData(),nomPdf='Carte-cadeau-'+d.num+'.pdf';
+    fd.append('_subject','Nouvelle commande carte cadeau '+d.num+' — '+d.prix+' € — '+d.nom);
+    fd.append('_captcha','false');fd.append('_template','table');
+    fd.append('name',d.nom);fd.append('email',d.mail);
+    fd.append('Carte N°',d.num);fd.append('Contenu',d.label);fd.append('À régler',d.prix+' €');
+    fd.append('Pour',d.pour||'—');fd.append('De la part de',d.de||'—');fd.append('Message',d.msg||'—');
+    fd.append('Valable jusqu’au',d.valid);fd.append('Téléphone',d.tel||'—');
+    fd.append('À faire','Dès réception du virement (libellé « Carte cadeau '+d.num+' »), transférer le PDF joint à '+d.mail);
+    fd.append('attachment',pdf,nomPdf);
+    return fetch('https://formsubmit.co/ajax/'+MAIL,{method:'POST',body:fd,headers:{'Accept':'application/json'}})
+      .then(function(r){return r.json().catch(function(){return {};}).then(function(j){if(!r.ok||j.success==='false'||j.success===false)throw new Error(j.message||('HTTP '+r.status));});});
+  }
+  $('pay-send').addEventListener('click',function(){
+    if(!CMD)return;
+    var btn=$('pay-send'),st=$('pay-status'),d=CMD,pdfBlob=null;
+    btn.disabled=true;btn.textContent='Envoi en cours…';st.classList.remove('bad');st.textContent='Préparation de votre carte…';$('pay-alt').hidden=true;
+    fabriquerPdf(d).then(function(b){pdfBlob=b;st.textContent='Envoi de votre commande à Isabelle…';return envoyer(d,b);})
+    .then(function(){
+      btn.textContent='Commande envoyée ✓';
+      st.textContent='Merci ! Isabelle a bien reçu votre commande. Dès réception de votre virement, elle vous envoie votre carte cadeau à '+d.mail+'.';
+      NUM=code();maj();CMD=null;
+    }).catch(function(){
+      btn.disabled=false;btn.textContent='Réessayer l’envoi';
+      st.classList.add('bad');st.textContent='L’envoi automatique n’a pas abouti. Réessayez, ou transmettez votre commande directement à Isabelle :';
+      $('pay-mailto').href='mailto:'+MAIL+'?subject='+encodeURIComponent('Carte cadeau '+d.num)+'&body='+encodeURIComponent(d.body);
+      var dl=$('pay-dl');
+      if(pdfBlob){dl.href=URL.createObjectURL(pdfBlob);dl.download='Carte-cadeau-'+d.num+'.pdf';dl.hidden=false;}else{dl.hidden=true;}
+      $('pay-alt').hidden=false;
+    });
+  });
+  // mode rendu PDF (iframe interne) : on remplit la carte avec les données de la commande
+  if(/[?&]pdf=1/.test(location.search)){
+    document.documentElement.classList.add('pdfmode');
+    window.__pdfFill=function(d){
+      $('p-nom').textContent=d.carte;$('p-nom').classList.toggle('big',!!d.big);$('p-val').textContent=d.val;
+      $('p-pour').textContent=d.pour;$('p-de').textContent=d.de;
+      $('p-msg').textContent=d.msg?'« '+d.msg+' »':'';
+      $('p-valid').textContent='Valable jusqu’au '+d.valid;$('p-num').textContent='N° '+d.num;
+    };
+  }
   $('pay-modif').addEventListener('click',function(){$('pay').close();});
   $('pay').addEventListener('click',function(ev){if(ev.target===$('pay'))$('pay').close();});
   document.querySelectorAll('.cp').forEach(function(b){b.addEventListener('click',function(){
